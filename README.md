@@ -1,4 +1,6 @@
-# Hexo\#
+# Hexo\# (WIP)
+
+🚧 WIP - 功能和结构可能迅速变化，且兼容性不被保证 🚧
 
 Hexo\#, 读作 `Hexo sharp` 或 `Hexo 升`。之所以叫这个名字是因为已经有 [Hexo++](https://github.com/HexoPlusPlus/HexoPlusPlus) 了。
 

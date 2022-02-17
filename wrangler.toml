@@ -16,3 +16,4 @@ main = "./worker.js"
 [site]
 bucket = './dist'
 entry-point = './dist/worker.js'
+exclude = ["worker.js", "worker.js.map"]
