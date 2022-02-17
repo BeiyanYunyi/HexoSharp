@@ -28,8 +28,7 @@ const config: webpack.Configuration = {
   },
   module: {
     rules: [
-      { test: /\.tsx?$/, loader: 'ts-loader', options: { transpileOnly: true } },
-      /*
+      // { test: /\.tsx?$/, loader: 'ts-loader', options: { transpileOnly: true } },
       {
         test: /\.tsx?$/,
         loader: 'esbuild-loader',
@@ -40,7 +39,6 @@ const config: webpack.Configuration = {
           target: 'es2015',
         },
       },
-      */
     ],
   },
 };
