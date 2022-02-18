@@ -13,6 +13,7 @@ import copyStaticFiles from 'esbuild-copy-static-files';
       entryPoints: {
         frontend: './src/frontend/main.tsx',
       },
+      minify: true,
       outdir: './dist',
       plugins: [copyStaticFiles({ src: './src/frontend/static', dest: './dist' })],
     });
