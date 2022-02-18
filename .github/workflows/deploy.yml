@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install Dependentcies
-        run: apt install yarn && yarn
+        run: sudo apt install -y yarn && yarn
       - name: Publish
         uses: cloudflare/wrangler-action@1.3.0
         with:
