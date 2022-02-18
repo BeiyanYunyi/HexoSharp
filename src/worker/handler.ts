@@ -1,7 +1,7 @@
-import { getAssetFromKV } from '@cloudflare/kv-asset-handler';
+import { getAssetFromKV, serveSinglePageApp } from '@cloudflare/kv-asset-handler';
 import json from './middlewares/json';
 import router from './router';
-import ghCorsRouter from './routers/ghCorsRouter';
+import ghCorsRouter from './service/ghCorsRouter';
 
 router.all('*', json);
 
@@ -17,7 +17,7 @@ router.all(
 
 router.get('*', async (req, event: FetchEvent) => {
   try {
-    const page = await getAssetFromKV(event);
+    const page = await getAssetFromKV(event, { mapRequestToAsset: serveSinglePageApp });
     const response = new Response(page.body, page);
     response.headers.set('X-XSS-Protection', '1; mode=block');
     response.headers.set('X-Content-Type-Options', 'nosniff');

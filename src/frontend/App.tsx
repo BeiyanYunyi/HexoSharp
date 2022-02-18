@@ -14,7 +14,9 @@ const App = () => {
   }, []);
   return (
     <Container>
-      <Typography sx={{ whiteSpace: 'pre' }}>{data}</Typography>
+      <Typography sx={{ whiteSpace: 'pre', fontFamily: '"Fira Code", "Microsoft YaHei"' }}>
+        {data}
+      </Typography>
     </Container>
   );
 };

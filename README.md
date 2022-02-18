@@ -18,7 +18,7 @@ Hexo\#, 读作 `Hexo sharp` 或 `Hexo 升`。之所以叫这个名字是因为�
 4. Markdown 编辑器不够完善。
 5. 由于编写时还没有 miniflare，开发流程需要依赖 cloudflare 的服务器，开发流较为痛苦。
 6. 使用 gulp 打包。
-7. 前端部分使用 Vanilla JS。
+7. 前端使用 Vanilla JS。
 8. 使用了 GPL 协议。对于一个部署在网页上的项目而言，GPL 协议是不够自由的，只有 AGPL 协议才能确保修改后的源代码被开源出来。
 
 既然选择重新写一个项目，那么新的 Hexo\# 从一开始就避免了这些问题，因为它：
@@ -28,7 +28,7 @@ Hexo\#, 读作 `Hexo sharp` 或 `Hexo 升`。之所以叫这个名字是因为�
 3. 使用 prettier 和 eslint 确保码风一致。
 4. 使用 [vditor](https://github.com/Vanessa219/vditor) 作为 Markdown 编辑器。
 5. 使用 miniflare，开发时可在本地运行 worker 脚本。
-6. 使用 Webpack 5 + esbuild-plugin 打包。
+6. 使用 esbuild 打包。
 7. 使用 React 编写前端。
 8. 使用 AGPL 协议。
 
