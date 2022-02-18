@@ -14,6 +14,6 @@ jobs:
       - name: Install Dependentcies
         run: sudo apt install -y yarn && yarn
       - name: Publish
-        uses: cloudflare/wrangler-action@1.3.0
+        uses: lixiang810/wrangler-action@1.4.0-node16
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
