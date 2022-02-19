@@ -7,7 +7,7 @@ workers_dev = true
 compatibility_date = "2022-02-17"
 
 [build]
-command = "yarn build"
+command = "pnpm build"
 
 [build.upload]
 format = "service-worker"

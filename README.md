@@ -32,12 +32,17 @@ Hexo\#, 读作 `Hexo sharp` 或 `Hexo 升`。之所以叫这个名字是因为�
 7. 使用 React 编写前端。
 8. 使用 AGPL 协议。
 
+## 展望
+
+未来有可能会与 Cloudflare Pages 结合，把前端托管在 Pages 上，用 Page 自带的 Function 来干现在 Worker 干的事情，但现在该功能尚在 Beta 阶段，未来可能收费，故暂且观望。
+
 ## 🛠️ 开发
 
 ```bash
-sudo npm install -g yarn
+sudo corepack enable
+# sudo npm install -g pnpm，如果上一条命令失败
 git clone https://github.com/lixiang810/HexoSharp
 cd HexoSharp
-yarn
-yarn dev
+pnpm install
+pnpm dev
 ```
