@@ -1,45 +1,19 @@
-import { Button, Container, TextField } from '@mui/material';
+import { Container } from '@mui/material';
 import React from 'react';
-import { IFile } from '../types/GetRepoContentData';
+import { Provider } from 'react-redux';
 import Files from './components/Files';
-import ls from './service/ls';
+import store from './redux/store';
 
-const App = () => {
-  const [data, setData] = React.useState<IFile[]>([]);
-  const [path, setPath] = React.useState('/');
-  const refreshFiles = (targetPath: string) => {
-    ls({ owner: 'lixiang810', repo: 'HexoSharp', path: targetPath })
-      .then((res) => {
-        if (res.data instanceof Array) {
-          setData(res.data);
-        } else {
-          console.log(res.data);
-        }
-      })
-      .catch((e) => console.log(e));
-  };
-  React.useEffect(() => {
-    refreshFiles('/');
-  }, []);
-  return (
-    <Container>
-      <TextField
-        label="路径"
-        value={path}
-        onChange={(e) => {
-          setPath(e.target.value);
-        }}
-      />
-      <Button
-        onClick={() => {
-          refreshFiles(path);
-        }}
-      >
-        刷新
-      </Button>
-      <Files files={data} />
-    </Container>
-  );
-};
+const Main = () => (
+  <Container>
+    <Files />
+  </Container>
+);
+
+const App = () => (
+  <Provider store={store}>
+    <Main />
+  </Provider>
+);
 
 export default App;
