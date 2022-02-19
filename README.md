@@ -27,12 +27,12 @@ Hexo\#, 读作 `Hexo sharp` 或 `Hexo 升`。之所以叫这个名字是因为�
 2. 使用 KV 存储 assets 并提供服务。
 3. 使用 prettier 和 eslint 确保码风一致。
 4. 使用 [vditor](https://github.com/Vanessa219/vditor) 作为 Markdown 编辑器。
-5. 使用 miniflare，开发时可在本地运行 worker 脚本。
+5. 使用 miniflare，开发时可在本地运行 worker 脚本，也可自行部署于 VPS。
 6. 使用 esbuild 打包。
 7. 使用 React 编写前端。
 8. 使用 AGPL 协议。
 
-## 展望
+## 🖼️ 展望
 
 未来有可能会与 Cloudflare Pages 结合，把前端托管在 Pages 上，用 Page 自带的 Function 来干现在 Worker 干的事情，但现在该功能尚在 Beta 阶段，未来可能收费，故暂且观望。
 

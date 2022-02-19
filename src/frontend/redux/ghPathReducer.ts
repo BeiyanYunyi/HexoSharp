@@ -34,13 +34,9 @@ const ghPathSlice = createSlice({
       state.loading = true;
     });
     builder.addCase(refreshFiles.fulfilled, (state, action) => {
-      if (Array.isArray(action.payload.res)) {
-        state.files = action.payload.res;
-        state.path = action.payload.path;
-        state.loading = false;
-      } else {
-        console.log(action.payload);
-      }
+      state.files = action.payload.res;
+      state.path = action.payload.path;
+      state.loading = false;
     });
   },
 });

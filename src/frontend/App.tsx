@@ -1,19 +1,22 @@
-import { Container } from '@mui/material';
 import React from 'react';
 import { Provider } from 'react-redux';
-import Files from './components/Files';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import SettingPage from './pages/SettingPage';
+import HomePage from './pages/HomePage';
+import Root from './pages/Root';
 import store from './redux/store';
 
-const Main = () => (
-  <Container>
-    <Files />
-  </Container>
-);
-
 const App = () => (
-  <Provider store={store}>
-    <Main />
-  </Provider>
+  <Router>
+    <Provider store={store}>
+      <Routes>
+        <Route path="/" element={<Root />}>
+          <Route path="settings" element={<SettingPage />} />
+          <Route index element={<HomePage />} />
+        </Route>
+      </Routes>
+    </Provider>
+  </Router>
 );
 
 export default App;
