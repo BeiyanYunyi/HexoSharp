@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install Dependentcies
-        run: sudo apt install -y yarn && yarn
+        run: sudo apt install -y npm && node -v && sudo npm install -g pnpm && pnpm install
       - name: Publish
         uses: lixiang810/wrangler-action@1.4.0-node16
         with:

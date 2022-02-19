@@ -14,5 +14,5 @@ format = "service-worker"
 
 [site]
 bucket = './dist'
-entry-point = ''
+entry-point = './'
 exclude = ["worker.js", "worker.js.map"]
