@@ -1,10 +1,10 @@
-const json = async (req: Request) => {
+const json = async (req: AppRequest) => {
   if (req.headers.get('Content-Type') === 'application/json') {
     try {
       const reqJson = await req.json();
-      req.json = reqJson as any;
+      req.parsedJson = reqJson;
     } catch (e) {
-      req.json = undefined as any;
+      req.parsedJson = undefined;
     }
   }
 };

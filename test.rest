@@ -1,4 +1,10 @@
-POST http://127.0.0.1:8787 HTTP/1.1
+POST http://127.0.0.1:8787/api/kv/key HTTP/1.1
 Content-Type: application/json
 
-{"a": "b"}
+{"value": "b"}
+
+###
+GET http://127.0.0.1:8787/api/kv/key HTTP/1.1
+
+###
+DELETE http://127.0.0.1:8787/api/kv/key HTTP/1.1

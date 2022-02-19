@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IFile } from '../../types/GetRepoContentData';
+import IFile from '../../types/IFile';
 import ls from '../service/ls';
 
 const initialState: { path: string; files: IFile[]; loading: boolean } = {
@@ -11,7 +11,8 @@ const initialState: { path: string; files: IFile[]; loading: boolean } = {
 
 export const refreshFiles = createAsyncThunk('ghPath/refreshFiles', async (path: string) => {
   const res = await ls({ owner: 'lixiang810', repo: 'HexoSharp', path });
-  return { res: res.data, path };
+  if (res) return { res, path };
+  return { res: [], path };
 });
 
 const ghPathSlice = createSlice({

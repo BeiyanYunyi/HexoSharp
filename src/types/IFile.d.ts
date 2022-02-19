@@ -1,9 +1,4 @@
-import octokit from '../frontend/service/octokit';
-import AsyncReturnType from './AsyncReturnType';
-
-type GetRepoContentData = AsyncReturnType<typeof octokit.repos.getContent>;
-
-export interface IFile {
+export default interface IFile {
   name: string;
   path: string;
   sha: string;
@@ -19,5 +14,3 @@ export interface IFile {
     html: string | null;
   };
 }
-
-export default GetRepoContentData;

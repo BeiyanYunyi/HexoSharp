@@ -2,10 +2,12 @@ import { getAssetFromKV, serveSinglePageApp } from '@cloudflare/kv-asset-handler
 import json from './middlewares/json';
 import router from './router';
 import ghCorsRouter from './service/ghCorsRouter';
+import kvRouter from './service/kvRouter';
 
 router.all('*', json);
 
 ghCorsRouter();
+kvRouter();
 
 router.all(
   '/api',

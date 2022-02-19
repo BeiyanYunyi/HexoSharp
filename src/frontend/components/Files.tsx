@@ -1,6 +1,6 @@
 import { Card, CardActionArea, CardHeader, CircularProgress, Grid } from '@mui/material';
 import React, { useEffect } from 'react';
-import { IFile } from '../../types/GetRepoContentData';
+import IFile from '../../types/IFile';
 import { refreshFiles } from '../redux/ghPathReducer';
 import { useAppDispatch, useAppSelector } from '../redux/store';
 import FileIcon from './FileIcon';
