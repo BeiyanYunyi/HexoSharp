@@ -16,5 +16,5 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           preCommands: |
-            sudo corepack enable
+            corepack enable
             pnpm install
