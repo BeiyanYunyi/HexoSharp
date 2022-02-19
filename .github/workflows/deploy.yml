@@ -11,9 +11,10 @@ jobs:
     name: Deploy
     steps:
       - uses: actions/checkout@v2
-      - name: Install Dependentcies
-        run: sudo apt install -y npm && node -v && sudo npm install -g pnpm && pnpm install
       - name: Publish
         uses: lixiang810/wrangler-action@1.4.0-node16
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
+          preCommands: |
+            sudo corepack enable
+            pnpm install
