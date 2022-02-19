@@ -6,6 +6,7 @@ specifiers:
   '@cloudflare/wrangler': ^1.19.8
   '@emotion/react': ^11.7.1
   '@emotion/styled': ^11.6.0
+  '@mui/icons-material': ^5.4.2
   '@mui/material': ^5.4.2
   '@octokit/rest': ^18.12.0
   '@types/jest': ^27.4.0
@@ -45,6 +46,7 @@ dependencies:
   '@cloudflare/kv-asset-handler': 0.2.0
   '@emotion/react': 11.7.1_a0c521d4794c7ad97f5f4c1c4a7d5818
   '@emotion/styled': 11.6.0_6051c8b70bfa52211d6f419a3c4413f0
+  '@mui/icons-material': 5.4.2_40fc9198f3297cec148e6ca7b8f715e2
   '@mui/material': 5.4.2_6226f8758b5b21b5515ad844c1caeb22
   '@octokit/rest': 18.12.0
   axios: 0.26.0
@@ -1006,6 +1008,23 @@ packages:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       react-is: 17.0.2
+    dev: false
+
+  /@mui/icons-material/5.4.2_40fc9198f3297cec148e6ca7b8f715e2:
+    resolution: {integrity: sha512-7c+G3jBT+e+pN0a9DJ0Bd8Kr1Vy6os5Q1yd2aXcwuhlRI3uzJBLJ8sX6FSWoh5DSEBchb7Bsk1uHz6U0YN9l+Q==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      '@mui/material': ^5.0.0
+      '@types/react': ^16.8.6 || ^17.0.0
+      react: ^17.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.17.2
+      '@mui/material': 5.4.2_6226f8758b5b21b5515ad844c1caeb22
+      '@types/react': 17.0.39
+      react: 17.0.2
     dev: false
 
   /@mui/material/5.4.2_6226f8758b5b21b5515ad844c1caeb22:
