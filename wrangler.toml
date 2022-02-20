@@ -6,7 +6,9 @@ route = ""
 workers_dev = true
 compatibility_date = "2022-02-17"
 
-kv_namespaces = [{ binding = "HSPKV", id = "42afd8d0403a4fd6946820f9f4050363" }]
+kv_namespaces = [
+    { binding = "HSPKV", preview_id = "f269946ab0d9497e9e6cdf6593bb1c41", id = "42afd8d0403a4fd6946820f9f4050363" },
+]
 
 [build]
 command = "pnpm build"
@@ -19,5 +21,11 @@ bucket = './dist'
 entry-point = './'
 exclude = ["worker.js", "worker.js.map"]
 
+# [secrets]
+# JWT_SECRET
+
 [miniflare]
 kv_persist = true
+
+[miniflare.globals]
+JWT_SECRET = "1145141919810"

@@ -1,9 +1,13 @@
 import { AppBar, Container, Skeleton, Stack, Toolbar, Typography } from '@mui/material';
 import React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { changeSettings, changeLoaded } from '../redux/settingsReducer';
+import ISettings from '../../types/ISettings';
+import { changeAuth } from '../redux/authReducer';
+import { changeLoaded, changeSettings } from '../redux/settingsReducer';
 import { useAppDispatch, useAppSelector } from '../redux/store';
+import axiosClient from '../service/axiosClient';
 import kv from '../service/kv';
+import octokit from '../service/octokit';
 
 const Topbar = () => (
   <AppBar position="sticky" sx={{ marginBottom: 1 }}>
@@ -20,11 +24,20 @@ const Root = () => {
   const loaded = useAppSelector((state) => state.settings.loaded);
   const dispatch = useAppDispatch();
   React.useEffect(() => {
-    kv.get('settings').then((res) => {
+    (async () => {
+      const loginRes = await axiosClient.login();
+      if (!loginRes) {
+        navigate('/login', { replace: true });
+        return dispatch(changeLoaded(true));
+      }
+      dispatch(changeAuth(true));
+      const settings = await kv.get('settings');
       dispatch(changeLoaded(true));
-      if (res === null) return navigate('/settings');
-      return dispatch(changeSettings(JSON.parse(res)));
-    });
+      if (settings === null) return navigate('/settings');
+      const parsedSettings = JSON.parse(settings) as ISettings;
+      octokit.auth(parsedSettings.ghApiToken);
+      return dispatch(changeSettings(parsedSettings));
+    })();
   }, [dispatch, navigate]);
   if (!loaded) {
     return (

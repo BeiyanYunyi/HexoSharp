@@ -11,7 +11,10 @@ specifiers:
   '@mui/material': ^5.4.2
   '@octokit/rest': ^18.12.0
   '@reduxjs/toolkit': ^1.7.2
+  '@tsndr/cloudflare-worker-jwt': ^1.1.5
+  '@types/bcryptjs': ^2.4.2
   '@types/jest': ^27.4.0
+  '@types/jsonwebtoken': ^8.5.8
   '@types/node': ^17.0.18
   '@types/react': ^17.0.39
   '@types/react-dom': ^17.0.11
@@ -19,6 +22,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.12.0
   '@typescript-eslint/parser': ^5.12.0
   axios: ^0.26.0
+  bcryptjs: ^2.4.3
   esbuild: ^0.14.22
   esbuild-copy-static-files: ^0.1.0
   eslint: ^8.9.0
@@ -52,7 +56,9 @@ dependencies:
   '@mui/material': 5.4.2_6226f8758b5b21b5515ad844c1caeb22
   '@octokit/rest': 18.12.0
   '@reduxjs/toolkit': 1.7.2_react-redux@7.2.6+react@17.0.2
+  '@tsndr/cloudflare-worker-jwt': 1.1.5
   axios: 0.26.0
+  bcryptjs: 2.4.3
   itty-router: 2.4.10
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
@@ -63,7 +69,9 @@ devDependencies:
   '@babel/core': 7.17.5
   '@cloudflare/workers-types': 3.4.0
   '@cloudflare/wrangler': 1.19.8
+  '@types/bcryptjs': 2.4.2
   '@types/jest': 27.4.0
+  '@types/jsonwebtoken': 8.5.8
   '@types/node': 17.0.18
   '@types/react': 17.0.39
   '@types/react-dom': 17.0.11
@@ -1348,6 +1356,10 @@ packages:
     resolution: {integrity: sha512-eZxlbI8GZscaGS7kkc/trHTT5xgrjH3/1n2JDwusC9iahPKWMRvRjJSAN5mCXviuTGQ/lHnhvv8Q1YTpnfz9gA==}
     dev: true
 
+  /@tsndr/cloudflare-worker-jwt/1.1.5:
+    resolution: {integrity: sha512-+q0siASepCuFboIQrdgykBIESzttfWz3qXQ8Lx36mjMJpaS1XgErRvQ2+BPU8miXlBbslbxThRaMCW2o8nFtug==}
+    dev: false
+
   /@types/babel__core/7.1.18:
     resolution: {integrity: sha512-S7unDjm/C7z2A2R9NzfKCK1I+BAALDtxEmsJBwlB3EzNfb929ykjL++1CK9LO++EIp2fQrC8O+BwjKvz6UeDyQ==}
     dependencies:
@@ -1375,6 +1387,10 @@ packages:
     resolution: {integrity: sha512-K2waXdXBi2302XUdcHcR1jCeU0LL4TD9HRs/gk0N2Xvrht+G/BfJa4QObBQZfhMdxiCpV3COl5Nfq4uKTeTnJA==}
     dependencies:
       '@babel/types': 7.17.0
+    dev: true
+
+  /@types/bcryptjs/2.4.2:
+    resolution: {integrity: sha512-LiMQ6EOPob/4yUL66SZzu6Yh77cbzJFYll+ZfaPiPPFswtIlA/Fs1MzdKYA7JApHU49zQTbJGX3PDmCpIdDBRQ==}
     dev: true
 
   /@types/graceful-fs/4.1.5:
@@ -1419,6 +1435,12 @@ packages:
 
   /@types/json5/0.0.29:
     resolution: {integrity: sha1-7ihweulOEdK4J7y+UnC86n8+ce4=}
+    dev: true
+
+  /@types/jsonwebtoken/8.5.8:
+    resolution: {integrity: sha512-zm6xBQpFDIDM6o9r6HSgDeIcLy82TKWctCXEPbJJcXb5AKmi5BNNdLXneixK4lplX3PqIVcwLBCGE/kAGnlD4A==}
+    dependencies:
+      '@types/node': 17.0.18
     dev: true
 
   /@types/node/17.0.18:
@@ -1891,6 +1913,10 @@ packages:
   /balanced-match/1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
     dev: true
+
+  /bcryptjs/2.4.3:
+    resolution: {integrity: sha1-mrVie5PmBiH/fNrF2pczAn3x0Ms=}
+    dev: false
 
   /before-after-hook/2.2.2:
     resolution: {integrity: sha512-3pZEU3NT5BFUo/AD5ERPWOgQOCZITni6iavr5AUw5AUwQjMlI0kzu5btnyD39AF0gUEsDPwJT+oY1ORBJijPjQ==}
