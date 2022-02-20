@@ -3,18 +3,21 @@ import { Button, CircularProgress, Container, Stack, TextField } from '@mui/mate
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ISettings from '../../types/ISettings';
+import { changeSetting, changeSettings } from '../redux/settingsReducer';
+import { useAppDispatch, useAppSelector } from '../redux/store';
 import kv from '../service/kv';
 import defaultSetting from '../utils/defaultSetting';
 
 const SettingPage = () => {
-  const [settings, setSettings] = React.useState<ISettings>();
+  const settings = useAppSelector((state) => state.settings.settings);
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   useEffect(() => {
     kv.get('settings').then((res) => {
-      if (res === null) return setSettings(defaultSetting);
-      return setSettings(JSON.parse(res) as ISettings);
+      if (res === null) return dispatch(changeSettings(defaultSetting));
+      return dispatch(changeSettings(JSON.parse(res) as ISettings));
     });
-  }, []);
+  }, [dispatch]);
   if (!settings) {
     return <CircularProgress />;
   }
@@ -28,7 +31,7 @@ const SettingPage = () => {
             label={key}
             value={settings[key]}
             onChange={(e) => {
-              setSettings((oriSettings) => ({ ...oriSettings, [key]: e.target.value }));
+              dispatch(changeSetting({ key, value: e.target.value }));
             }}
           />
         ))}

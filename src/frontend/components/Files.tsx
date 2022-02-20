@@ -56,7 +56,7 @@ const Files: React.FC<{}> = () => {
     <Grid container spacing={1}>
       {path !== '' && <ReturnToParent />}
       {files.map((file) => (
-        <Grid item>
+        <Grid item key={file.sha}>
           <File file={file} />
         </Grid>
       ))}

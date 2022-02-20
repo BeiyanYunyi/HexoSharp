@@ -38,9 +38,11 @@ const Topbar = () => {
 const Root = () => {
   const navigate = useNavigate();
   const loaded = useAppSelector((state) => state.settings.loaded);
+  const authed = useAppSelector((state) => state.auth.authed);
   const dispatch = useAppDispatch();
   React.useEffect(() => {
     (async () => {
+      if (loaded && authed) return null;
       const loginRes = await axiosClient.login();
       if (!loginRes) {
         navigate('/login', { replace: true });
@@ -54,7 +56,7 @@ const Root = () => {
       octokit.auth(parsedSettings.ghApiToken);
       return dispatch(changeSettings(parsedSettings));
     })();
-  }, [dispatch, navigate]);
+  }, [dispatch, navigate, authed, loaded]);
   if (!loaded) {
     return (
       <>

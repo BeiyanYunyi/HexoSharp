@@ -1,3 +1,5 @@
 export default interface ISettings {
-  ghApiToken?: string;
+  ghApiToken: string;
+  owner: string;
+  repo: string;
 }
