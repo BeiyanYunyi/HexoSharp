@@ -1,8 +1,7 @@
 /* eslint-disable consistent-return */
 import jwt from '@tsndr/cloudflare-worker-jwt';
-import JWT_SECRET from '../../types/jwtSecret';
 
-const jwtVerify = async (req: AppRequest) => {
+const jwtVerify = async (req: Request) => {
   const authHeader = req.headers.get('Authorization');
   if (!authHeader)
     return new Response(null, { status: 403, headers: { 'Content-Type': 'text/plain' } });

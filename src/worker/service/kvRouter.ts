@@ -1,4 +1,3 @@
-import HSPKV from '../../types/HSPKV';
 import router from '../router';
 
 const kvRouter = () => {
@@ -10,8 +9,9 @@ const kvRouter = () => {
     if (!res) return new Response('null', { headers });
     return new Response(JSON.stringify({ value: res }), { headers });
   });
-  router.post('/api/kv/:key', async (req: AppRequest) => {
+  router.post('/api/kv/:key', async (req: Request) => {
     const { key } = (req as unknown as { params: { key: string } }).params;
+    if (!req.parsedJson) return new Response(null, { status: 400, statusText: 'Bad Request' });
     await HSPKV.put(key, req.parsedJson.value);
     return new Response(null, { status: 201 });
   });

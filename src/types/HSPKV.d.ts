@@ -1,4 +1,5 @@
-/** A fake class */
+/// <reference types="@cloudflare/workers-types" />
+
 declare class HSPKV {
   declare static get: (key: string) => Promise<string | null>;
 
@@ -6,5 +7,3 @@ declare class HSPKV {
 
   declare static delete: (key: string) => Promise<void>;
 }
-
-export default HSPKV;

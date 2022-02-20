@@ -1,10 +1,8 @@
 import jwt from '@tsndr/cloudflare-worker-jwt';
-import HSPKV from '../../types/HSPKV';
-import JWT_SECRET from '../../types/jwtSecret';
 import router from '../router';
 
 const authRouter = () => {
-  router.post('/api/auth/', async (req: AppRequest) => {
+  router.post('/api/auth/', async (req: Request) => {
     if (!req.parsedJson?.password) return new Response(null, { status: 400 });
     const savedPassword = await HSPKV.get('password');
     const objToSign = { exp: Math.floor(Date.now() / 1000 + 60 * 60 * 24 * 7) };
