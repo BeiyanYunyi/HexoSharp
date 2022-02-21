@@ -61,7 +61,7 @@ const Editor: React.FC<
                 const res = await createOrUpdate({
                   path,
                   content: encode(vd.getValue()),
-                  message: `📝 Uploaded by Hexo# v${version}`,
+                  message: `📝 Uploaded by Hexo# v${version} at ${new Date().toLocaleString()}`,
                   sha,
                 });
                 console.log(res);

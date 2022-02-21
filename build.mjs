@@ -6,7 +6,8 @@ import copyStaticFiles from 'esbuild-copy-static-files';
   try {
     const build1 = build({
       bundle: true,
-      sourcemap: true,
+      sourcemap: false,
+      treeShaking: true,
       format: 'iife',
       platform: 'browser',
       target: ['es2017', 'chrome58'],
