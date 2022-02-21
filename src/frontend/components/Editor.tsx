@@ -28,7 +28,7 @@ const Editor: React.FC<
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const viewUrl = location.pathname.replace('/ghEdit/', '/ghView/');
   React.useEffect(() => {
-    if (ref.current) {
+    if (ref.current && !vd) {
       const vditor = new Vditor(ref.current, {
         after: () => {
           setVd(vditor);
@@ -41,7 +41,7 @@ const Editor: React.FC<
         mode: 'ir',
       });
     }
-  }, [initialValue, isMobile]);
+  }, [initialValue, isMobile, vd]);
   return (
     <>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor/dist/index.css" />
