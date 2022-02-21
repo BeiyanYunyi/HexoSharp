@@ -2,6 +2,10 @@
 
 🚧 WIP - 功能和结构可能迅速变化，且兼容性不被保证 🚧
 
+<p align="center">
+  <img src="src/frontend/static/favicon.svg" style="height: 256px; width: 256px" />
+</p>
+
 Hexo\#, 读作 `Hexo sharp` 或 `Hexo 升`。之所以叫这个名字是因为已经有 [Hexo++](https://github.com/HexoPlusPlus/HexoPlusPlus) 了。
 
 > Hexo++ 是一个基于 Cloudflare Workers 和 Cloudflare KV 技术的 Hexo 后端程序，目的是解决 Hexo 无后端带来的种种麻烦，支持（包括）但不限于 Hexo（在内的）静态博客；利用 Cloudflare Workers ~~当~~（作为）中间件，有效避免直接上传到 GitHub 易失败（的）问题。
