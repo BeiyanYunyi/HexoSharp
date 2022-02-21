@@ -12,6 +12,11 @@ Hexo\#, 读作 `Hexo sharp` 或 `Hexo 升`。之所以叫这个名字是因为�
 >
 > —— Hexo++ 介绍，原句有语病，被修改的部分以括号和删除线标注。
 
+虽然名字里带 Hexo ，但这个项目并不依赖于 Hexo，因为 Hexo\# 本质是一个 GitHub repo 编辑器，只要你的 repo 能生成静态页面，并且完成了相关的 CI，就可以使用 Hexo\#。诸如 jekyll、hexo、hugo、vuepress、docsaurus 这样的静态页面生成器都可以使用 Hexo\#，而相较 GitHub 自己的编辑器，Hexo\#：
+
+- 可以所见即所得地编辑 markdown。
+- 可以随地部署，解决 GitHub 在中国大陆被限制访问的问题。
+
 ## 💡 起源
 
 我曾使用 Hexo++，这是一个优秀的项目，但它最近变成了 Archived 状态。而且，它有这些让我没法接手的地方：
@@ -36,6 +41,12 @@ Hexo\#, 读作 `Hexo sharp` 或 `Hexo 升`。之所以叫这个名字是因为�
 7. 使用 React 编写前端。
 8. 使用 AGPL 协议。
 
+## ✅ 在进行中的工作
+
+* [X] 可以查看 Repo 内容
+* [X] 可以修改 Repo 内容
+* [ ] 可以创建 Repo 内容
+
 ## 🖼️ 展望
 
 未来有可能会与 Cloudflare Pages 结合，把前端托管在 Pages 上，用 Page 自带的 Function 来干现在 Worker 干的事情，但现在该功能尚在 Beta 阶段，未来可能收费，故暂且观望。
@@ -49,4 +60,21 @@ git clone https://github.com/lixiang810/HexoSharp
 cd HexoSharp
 pnpm install
 pnpm dev
+```
+
+## 🏭 部署
+
+```bash
+sudo corepack enable
+# sudo npm install -g pnpm，如果上一条命令失败
+sudo pnpm install -g wrangler
+git clone https://github.com/lixiang810/HexoSharp
+cd HexoSharp
+```
+
+在 `HexoSharp` 文件夹中，编辑 `wrangler.toml` 的 `account_id`、`kv_namespaces`，然后
+
+```bash
+pnpm install
+wrangler publish
 ```
