@@ -12,6 +12,10 @@ interface IFileState {
   data: IFile;
 }
 
+interface INotExist {
+  type: 'notExist';
+}
+
 const useGhPath = () => {
   const location = useLocation();
   const pathToReturn = location.pathname.replace('/ghEdit/', '');
@@ -21,19 +25,22 @@ const useGhPath = () => {
 const GhEditPage: React.FC = () => {
   const { owner, repo } = useAppSelector((state) => state.settings.settings);
   const [loading, setLoading] = React.useState(true);
-  const [data, setData] = React.useState<IFileState>();
+  const [data, setData] = React.useState<IFileState | INotExist>();
   const path = useGhPath();
   React.useEffect(() => {
     (async () => {
       const res = await lscat({ owner, repo, path });
-      if (res && !Array.isArray(res) && res.type === 'file') {
+      if (res && !Array.isArray(res) && res.type !== 'dir') {
         setData(res);
       }
       setLoading(false);
     })();
   }, [owner, path, repo]);
   if (loading) return <CircularProgress />;
-  if (data && (data.data.name.endsWith('.md') || data.data.name.endsWith('.mdx'))) {
+  if (
+    data?.type === 'file' &&
+    (data.data.name.endsWith('.md') || data.data.name.endsWith('.mdx'))
+  ) {
     return (
       <Container>
         <Editor
@@ -44,9 +51,16 @@ const GhEditPage: React.FC = () => {
       </Container>
     );
   }
+  if (data?.type === 'notExist') {
+    return (
+      <Container>
+        <Editor path={path} />
+      </Container>
+    );
+  }
   return (
     <Container>
-      <Typography>目前为止这不是一个可编辑的文件</Typography>
+      <Typography>目前为止这不是一个可编辑的文件，或者加载失败了</Typography>
     </Container>
   );
 };

@@ -17,7 +17,7 @@ import { version } from '../../../package.json';
 import createOrUpdate from '../service/createOrUpdate';
 
 const Editor: React.FC<
-  | { initialValue: undefined; path: string; sha: undefined }
+  | { initialValue?: undefined; path: string; sha?: undefined }
   | { initialValue: string; path: string; sha: string }
 > = ({ initialValue, path, sha }) => {
   const ref = React.useRef<HTMLDivElement>(null);
@@ -75,7 +75,13 @@ const Editor: React.FC<
               variant="outlined"
               color="error"
               onClick={() => {
-                navigate(viewUrl, { replace: true });
+                if (sha) {
+                  navigate(viewUrl, { replace: true });
+                } else {
+                  const target = viewUrl.split('/');
+                  target.pop();
+                  navigate(target.join('/'), { replace: true });
+                }
               }}
             >
               返回

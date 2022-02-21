@@ -21,7 +21,7 @@ const Preview: React.FC<{ value: string }> = ({ value }) => {
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor/dist/index.css" />
       <Card>
         <CardActions>
-          <Stack spacing={1} direction="row">
+          <Stack direction="row" spacing={1}>
             <Button
               variant="contained"
               href={editUrl}
@@ -30,6 +30,15 @@ const Preview: React.FC<{ value: string }> = ({ value }) => {
               }}
             >
               编辑
+            </Button>
+            <Button
+              variant="outlined"
+              color="error"
+              onClick={() => {
+                navigate(-1);
+              }}
+            >
+              返回
             </Button>
           </Stack>
         </CardActions>
