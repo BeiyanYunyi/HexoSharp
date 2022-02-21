@@ -205,7 +205,7 @@ const Files: React.FC = () => {
           variant="outlined"
           color="error"
           onClick={() => {
-            navigate(parentPath);
+            navigate(`/ghView${parentPath}`);
           }}
         >
           返回
