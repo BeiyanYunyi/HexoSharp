@@ -8,6 +8,7 @@ import store from './redux/store';
 import LoginPage from './pages/LoginPage';
 import NeedAuth from './components/NeedAuth';
 import GhViewPage from './pages/GhViewPage';
+import GhEditPage from './pages/GhEditPage';
 
 const App = () => (
   <Router>
@@ -28,6 +29,14 @@ const App = () => (
             element={
               <NeedAuth>
                 <GhViewPage />
+              </NeedAuth>
+            }
+          />
+          <Route
+            path="ghEdit/*"
+            element={
+              <NeedAuth>
+                <GhEditPage />
               </NeedAuth>
             }
           />

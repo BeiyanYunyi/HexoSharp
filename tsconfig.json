@@ -2,6 +2,7 @@
   "compilerOptions": {
     "outDir": "./dist",
     "module": "commonjs",
+    "resolveJsonModule": true,
     "target": "esnext",
     "lib": ["esnext", "DOM", "DOM.Iterable"],
     "alwaysStrict": true,

@@ -7,7 +7,7 @@ import IFile from '../../types/IFile';
 import { useAppSelector } from '../redux/store';
 import lscat from '../service/lscat';
 import FileIcon from './FileIcon';
-import Editor from './Editor';
+import Preview from './Preview';
 
 interface IDirState {
   type: 'dir';
@@ -21,8 +21,8 @@ interface IFileState {
 
 const useGhPath = () => {
   const location = useLocation();
-  const pathToReturn = location.pathname.replace('/ghView', '');
-  return pathToReturn === '/' ? '' : pathToReturn;
+  const pathToReturn = location.pathname.replace('/ghView/', '').replace('/ghView', '');
+  return pathToReturn;
 };
 
 const File: React.FC<{ file: IFile }> = ({ file }) => {
@@ -73,7 +73,7 @@ const Files: React.FC = () => {
     (async () => {
       if (!settings.owner || !settings.repo) return null;
       const res = await lscat({ owner: settings.owner, repo: settings.repo, path });
-      if (res) {
+      if (res && res.type !== 'notExist') {
         setData(res);
         setLoading(false);
       }
@@ -94,7 +94,7 @@ const Files: React.FC = () => {
     );
   }
   if (data.data.name.endsWith('.md') || data.data.name.endsWith('.mdx')) {
-    return <Editor value={decode(data.data.content || '')} />;
+    return <Preview value={decode(data.data.content || '')} />;
   }
   return <Grid container>{decode(data.data.content || '')}</Grid>;
 };

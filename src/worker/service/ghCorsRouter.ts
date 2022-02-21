@@ -26,7 +26,7 @@ const ghCorsRouter = () => {
   router.all('/api/gh/*', async (req, event: FetchEvent) => {
     const isOptions = event.request.method === 'OPTIONS';
     const targetUrl = req.url.replace(/https?.*gh\//, '');
-    if (!targetUrl.startsWith('https://api.github.com/')) {
+    if (!targetUrl.includes('github')) {
       return new Response('Forbidden', { status: 403, statusText: 'Forbidden' });
     }
     const recvHeaders: Record<string, string> = {};
