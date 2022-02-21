@@ -1,10 +1,20 @@
-import { Button, Card, CardActions, CardContent, Stack, Typography } from '@mui/material';
 import SaveIcon from '@mui/icons-material/Save';
-import React from 'react';
-import Vditor from 'vditor';
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Stack,
+  useTheme,
+  Typography,
+  useMediaQuery,
+} from '@mui/material';
 import { encode } from 'js-base64';
-import createOrUpdate from '../service/createOrUpdate';
+import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Vditor from 'vditor';
 import { version } from '../../../package.json';
+import createOrUpdate from '../service/createOrUpdate';
 
 const Editor: React.FC<
   | { initialValue: undefined; path: string; sha: undefined }
@@ -12,6 +22,11 @@ const Editor: React.FC<
 > = ({ initialValue, path, sha }) => {
   const ref = React.useRef<HTMLDivElement>(null);
   const [vd, setVd] = React.useState<Vditor>();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const viewUrl = location.pathname.replace('/ghEdit/', '/ghView/');
   React.useEffect(() => {
     if (ref.current) {
       const vditor = new Vditor(ref.current, {
@@ -21,12 +36,12 @@ const Editor: React.FC<
         },
         cache: { enable: false },
         icon: 'material',
-        height: window.innerHeight / 2,
+        height: isMobile ? window.innerHeight / 2 : undefined,
         typewriterMode: true,
         mode: 'ir',
       });
     }
-  }, [initialValue]);
+  }, [initialValue, isMobile]);
   return (
     <>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor/dist/index.css" />
@@ -50,10 +65,20 @@ const Editor: React.FC<
                   sha,
                 });
                 console.log(res);
+                navigate(viewUrl, { replace: true });
                 return null;
               }}
             >
               保存
+            </Button>
+            <Button
+              variant="outlined"
+              color="error"
+              onClick={() => {
+                navigate(viewUrl, { replace: true });
+              }}
+            >
+              返回
             </Button>
           </Stack>
         </CardActions>
