@@ -3,13 +3,14 @@
 🚧 WIP - 功能和结构可能迅速变化，且兼容性不被保证 🚧
 
 <p align="center">
-  <img src="src/frontend/static/favicon.svg" style="height: 256px; width: 256px" />
+  <img src="https://github.com/lixiang810/HexoSharp/raw/main/src/frontend/static/favicon.svg" style="height: 256px; width: 256px" />
+  <p align="center">暂定图标，欢迎PR</p>
 </p>
 
 Hexo\#, 读作 `Hexo sharp` 或 `Hexo 升`。之所以叫这个名字是因为已经有 [Hexo++](https://github.com/HexoPlusPlus/HexoPlusPlus) 了。
 
 > Hexo++ 是一个基于 Cloudflare Workers 和 Cloudflare KV 技术的 Hexo 后端程序，目的是解决 Hexo 无后端带来的种种麻烦，支持（包括）但不限于 Hexo（在内的）静态博客；利用 Cloudflare Workers ~~当~~（作为）中间件，有效避免直接上传到 GitHub 易失败（的）问题。
-> 
+>
 > —— Hexo++ 介绍，原句有语病，被修改的部分以括号和删除线标注。
 
 虽然名字里带 Hexo ，但这个项目并不依赖于 Hexo，因为 Hexo\# 本质是一个 GitHub repo 编辑器，只要你的 repo 能生成静态页面，并且完成了相关的 CI，就可以使用 Hexo\#。诸如 jekyll、hexo、hugo、vuepress、docsaurus 这样的静态页面生成器都可以使用 Hexo\#，而相较 GitHub 自己的编辑器，Hexo\#：
@@ -43,11 +44,11 @@ Hexo\#, 读作 `Hexo sharp` 或 `Hexo 升`。之所以叫这个名字是因为�
 
 ## ✅ 在进行中的工作
 
-* [x] 查看 Repo 内容
-* [x] 修改 Repo 内容
-* [x] 创建 Repo 内容
-* [ ] 删除 Repo 内容
-* [ ] 上传图片
+* [X]  查看 Repo 内容
+* [X]  修改 Repo 内容
+* [X]  创建 Repo 内容
+* [ ]  删除 Repo 内容
+* [ ]  上传图片
 
 ## 🖼️ 展望
 
@@ -80,4 +81,3 @@ cd HexoSharp
 pnpm install
 wrangler publish
 ```
-
