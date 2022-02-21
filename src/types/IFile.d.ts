@@ -3,6 +3,7 @@ export default interface IFile {
   path: string;
   sha: string;
   size: number;
+  content?: string;
   url: string;
   html_url: string | null;
   git_url: string | null;

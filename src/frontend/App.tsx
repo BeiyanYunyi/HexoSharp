@@ -24,7 +24,7 @@ const App = () => (
             }
           />
           <Route
-            path="ghView"
+            path="ghView/*"
             element={
               <NeedAuth>
                 <GhViewPage />

@@ -25,7 +25,7 @@ router.all(
     }),
 );
 
-router.get('*', async (req, event: FetchEvent) => {
+router.get('**/*', async (req, event: FetchEvent) => {
   if (!event) return new Response(null, { status: 400 });
   try {
     const page = await getAssetFromKV(event, { mapRequestToAsset: serveSinglePageApp });

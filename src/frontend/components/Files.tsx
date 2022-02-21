@@ -1,17 +1,37 @@
 import { Card, CardActionArea, CardHeader, CircularProgress, Grid } from '@mui/material';
 import React, { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { decode } from 'js-base64';
+
 import IFile from '../../types/IFile';
-import { refreshFiles } from '../redux/ghPathReducer';
-import { useAppDispatch, useAppSelector } from '../redux/store';
+import { useAppSelector } from '../redux/store';
+import lscat from '../service/lscat';
 import FileIcon from './FileIcon';
+import Editor from './Editor';
+
+interface IDirState {
+  type: 'dir';
+  data: IFile[];
+}
+
+interface IFileState {
+  type: 'file';
+  data: IFile;
+}
+
+const useGhPath = () => {
+  const location = useLocation();
+  const pathToReturn = location.pathname.replace('/ghView', '');
+  return pathToReturn === '/' ? '' : pathToReturn;
+};
 
 const File: React.FC<{ file: IFile }> = ({ file }) => {
-  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   return (
     <Card>
       <CardActionArea
         onClick={() => {
-          dispatch(refreshFiles(file.path));
+          navigate(`/ghView/${file.path}`);
         }}
       >
         <CardHeader title={file.name} avatar={<FileIcon name={file.name} type={file.type} />} />
@@ -21,10 +41,10 @@ const File: React.FC<{ file: IFile }> = ({ file }) => {
 };
 
 const ReturnToParent: React.FC<{}> = () => {
-  const dispatch = useAppDispatch();
-  const path = useAppSelector((state) => state.ghPath.path);
-  const getParentPath = (pathNow: string) => {
-    const pathAry = pathNow.split('/');
+  const navigate = useNavigate();
+  const path = useGhPath();
+  const getParentPath = () => {
+    const pathAry = path.split('/');
     pathAry.pop();
     return pathAry.join('/');
   };
@@ -33,7 +53,7 @@ const ReturnToParent: React.FC<{}> = () => {
       <Card>
         <CardActionArea
           onClick={() => {
-            dispatch(refreshFiles(getParentPath(path)));
+            navigate(`/ghView${getParentPath()}`);
           }}
         >
           <CardHeader title=".." avatar={<FileIcon name=".." type="dir" />} />
@@ -43,25 +63,38 @@ const ReturnToParent: React.FC<{}> = () => {
   );
 };
 
-const Files: React.FC<{}> = () => {
-  const dispatch = useAppDispatch();
-  const path = useAppSelector((state) => state.ghPath.path);
-  const loading = useAppSelector((state) => state.ghPath.loading);
-  const files = useAppSelector((state) => state.ghPath.files);
+const Files: React.FC = () => {
+  const settings = useAppSelector((state) => state.settings.settings);
+  const [loading, setLoading] = React.useState(true);
+  const [data, setData] = React.useState<IDirState | IFileState>({ type: 'dir', data: [] });
+  const path = useGhPath();
+  console.log({ path, data });
   useEffect(() => {
-    dispatch(refreshFiles(''));
-  }, [dispatch]);
+    (async () => {
+      const res = await lscat({ owner: settings.owner, repo: settings.repo, path });
+      if (res) {
+        setData(res);
+        setLoading(false);
+      }
+    })();
+  }, [path, settings.owner, settings.repo]);
   if (loading) return <CircularProgress />;
-  return (
-    <Grid container spacing={1}>
-      {path !== '' && <ReturnToParent />}
-      {files.map((file) => (
-        <Grid item key={file.sha}>
-          <File file={file} />
-        </Grid>
-      ))}
-    </Grid>
-  );
+  if (data.type === 'dir') {
+    return (
+      <Grid container spacing={1}>
+        {path !== '' && <ReturnToParent />}
+        {data.data.map((file) => (
+          <Grid item key={file.sha}>
+            <File file={file} />
+          </Grid>
+        ))}
+      </Grid>
+    );
+  }
+  if (data.data.name.endsWith('.md') || data.data.name.endsWith('.mdx')) {
+    return <Editor value={decode(data.data.content || '')} />;
+  }
+  return <Grid container>{decode(data.data.content || '')}</Grid>;
 };
 
 export default Files;
