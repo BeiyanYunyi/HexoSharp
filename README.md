@@ -2,10 +2,10 @@
 
 🚧 WIP - 功能和结构可能迅速变化，且兼容性不被保证 🚧
 
-<p align="center">
+<div align="center">
   <img src="https://github.com/lixiang810/HexoSharp/raw/main/src/frontend/static/favicon.svg" style="height: 256px; width: 256px" />
-  <p align="center">暂定图标，欢迎PR</p>
-</p>
+  <p>暂定图标，欢迎PR</p>
+</div>
 
 Hexo\#, 读作 `Hexo sharp` 或 `Hexo 升`。之所以叫这个名字是因为已经有 [Hexo++](https://github.com/HexoPlusPlus/HexoPlusPlus) 了。
 
