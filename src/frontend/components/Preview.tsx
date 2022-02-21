@@ -25,7 +25,8 @@ const Preview: React.FC<{ value: string }> = ({ value }) => {
             <Button
               variant="contained"
               href={editUrl}
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 navigate(editUrl, { replace: true });
               }}
             >
