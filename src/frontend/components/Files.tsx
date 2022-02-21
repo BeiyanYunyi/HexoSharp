@@ -71,11 +71,13 @@ const Files: React.FC = () => {
   console.log({ path, data });
   useEffect(() => {
     (async () => {
+      if (!settings.owner || !settings.repo) return null;
       const res = await lscat({ owner: settings.owner, repo: settings.repo, path });
       if (res) {
         setData(res);
         setLoading(false);
       }
+      return null;
     })();
   }, [path, settings.owner, settings.repo]);
   if (loading) return <CircularProgress />;

@@ -1,4 +1,4 @@
-import { getAssetFromKV, serveSinglePageApp } from '@cloudflare/kv-asset-handler';
+import { getAssetFromKV } from '@cloudflare/kv-asset-handler';
 import json from './middlewares/json';
 import jwtVerify from './middlewares/jwtVerify';
 import router from './router';
@@ -25,10 +25,17 @@ router.all(
     }),
 );
 
-router.get('**/*', async (req, event: FetchEvent) => {
+router.get('*', async (req, event: FetchEvent) => {
   if (!event) return new Response(null, { status: 400 });
   try {
-    const page = await getAssetFromKV(event, { mapRequestToAsset: serveSinglePageApp });
+    const page = await getAssetFromKV(event, {
+      mapRequestToAsset: (oriReq) => {
+        const { url } = oriReq;
+        if (url.endsWith('.svg')) return oriReq;
+        if (url.endsWith('frontend.js')) return oriReq;
+        return new Request(`${url.split('/').slice(0, 3).join('/')}/index.html`, oriReq);
+      },
+    });
     const response = new Response(page.body, page);
     response.headers.set('X-XSS-Protection', '1; mode=block');
     response.headers.set('X-Content-Type-Options', 'nosniff');
