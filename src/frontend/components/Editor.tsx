@@ -39,7 +39,12 @@ const Editor: React.FC<
         height: isMobile ? window.innerHeight / 2 : undefined,
         typewriterMode: true,
         mode: 'ir',
-        preview: { markdown: { autoSpace: true, fixTermTypo: true, toc: true } },
+        cdn: 'https://unpkg.com/vditor',
+        hint: { emojiPath: 'https://unpkg.com/vditor/dist/images/emoji' },
+        preview: {
+          markdown: { autoSpace: true, fixTermTypo: true, toc: true },
+          theme: { current: 'light', path: 'https://unpkg.com/vditor/dist/css/content-theme' },
+        },
       });
     }
   }, [initialValue, isMobile, vd]);

@@ -11,6 +11,8 @@ const Preview: React.FC<{ value: string; sha: string }> = ({ value, sha }) => {
         icon: 'material',
         mode: 'light',
         markdown: { autoSpace: true, fixTermTypo: true, toc: true },
+        cdn: 'https://unpkg.com/vditor',
+        theme: { current: 'light', path: 'https://unpkg.com/vditor/dist/css/content-theme' },
       });
     }
   }, [value]);
