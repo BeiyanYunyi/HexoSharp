@@ -1,10 +1,11 @@
-import { CircularProgress, Container, Typography } from '@mui/material';
-import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { Container, Typography } from '@mui/material';
 import { decode } from 'js-base64';
+import React from 'react';
 import IFile from '../../types/IFile';
 import Editor from '../components/Editor';
-import { useAppSelector } from '../redux/store';
+import useGhPath from '../hooks/useGhPath';
+import { changeLoading } from '../redux/loadingReducer';
+import { useAppDispatch, useAppSelector } from '../redux/store';
 import lscat from '../service/lscat';
 
 interface IFileState {
@@ -16,27 +17,21 @@ interface INotExist {
   type: 'notExist';
 }
 
-const useGhPath = () => {
-  const location = useLocation();
-  const pathToReturn = location.pathname.replace('/ghEdit/', '');
-  return pathToReturn === '/' ? '' : pathToReturn;
-};
-
 const GhEditPage: React.FC = () => {
   const { owner, repo } = useAppSelector((state) => state.settings.settings);
-  const [loading, setLoading] = React.useState(true);
   const [data, setData] = React.useState<IFileState | INotExist>();
   const path = useGhPath();
+  const dispatch = useAppDispatch();
   React.useEffect(() => {
     (async () => {
+      dispatch(changeLoading(true));
       const res = await lscat({ owner, repo, path });
       if (res && !Array.isArray(res) && res.type !== 'dir') {
         setData(res);
       }
-      setLoading(false);
+      dispatch(changeLoading(false));
     })();
-  }, [owner, path, repo]);
-  if (loading) return <CircularProgress />;
+  }, [owner, path, repo, dispatch]);
   if (
     data?.type === 'file' &&
     (data.data.name.endsWith('.md') || data.data.name.endsWith('.mdx'))

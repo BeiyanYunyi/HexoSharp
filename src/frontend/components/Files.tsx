@@ -5,7 +5,6 @@ import {
   CardActions,
   CardContent,
   CardHeader,
-  CircularProgress,
   Dialog,
   DialogActions,
   DialogContent,
@@ -14,12 +13,15 @@ import {
   Grid,
   TextField,
   Typography,
+  useTheme,
 } from '@mui/material';
 import { decode } from 'js-base64';
 import React, { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import IFile from '../../types/IFile';
-import { useAppSelector } from '../redux/store';
+import useGhPath from '../hooks/useGhPath';
+import { changeLoading } from '../redux/loadingReducer';
+import { useAppDispatch, useAppSelector } from '../redux/store';
 import lscat from '../service/lscat';
 import FileIcon from './FileIcon';
 import Preview from './Preview';
@@ -34,18 +36,17 @@ interface IFileState {
   data: IFile;
 }
 
-const useGhPath = () => {
-  const location = useLocation();
-  const pathToReturn = location.pathname.replace('/ghView', '');
-  return pathToReturn;
-};
-
-const File: React.FC<{ file: IFile }> = ({ file }) => {
+const File: React.FC<{
+  file: IFile;
+}> = ({ file }) => {
   const navigate = useNavigate();
+  const theme = useTheme();
+  const dispatch = useAppDispatch();
   return (
-    <Card>
+    <Card sx={{ width: theme.breakpoints.values.sm / 3 }}>
       <CardActionArea
         onClick={() => {
+          dispatch(changeLoading(true));
           navigate(`/ghView/${file.path}`);
         }}
       >
@@ -62,15 +63,18 @@ const useParentPath = () => {
   return pathAry.join('/');
 };
 
-const ReturnToParent: React.FC<{}> = () => {
+const ReturnToParent: React.FC = () => {
   const navigate = useNavigate();
   const parentPath = useParentPath();
+  const theme = useTheme();
+  const dispatch = useAppDispatch();
   return (
-    <Grid item>
+    <Grid item sx={{ width: theme.breakpoints.values.sm / 3 }}>
       <Card>
         <CardActionArea
           onClick={() => {
-            navigate(`/ghView${parentPath}`);
+            dispatch(changeLoading(true));
+            navigate(`/ghView/${parentPath}`);
           }}
         >
           <CardHeader title=".." avatar={<FileIcon name=".." type="dir" />} />
@@ -86,12 +90,13 @@ const NewFolderOrFile: React.FC<{ folder?: boolean }> = ({ folder }) => {
   const [notValid, setNotValid] = React.useState(false);
   const [target, setTarget] = React.useState('');
   const [open, setOpen] = React.useState(false);
+  const theme = useTheme();
   const openDialog = () => setOpen(true);
   const closeDialog = () => setOpen(false);
   return (
     <>
       <Grid item>
-        <Card>
+        <Card sx={{ width: theme.breakpoints.values.sm / 3 }}>
           <CardActionArea onClick={openDialog}>
             <CardHeader
               title={`新建文件${folder ? '夹' : ''}`}
@@ -161,29 +166,28 @@ const NewFolderOrFile: React.FC<{ folder?: boolean }> = ({ folder }) => {
 
 const Files: React.FC = () => {
   const settings = useAppSelector((state) => state.settings.settings);
-  const [loading, setLoading] = React.useState(true);
+  const dispatch = useAppDispatch();
   const [data, setData] = React.useState<IDirState | IFileState>({ type: 'dir', data: [] });
   const path = useGhPath();
   const parentPath = useParentPath();
   const navigate = useNavigate();
-  console.log({ path, data });
   useEffect(() => {
     (async () => {
+      dispatch(changeLoading(true));
       if (!settings.owner || !settings.repo) return null;
       const res = await lscat({ owner: settings.owner, repo: settings.repo, path });
       if (!res) return null;
       if (res.type !== 'notExist') {
         setData(res);
-        return setLoading(false);
+        return dispatch(changeLoading(false));
       }
       setData({ type: 'dir', data: [] });
-      return setLoading(false);
+      return dispatch(changeLoading(false));
     })();
-  }, [path, settings.owner, settings.repo]);
-  if (loading) return <CircularProgress />;
+  }, [path, settings.owner, settings.repo, dispatch]);
   if (data.type === 'dir') {
     return (
-      <Grid container spacing={1}>
+      <Grid container spacing={1} justifyContent="flex-start">
         {path !== '' && <ReturnToParent />}
         {data.data.map((file) => (
           <Grid item key={file.sha}>
@@ -205,7 +209,7 @@ const Files: React.FC = () => {
           variant="outlined"
           color="error"
           onClick={() => {
-            navigate(`/ghView${parentPath}`);
+            navigate(`/ghView/${parentPath}`);
           }}
         >
           返回

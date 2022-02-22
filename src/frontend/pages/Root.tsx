@@ -1,10 +1,20 @@
-import MenuIcon from '@mui/icons-material/Menu';
-import { AppBar, Container, IconButton, Skeleton, Stack, Toolbar, Typography } from '@mui/material';
+import {
+  AppBar,
+  Backdrop,
+  Container,
+  IconButton,
+  Skeleton,
+  Stack,
+  Toolbar,
+  Typography,
+  useTheme,
+} from '@mui/material';
 import React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import ISettings from '../../types/ISettings';
 import SiteIcon from '../components/SiteIcon';
 import { changeAuth } from '../redux/authReducer';
+import { changeLoading } from '../redux/loadingReducer';
 import { changeLoaded, changeSettings } from '../redux/settingsReducer';
 import { useAppDispatch, useAppSelector } from '../redux/store';
 import axiosClient from '../service/axiosClient';
@@ -13,15 +23,14 @@ import octokit from '../service/octokit';
 
 const Topbar = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   return (
     <AppBar position="sticky" sx={{ marginBottom: 1 }}>
       <Toolbar>
-        <IconButton edge="start" color="inherit">
-          <MenuIcon />
-        </IconButton>
         <IconButton
           sx={{ marginRight: 1 }}
           onClick={() => {
+            dispatch(changeLoading(false));
             navigate('/');
           }}
         >
@@ -39,6 +48,10 @@ const Root = () => {
   const navigate = useNavigate();
   const loaded = useAppSelector((state) => state.settings.loaded);
   const authed = useAppSelector((state) => state.auth.authed);
+  const theme = useTheme();
+  /** Differs to `loaded` in `settingsReducer`,
+   * it will not block the render of other components. */
+  const loading = useAppSelector((state) => state.loading.loading);
   const dispatch = useAppDispatch();
   React.useEffect(() => {
     (async () => {
@@ -73,6 +86,17 @@ const Root = () => {
   return (
     <>
       <Topbar />
+      <Backdrop
+        open={loading}
+        sx={{ zIndex: theme.zIndex.appBar - 1, backgroundColor: theme.palette.background.paper }}
+      >
+        <Container>
+          <Stack spacing={1}>
+            <Skeleton variant="circular" width={40} height={40} />
+            <Skeleton variant="rectangular" height={118} />
+          </Stack>
+        </Container>
+      </Backdrop>
       <Outlet />
     </>
   );

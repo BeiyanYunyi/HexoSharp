@@ -7,7 +7,7 @@
   "packageManager": "pnpm@6.11.0",
   "scripts": {
     "build": "node build.mjs",
-    "dev": "miniflare --live-reload --debug",
+    "dev": "cross-env DEV=true miniflare --live-reload --debug",
     "format": "prettier --write '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'",
     "lint": "eslint --max-warnings=0 src && prettier --check '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'",
     "test": "jest --config jestconfig.json --verbose",
@@ -28,6 +28,7 @@
     "@types/service-worker-mock": "^2.0.1",
     "@typescript-eslint/eslint-plugin": "^5.12.0",
     "@typescript-eslint/parser": "^5.12.0",
+    "cross-env": "^7.0.3",
     "esbuild": "^0.14.22",
     "esbuild-copy-static-files": "^0.1.0",
     "eslint": "^8.9.0",
