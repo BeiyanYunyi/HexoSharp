@@ -39,6 +39,7 @@ const Editor: React.FC<
         height: isMobile ? window.innerHeight / 2 : undefined,
         typewriterMode: true,
         mode: 'ir',
+        preview: { markdown: { autoSpace: true, fixTermTypo: true, toc: true } },
       });
     }
   }, [initialValue, isMobile, vd]);

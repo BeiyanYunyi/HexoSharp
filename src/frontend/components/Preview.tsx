@@ -10,6 +10,7 @@ const Preview: React.FC<{ value: string; sha: string }> = ({ value, sha }) => {
       Vditor.preview(divRef.current, value, {
         icon: 'material',
         mode: 'light',
+        markdown: { autoSpace: true, fixTermTypo: true, toc: true },
       });
     }
   }, [value]);
