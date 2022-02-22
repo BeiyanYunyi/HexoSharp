@@ -3,6 +3,7 @@ import {
   Card,
   CardActionArea,
   CardHeader,
+  Container,
   Dialog,
   DialogActions,
   DialogContent,
@@ -30,6 +31,10 @@ const NewFolderOrFile: React.FC<{ folder?: boolean }> = ({ folder }) => {
   const [open, setOpen] = React.useState(false);
   const openDialog = () => setOpen(true);
   const closeDialog = () => setOpen(false);
+  const targetPath = (() => {
+    if (path !== '') return `${path}/${target}`;
+    return target;
+  })();
   return (
     <>
       <AppGridItem>
@@ -85,10 +90,11 @@ const NewFolderOrFile: React.FC<{ folder?: boolean }> = ({ folder }) => {
             onClick={() => {
               if (!notValid) {
                 if (folder) {
-                  navigate('/ghView'.concat(path.concat(`/${target}`)));
+                  navigate('/ghView/'.concat(targetPath));
                 } else {
-                  navigate('/ghEdit'.concat(path.concat(`/${target}`)));
+                  navigate('/ghEdit/'.concat(targetPath));
                 }
+                setTarget('');
                 closeDialog();
               }
             }}
@@ -143,16 +149,18 @@ const ReturnToParent: React.FC = () => {
 const Files: React.FC<{ data: IDirState }> = ({ data }) => {
   const path = useGhPath();
   return (
-    <Grid container spacing={1} justifyContent="flex-start">
-      {path !== '' && <ReturnToParent />}
-      {data.data.map((file) => (
-        <AppGridItem key={file.sha.concat(file.name)}>
-          <File file={file} />
-        </AppGridItem>
-      ))}
-      <NewFolderOrFile folder />
-      <NewFolderOrFile />
-    </Grid>
+    <Container>
+      <Grid container spacing={1} justifyContent="flex-start">
+        {path !== '' && <ReturnToParent />}
+        {data.data.map((file) => (
+          <AppGridItem key={file.sha.concat(file.name)}>
+            <File file={file} />
+          </AppGridItem>
+        ))}
+        <NewFolderOrFile folder />
+        <NewFolderOrFile />
+      </Grid>
+    </Container>
   );
 };
 

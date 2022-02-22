@@ -18,11 +18,11 @@ Hexo\#, 读作 `Hexo sharp` 或 `Hexo 升`。之所以叫这个名字是因为�
 - 可以所见即所得地编辑 markdown。
 - 可以随地部署，解决 GitHub 在中国大陆被限制访问的问题。
 
-## 📦简易部署
+## 📦 简易部署
 
 [![**Deploy to Cloudflare Workers**](https://deploy.workers.cloudflare.com/button?paid=true)](https://deploy.workers.cloudflare.com/?url=https://github.com/lixiang810/HexoSharp?paid=true)
 
-这之后，去Cloudflare Worker的管理界面，设置一个名为`JWT_SECRET`的环境变量，这个变量将被用于服务端和客户端之间的验证（用户登录）。
+这之后，去 Cloudflare Worker 的管理界面，设置一个名为`JWT_SECRET`的环境变量，这个变量将被用于服务端和客户端之间的验证（用户登录）。
 
 ## 💡 起源
 
@@ -50,11 +50,11 @@ Hexo\#, 读作 `Hexo sharp` 或 `Hexo 升`。之所以叫这个名字是因为�
 
 ## ✅ 在进行中的工作
 
-* [X]  查看 Repo 内容
-* [X]  修改 Repo 内容
-* [X]  创建 Repo 内容
-* [ ]  删除 Repo 内容
-* [ ]  上传图片
+- [x] 查看 Repo 内容
+- [x] 修改 Repo 内容
+- [x] 创建 Repo 内容
+- [x] 删除 Repo 内容
+- [ ] 上传图片
 
 ## 🖼️ 展望
 
