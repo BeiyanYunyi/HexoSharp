@@ -32,7 +32,7 @@ const Editor: React.FC<
       const vditor = new Vditor(ref.current, {
         after: () => {
           setVd(vditor);
-          if (initialValue) vditor.setValue(initialValue);
+          vditor.setValue(initialValue || '');
         },
         cache: { enable: false },
         icon: 'material',

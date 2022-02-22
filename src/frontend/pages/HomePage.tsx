@@ -14,6 +14,7 @@ import {
 import SettingsIcon from '@mui/icons-material/Settings';
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import AppGridItem from '../components/AppGridItem';
 
 const ListItem: React.FC<{
   iconBgColor?: string;
@@ -21,34 +22,31 @@ const ListItem: React.FC<{
   icon: React.ReactElement;
   to?: string;
   href?: string;
-}> = ({ iconBgColor, title, icon, to, href }) => {
-  const theme = useTheme();
-  return (
-    <Grid item>
-      <Card sx={{ width: theme.breakpoints.values.sm / 2 }}>
-        {href ? (
-          <Link href={href} rel="noreferrer">
-            <CardActionArea>
-              <CardHeader
-                avatar={<Avatar sx={{ bgcolor: iconBgColor }}>{icon}</Avatar>}
-                title={title}
-              />
-            </CardActionArea>
-          </Link>
-        ) : (
-          <Link component={RouterLink} to={to || ''}>
-            <CardActionArea>
-              <CardHeader
-                avatar={<Avatar sx={{ bgcolor: iconBgColor }}>{icon}</Avatar>}
-                title={title}
-              />
-            </CardActionArea>
-          </Link>
-        )}
-      </Card>
-    </Grid>
-  );
-};
+}> = ({ iconBgColor, title, icon, to, href }) => (
+  <AppGridItem>
+    <Card>
+      {href ? (
+        <Link href={href} rel="noreferrer">
+          <CardActionArea>
+            <CardHeader
+              avatar={<Avatar sx={{ bgcolor: iconBgColor }}>{icon}</Avatar>}
+              title={title}
+            />
+          </CardActionArea>
+        </Link>
+      ) : (
+        <Link component={RouterLink} to={to || ''}>
+          <CardActionArea>
+            <CardHeader
+              avatar={<Avatar sx={{ bgcolor: iconBgColor }}>{icon}</Avatar>}
+              title={title}
+            />
+          </CardActionArea>
+        </Link>
+      )}
+    </Card>
+  </AppGridItem>
+);
 
 const HomePage: React.FC = () => {
   const theme = useTheme();

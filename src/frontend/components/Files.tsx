@@ -13,7 +13,6 @@ import {
   Grid,
   TextField,
   Typography,
-  useTheme,
 } from '@mui/material';
 import { decode } from 'js-base64';
 import React, { useEffect } from 'react';
@@ -24,6 +23,7 @@ import { changeLoading } from '../redux/loadingReducer';
 import { useAppDispatch, useAppSelector } from '../redux/store';
 import lscat from '../service/lscat';
 import FileIcon from './FileIcon';
+import AppGridItem from './AppGridItem';
 import Preview from './Preview';
 
 interface IDirState {
@@ -40,10 +40,9 @@ const File: React.FC<{
   file: IFile;
 }> = ({ file }) => {
   const navigate = useNavigate();
-  const theme = useTheme();
   const dispatch = useAppDispatch();
   return (
-    <Card sx={{ width: theme.breakpoints.values.sm / 3 }}>
+    <Card sx={{ width: '100%' }}>
       <CardActionArea
         onClick={() => {
           dispatch(changeLoading(true));
@@ -66,21 +65,20 @@ const useParentPath = () => {
 const ReturnToParent: React.FC = () => {
   const navigate = useNavigate();
   const parentPath = useParentPath();
-  const theme = useTheme();
   const dispatch = useAppDispatch();
   return (
-    <Grid item sx={{ width: theme.breakpoints.values.sm / 3 }}>
-      <Card>
+    <AppGridItem>
+      <Card sx={{ width: '100%' }}>
         <CardActionArea
           onClick={() => {
             dispatch(changeLoading(true));
             navigate(`/ghView/${parentPath}`);
           }}
         >
-          <CardHeader title=".." avatar={<FileIcon name=".." type="dir" />} />
+          <CardHeader title=".." avatar={<FileIcon name=".." type="parentDir" />} />
         </CardActionArea>
       </Card>
-    </Grid>
+    </AppGridItem>
   );
 };
 
@@ -90,13 +88,12 @@ const NewFolderOrFile: React.FC<{ folder?: boolean }> = ({ folder }) => {
   const [notValid, setNotValid] = React.useState(false);
   const [target, setTarget] = React.useState('');
   const [open, setOpen] = React.useState(false);
-  const theme = useTheme();
   const openDialog = () => setOpen(true);
   const closeDialog = () => setOpen(false);
   return (
     <>
-      <Grid item>
-        <Card sx={{ width: theme.breakpoints.values.sm / 3 }}>
+      <AppGridItem>
+        <Card sx={{ width: '100%' }}>
           <CardActionArea onClick={openDialog}>
             <CardHeader
               title={`新建文件${folder ? '夹' : ''}`}
@@ -104,7 +101,7 @@ const NewFolderOrFile: React.FC<{ folder?: boolean }> = ({ folder }) => {
             />
           </CardActionArea>
         </Card>
-      </Grid>
+      </AppGridItem>
       <Dialog open={open} onClose={closeDialog}>
         <DialogTitle>{`新建文件${folder ? '夹' : ''}`}</DialogTitle>
         <DialogContent>
@@ -190,9 +187,9 @@ const Files: React.FC = () => {
       <Grid container spacing={1} justifyContent="flex-start">
         {path !== '' && <ReturnToParent />}
         {data.data.map((file) => (
-          <Grid item key={file.sha}>
+          <AppGridItem key={file.sha.concat(file.name)}>
             <File file={file} />
-          </Grid>
+          </AppGridItem>
         ))}
         <NewFolderOrFile folder />
         <NewFolderOrFile />

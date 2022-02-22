@@ -15,6 +15,12 @@ const FileIcon: React.FC<{ name: string; type: string }> = ({ name, type }) => {
           <FolderIcon />
         </Avatar>
       );
+    case 'parentDir':
+      return (
+        <Avatar sx={{ bgcolor: theme.palette.error.light }}>
+          <FolderIcon />
+        </Avatar>
+      );
     case 'newDir':
       return (
         <Avatar sx={{ bgcolor: colors.green[400] }}>
