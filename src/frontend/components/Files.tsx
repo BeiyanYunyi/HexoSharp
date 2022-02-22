@@ -2,8 +2,6 @@ import {
   Button,
   Card,
   CardActionArea,
-  CardActions,
-  CardContent,
   CardHeader,
   Dialog,
   DialogActions,
@@ -12,75 +10,17 @@ import {
   DialogTitle,
   Grid,
   TextField,
-  Typography,
 } from '@mui/material';
-import { decode } from 'js-base64';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import IDirState from '../../types/IDirState';
 import IFile from '../../types/IFile';
 import useGhPath from '../hooks/useGhPath';
+import useParentPath from '../hooks/useParentPath';
 import { changeLoading } from '../redux/loadingReducer';
-import { useAppDispatch, useAppSelector } from '../redux/store';
-import lscat from '../service/lscat';
-import FileIcon from './FileIcon';
+import { useAppDispatch } from '../redux/store';
 import AppGridItem from './AppGridItem';
-import Preview from './Preview';
-
-interface IDirState {
-  type: 'dir';
-  data: IFile[];
-}
-
-interface IFileState {
-  type: 'file';
-  data: IFile;
-}
-
-const File: React.FC<{
-  file: IFile;
-}> = ({ file }) => {
-  const navigate = useNavigate();
-  const dispatch = useAppDispatch();
-  return (
-    <Card sx={{ width: '100%' }}>
-      <CardActionArea
-        onClick={() => {
-          dispatch(changeLoading(true));
-          navigate(`/ghView/${file.path}`);
-        }}
-      >
-        <CardHeader title={file.name} avatar={<FileIcon name={file.name} type={file.type} />} />
-      </CardActionArea>
-    </Card>
-  );
-};
-
-const useParentPath = () => {
-  const path = useGhPath();
-  const pathAry = path.split('/');
-  pathAry.pop();
-  return pathAry.join('/');
-};
-
-const ReturnToParent: React.FC = () => {
-  const navigate = useNavigate();
-  const parentPath = useParentPath();
-  const dispatch = useAppDispatch();
-  return (
-    <AppGridItem>
-      <Card sx={{ width: '100%' }}>
-        <CardActionArea
-          onClick={() => {
-            dispatch(changeLoading(true));
-            navigate(`/ghView/${parentPath}`);
-          }}
-        >
-          <CardHeader title=".." avatar={<FileIcon name=".." type="parentDir" />} />
-        </CardActionArea>
-      </Card>
-    </AppGridItem>
-  );
-};
+import FileIcon from './FileIcon';
 
 const NewFolderOrFile: React.FC<{ folder?: boolean }> = ({ folder }) => {
   const path = useGhPath();
@@ -161,63 +101,58 @@ const NewFolderOrFile: React.FC<{ folder?: boolean }> = ({ folder }) => {
   );
 };
 
-const Files: React.FC = () => {
-  const settings = useAppSelector((state) => state.settings.settings);
-  const dispatch = useAppDispatch();
-  const [data, setData] = React.useState<IDirState | IFileState>({ type: 'dir', data: [] });
-  const path = useGhPath();
-  const parentPath = useParentPath();
+const File: React.FC<{
+  file: IFile;
+}> = ({ file }) => {
   const navigate = useNavigate();
-  useEffect(() => {
-    (async () => {
-      dispatch(changeLoading(true));
-      if (!settings.owner || !settings.repo) return null;
-      const res = await lscat({ owner: settings.owner, repo: settings.repo, path });
-      if (!res) return null;
-      if (res.type !== 'notExist') {
-        setData(res);
-        return dispatch(changeLoading(false));
-      }
-      setData({ type: 'dir', data: [] });
-      return dispatch(changeLoading(false));
-    })();
-  }, [path, settings.owner, settings.repo, dispatch]);
-  if (data.type === 'dir') {
-    return (
-      <Grid container spacing={1} justifyContent="flex-start">
-        {path !== '' && <ReturnToParent />}
-        {data.data.map((file) => (
-          <AppGridItem key={file.sha.concat(file.name)}>
-            <File file={file} />
-          </AppGridItem>
-        ))}
-        <NewFolderOrFile folder />
-        <NewFolderOrFile />
-      </Grid>
-    );
-  }
-  if (data.data.name.endsWith('.md') || data.data.name.endsWith('.mdx')) {
-    return <Preview value={decode(data.data.content || '')} />;
-  }
+  const dispatch = useAppDispatch();
   return (
-    <Card>
-      <CardActions>
-        <Button
-          variant="outlined"
-          color="error"
+    <Card sx={{ width: '100%' }}>
+      <CardActionArea
+        onClick={() => {
+          dispatch(changeLoading(true));
+          navigate(`/ghView/${file.path}`);
+        }}
+      >
+        <CardHeader title={file.name} avatar={<FileIcon name={file.name} type={file.type} />} />
+      </CardActionArea>
+    </Card>
+  );
+};
+
+const ReturnToParent: React.FC = () => {
+  const navigate = useNavigate();
+  const parentPath = useParentPath();
+  const dispatch = useAppDispatch();
+  return (
+    <AppGridItem>
+      <Card sx={{ width: '100%' }}>
+        <CardActionArea
           onClick={() => {
+            dispatch(changeLoading(true));
             navigate(`/ghView/${parentPath}`);
           }}
         >
-          返回
-        </Button>
-      </CardActions>
-      <CardContent>
-        <Typography component="div" sx={{ whiteSpace: 'pre-line' }}>
-          {decode(data.data.content || '')}
-        </Typography>
-      </CardContent>
-    </Card>
+          <CardHeader title=".." avatar={<FileIcon name=".." type="parentDir" />} />
+        </CardActionArea>
+      </Card>
+    </AppGridItem>
+  );
+};
+
+const Files: React.FC<{ data: IDirState }> = ({ data }) => {
+  const path = useGhPath();
+  return (
+    <Grid container spacing={1} justifyContent="flex-start">
+      {path !== '' && <ReturnToParent />}
+      {data.data.map((file) => (
+        <AppGridItem key={file.sha.concat(file.name)}>
+          <File file={file} />
+        </AppGridItem>
+      ))}
+      <NewFolderOrFile folder />
+      <NewFolderOrFile />
+    </Grid>
   );
 };
 
