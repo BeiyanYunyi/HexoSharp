@@ -1,7 +1,6 @@
 name = "hexo-sharp"
 type = "javascript"
 zone_id = ""
-account_id = "e93cdfdc06990dae58377e5282f27578"
 route = ""
 workers_dev = true
 compatibility_date = "2022-02-17"

@@ -5,6 +5,7 @@ on:
     branches:
       - main
   repository_dispatch:
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -20,3 +21,5 @@ jobs:
             corepack enable
             pnpm install
             pnpm cleanupAssets
+        env:
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
