@@ -40,17 +40,20 @@ const Editor: React.FC<
         typewriterMode: true,
         mode: 'ir',
         cdn: 'https://unpkg.com/vditor',
-        hint: { emojiPath: 'https://unpkg.com/vditor/dist/images/emoji' },
+        hint: { emojiPath: 'https://testingcf.jsdelivr.net/npm/vditor/dist/images/emoji' },
         preview: {
           markdown: { autoSpace: true, fixTermTypo: true, toc: true },
-          theme: { current: 'light', path: 'https://unpkg.com/vditor/dist/css/content-theme' },
+          theme: {
+            current: 'light',
+            path: 'https://testingcf.jsdelivr.net/npm/vditor/dist/css/content-theme',
+          },
         },
       });
     }
   }, [initialValue, isMobile, vd]);
   return (
     <>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor/dist/index.css" />
+      <link rel="stylesheet" href="https://testingcf.jsdelivr.net/npm/vditor/dist/index.css" />
       <Card>
         <CardContent sx={{ padding: 0, paddingTop: 4 }}>
           <Typography component="div" ref={ref}>

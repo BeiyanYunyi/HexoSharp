@@ -11,14 +11,17 @@ const Preview: React.FC<{ value: string; sha: string }> = ({ value, sha }) => {
         icon: 'material',
         mode: 'light',
         markdown: { autoSpace: true, fixTermTypo: true, toc: true },
-        cdn: 'https://unpkg.com/vditor',
-        theme: { current: 'light', path: 'https://unpkg.com/vditor/dist/css/content-theme' },
+        cdn: 'https://testingcf.jsdelivr.net/npm/vditor',
+        theme: {
+          current: 'light',
+          path: 'https://testingcf.jsdelivr.net/npm/vditor/dist/css/content-theme',
+        },
       });
     }
   }, [value]);
   return (
     <Container>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor/dist/index.css" />
+      <link rel="stylesheet" href="https://testingcf.jsdelivr.net/npm/vditor/dist/index.css" />
       <Card>
         <PreviewActions editable sha={sha} />
         <CardContent>
