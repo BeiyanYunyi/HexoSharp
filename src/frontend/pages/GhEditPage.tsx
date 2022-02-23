@@ -1,21 +1,13 @@
 import { Container, Typography } from '@mui/material';
 import { decode } from 'js-base64';
 import React from 'react';
-import IFile from '../../types/IFile';
+import IFileState from '../../types/IFileState';
+import INotExist from '../../types/INotExist';
 import Editor from '../components/Editor';
 import useGhPath from '../hooks/useGhPath';
 import { changeLoading } from '../redux/loadingReducer';
 import { useAppDispatch, useAppSelector } from '../redux/store';
 import lscat from '../service/lscat';
-
-interface IFileState {
-  type: 'file';
-  data: IFile;
-}
-
-interface INotExist {
-  type: 'notExist';
-}
 
 const GhEditPage: React.FC = () => {
   const { owner, repo } = useAppSelector((state) => state.settings.settings);

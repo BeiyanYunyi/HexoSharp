@@ -1,25 +1,13 @@
-import IFile from '../../types/IFile';
+import IDirState from '../../types/IDirState';
+import IFileState from '../../types/IFileState';
+import INotExist from '../../types/INotExist';
 import octokit from './octokit';
-
-interface IDir {
-  type: 'dir';
-  data: IFile[];
-}
-
-interface IFileGeted {
-  type: 'file';
-  data: IFile;
-}
-
-interface INotExist {
-  type: 'notExist';
-}
 
 const lscat: (info: {
   owner: string;
   repo: string;
   path: string;
-}) => Promise<IDir | IFileGeted | INotExist | null> = async (info) => {
+}) => Promise<IDirState | IFileState | INotExist | null> = async (info) => {
   try {
     const res = await octokit.client.repos.getContent({
       ...info,
