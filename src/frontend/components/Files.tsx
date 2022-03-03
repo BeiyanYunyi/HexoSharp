@@ -22,6 +22,7 @@ import { changeLoading } from '../redux/loadingReducer';
 import { useAppDispatch } from '../redux/store';
 import AppGridItem from './AppGridItem';
 import FileIcon from './FileIcon';
+import UploadImg from './UploadImg';
 
 const NewFolderOrFile: React.FC<{ folder?: boolean }> = ({ folder }) => {
   const path = useGhPath();
@@ -159,6 +160,7 @@ const Files: React.FC<{ data: IDirState }> = ({ data }) => {
         ))}
         <NewFolderOrFile folder />
         <NewFolderOrFile />
+        <UploadImg />
       </Grid>
     </Container>
   );

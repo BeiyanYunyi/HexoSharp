@@ -3,6 +3,7 @@ import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import AddIcon from '@mui/icons-material/Add';
 import FolderIcon from '@mui/icons-material/Folder';
+import ImageIcon from '@mui/icons-material/Image';
 import { Avatar, colors, useTheme } from '@mui/material';
 import React from 'react';
 
@@ -31,6 +32,12 @@ const FileIcon: React.FC<{ name: string; type: string }> = ({ name, type }) => {
       return (
         <Avatar sx={{ bgcolor: colors.green[400] }}>
           <AddIcon />
+        </Avatar>
+      );
+    case 'uploadImg':
+      return (
+        <Avatar sx={{ bgcolor: colors.green[400] }}>
+          <ImageIcon />
         </Avatar>
       );
     default:
