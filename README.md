@@ -13,7 +13,7 @@ Hexo\#, 读作 `Hexo sharp` 或 `Hexo 升`。之所以叫这个名字是因为�
 >
 > —— Hexo++ 介绍，原句有语病，被修改的部分以括号和删除线标注。
 
-虽然名字里带 Hexo ，但这个项目并不依赖于 Hexo，因为 Hexo\# 本质是一个 GitHub repo 编辑器，只要你的 repo 能生成静态页面，并且完成了相关的 CI，就可以使用 Hexo\#。诸如 jekyll、hexo、hugo、vuepress、docsaurus 这样的静态页面生成器都可以使用 Hexo\#，而相较 GitHub 自己的编辑器，Hexo\#：
+虽然名字里带 Hexo ，但这个项目并不依赖于 Hexo，因为 Hexo\# 本质是一个 GitHub repo 编辑器，只要你的 repo 能生成静态页面，并且完成了相关的 CI，就可以使用 Hexo\#。诸如 jekyll、hexo、hugo、vuepress、docusaurus 这样的静态页面生成器都可以使用 Hexo\#，而相较 GitHub 自己的编辑器，Hexo\#：
 
 - 可以所见即所得地编辑 markdown。
 - 可以随地部署，解决 GitHub 在中国大陆被限制访问的问题。
@@ -50,12 +50,12 @@ Hexo\#, 读作 `Hexo sharp` 或 `Hexo 升`。之所以叫这个名字是因为�
 
 ## ✅ 在进行中的工作
 
-- [x] 查看 Repo 内容
-- [x] 修改 Repo 内容
-- [x] 创建 Repo 内容
-- [x] 删除 Repo 内容
-- [x] 上传图片
-- [ ] 不只做一个 GitHub 编辑器
+- [X]  查看 Repo 内容
+- [X]  修改 Repo 内容
+- [X]  创建 Repo 内容
+- [X]  删除 Repo 内容
+- [X]  上传图片
+- [ ]  不只做一个 GitHub 编辑器
 
 ## 🖼️ 展望
 
