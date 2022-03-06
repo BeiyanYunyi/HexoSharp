@@ -15,8 +15,12 @@ const UploadImg: React.FC = () => {
     reader.onload = async () => {
       const resStr = reader.result!.toString();
       const content = resStr.substring(resStr.indexOf(',') + 1);
+      const targetPath = (() => {
+        if (path !== '') return `${path}/${file.name}`;
+        return file.name;
+      })();
       const res = await createOrUpdate({
-        path: `${path}/${file.name}`,
+        path: targetPath,
         content,
         message: `➕ Uploaded by Hexo# v${version} at ${new Date().toLocaleString()}`,
       });
