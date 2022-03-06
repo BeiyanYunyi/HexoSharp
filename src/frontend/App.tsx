@@ -9,49 +9,52 @@ import LoginPage from './pages/LoginPage';
 import NeedAuth from './components/NeedAuth';
 import GhViewPage from './pages/GhViewPage';
 import GhEditPage from './pages/GhEditPage';
+import AppSnackbarProvider from './components/AppSnackbarProvider';
 
 const App = () => (
-  <Router>
-    <Provider store={store}>
-      <Routes>
-        <Route path="/" element={<Root />}>
-          <Route path="login" element={<LoginPage />} />
-          <Route
-            path="settings"
-            element={
-              <NeedAuth>
-                <SettingPage />
-              </NeedAuth>
-            }
-          />
-          <Route
-            path="ghView/*"
-            element={
-              <NeedAuth>
-                <GhViewPage />
-              </NeedAuth>
-            }
-          />
-          <Route
-            path="ghEdit/*"
-            element={
-              <NeedAuth>
-                <GhEditPage />
-              </NeedAuth>
-            }
-          />
-          <Route
-            index
-            element={
-              <NeedAuth>
-                <HomePage />
-              </NeedAuth>
-            }
-          />
-        </Route>
-      </Routes>
-    </Provider>
-  </Router>
+  <AppSnackbarProvider>
+    <Router>
+      <Provider store={store}>
+        <Routes>
+          <Route path="/" element={<Root />}>
+            <Route path="login" element={<LoginPage />} />
+            <Route
+              path="settings"
+              element={
+                <NeedAuth>
+                  <SettingPage />
+                </NeedAuth>
+              }
+            />
+            <Route
+              path="ghView/*"
+              element={
+                <NeedAuth>
+                  <GhViewPage />
+                </NeedAuth>
+              }
+            />
+            <Route
+              path="ghEdit/*"
+              element={
+                <NeedAuth>
+                  <GhEditPage />
+                </NeedAuth>
+              }
+            />
+            <Route
+              index
+              element={
+                <NeedAuth>
+                  <HomePage />
+                </NeedAuth>
+              }
+            />
+          </Route>
+        </Routes>
+      </Provider>
+    </Router>
+  </AppSnackbarProvider>
 );
 
 export default App;

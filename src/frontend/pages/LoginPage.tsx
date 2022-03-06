@@ -2,6 +2,7 @@ import { Button, Card, CardContent, Container, Stack, TextField, Typography } fr
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
+import useAppSnackbar from '../hooks/useAppSnackbar';
 import { changeAuth } from '../redux/authReducer';
 import axiosClient from '../service/axiosClient';
 
@@ -11,6 +12,7 @@ const LoginPage = () => {
   const location = useLocation();
   const from = (location.state as { from?: { pathname?: string } })?.from?.pathname || '/';
   const navigate = useNavigate();
+  const snackbar = useAppSnackbar();
   return (
     <Container maxWidth="xs">
       <Card>
@@ -34,7 +36,7 @@ const LoginPage = () => {
               variant="contained"
               onClick={async () => {
                 const loginRes = await axiosClient.login(password);
-                if (!loginRes) return alert('登录失败');
+                if (!loginRes) return snackbar.err('登录失败');
                 dispatch(changeAuth(true));
                 return navigate(from, { replace: true });
               }}

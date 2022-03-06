@@ -5,6 +5,7 @@ import { CardActions, IconButton, Stack } from '@mui/material';
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { version } from '../../../package.json';
+import useAppSnackbar from '../hooks/useAppSnackbar';
 import useGhPath from '../hooks/useGhPath';
 import useParentPath from '../hooks/useParentPath';
 import rm from '../service/rm';
@@ -15,6 +16,7 @@ const PreviewActions: React.FC<{ editable?: boolean; sha: string }> = ({ editabl
   const parentPath = useParentPath();
   const navigate = useNavigate();
   const location = useLocation();
+  const snackbar = useAppSnackbar();
   const editUrl = location.pathname.replace('/ghView/', '/ghEdit/');
   const dialogRef = React.useRef<IConfirmDialogRef>(null);
   return (
@@ -64,6 +66,7 @@ const PreviewActions: React.FC<{ editable?: boolean; sha: string }> = ({ editabl
           });
           console.log(res);
           if (res.status === 200) {
+            snackbar.success('删除成功');
             dialogRef.current?.closeDialog();
             navigate(parentPath, { replace: true });
           }

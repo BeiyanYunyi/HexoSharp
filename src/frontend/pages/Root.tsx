@@ -13,6 +13,7 @@ import React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import ISettings from '../../types/ISettings';
 import SiteIcon from '../components/SiteIcon';
+import useAppSnackbar from '../hooks/useAppSnackbar';
 import { changeAuth } from '../redux/authReducer';
 import { changeLoading } from '../redux/loadingReducer';
 import { changeLoaded, changeSettings } from '../redux/settingsReducer';
@@ -45,6 +46,7 @@ const Topbar = () => {
 };
 
 const Root = () => {
+  const snackbar = useAppSnackbar();
   const navigate = useNavigate();
   const loaded = useAppSelector((state) => state.settings.loaded);
   const authed = useAppSelector((state) => state.auth.authed);
@@ -58,6 +60,7 @@ const Root = () => {
       if (loaded && authed) return null;
       const loginRes = await axiosClient.login();
       if (!loginRes) {
+        snackbar.info('未登录或登录状态已过期');
         navigate('/login', { replace: true });
         return dispatch(changeLoaded(true));
       }
@@ -69,7 +72,7 @@ const Root = () => {
       octokit.auth(parsedSettings.ghApiToken);
       return dispatch(changeSettings(parsedSettings));
     })();
-  }, [dispatch, navigate, authed, loaded]);
+  }, [dispatch, navigate, authed, loaded, snackbar]);
   if (!loaded) {
     return (
       <>

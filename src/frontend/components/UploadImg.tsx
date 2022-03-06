@@ -1,6 +1,7 @@
 import { Card, CardActionArea, CardHeader } from '@mui/material';
 import React from 'react';
 import { version } from '../../../package.json';
+import useAppSnackbar from '../hooks/useAppSnackbar';
 import useGhPath from '../hooks/useGhPath';
 import createOrUpdate from '../service/createOrUpdate';
 import AppGridItem from './AppGridItem';
@@ -8,6 +9,7 @@ import FileIcon from './FileIcon';
 
 const UploadImg: React.FC = () => {
   const path = useGhPath();
+  const snackbar = useAppSnackbar();
   const reader = new FileReader();
   const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files![0];
@@ -25,6 +27,7 @@ const UploadImg: React.FC = () => {
         message: `➕ Uploaded by Hexo# v${version} at ${new Date().toLocaleString()}`,
       });
       console.log(res);
+      if (res.status.toString().startsWith('2')) snackbar.success('上传成功');
     };
   };
   return (
