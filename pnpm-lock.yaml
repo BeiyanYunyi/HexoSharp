@@ -36,6 +36,7 @@ specifiers:
   eslint-plugin-prettier: ^4.0.0
   eslint-plugin-react: ^7.29.3
   eslint-plugin-react-hooks: ^4.3.0
+  img-previewer: ^2.0.6
   itty-router: ^2.5.2
   jest: ^27.5.1
   js-base64: ^3.7.2
@@ -63,6 +64,7 @@ dependencies:
   '@tsndr/cloudflare-worker-jwt': 1.1.6
   axios: 0.26.0
   bcryptjs: 2.4.3
+  img-previewer: 2.0.6
   itty-router: 2.5.2
   js-base64: 3.7.2
   notistack: 2.0.3_c20dea6f0c29622ef4c8b617295481d5
@@ -3264,6 +3266,10 @@ packages:
     resolution: {integrity: sha512-CmxgYGiEPCLhfLnpPp1MoRmifwEIOgjcHXxOBjv7mY96c+eWScsOP9c112ZyLdWHi0FxHjI+4uVhKYp/gcdRmQ==}
     engines: {node: '>= 4'}
     dev: true
+
+  /img-previewer/2.0.6:
+    resolution: {integrity: sha512-wWxU0YY3aBgDDjNOYDy2gBhKAOv1lLkpkdAVOPFwe6X1s08f9c/azoxVHhLDJVlKb/jlQUzsAgULiahgbreiwg==}
+    dev: false
 
   /immer/9.0.12:
     resolution: {integrity: sha512-lk7UNmSbAukB5B6dh9fnh5D0bJTOFKxVg2cyJWTYrWRfhLrLMBquONcUs3aFq507hNoIZEDDh8lb8UtOizSMhA==}

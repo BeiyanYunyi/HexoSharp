@@ -4,12 +4,14 @@ import React from 'react';
 import IDirState from '../../types/IDirState';
 import IFileState from '../../types/IFileState';
 import Files from '../components/Files';
-import Preview from '../components/Preview';
+import ImgPreview from '../components/ImgPreview';
+import MdPreview from '../components/MdPreview';
 import PreviewActions from '../components/PreviewActions';
 import useGhPath from '../hooks/useGhPath';
 import { changeLoading } from '../redux/loadingReducer';
 import { useAppDispatch, useAppSelector } from '../redux/store';
 import lscat from '../service/lscat';
+import isPicture from '../utils/isPicture';
 
 const GhViewPage: React.FC = () => {
   const settings = useAppSelector((state) => state.settings.settings);
@@ -34,8 +36,12 @@ const GhViewPage: React.FC = () => {
     return <Files data={data} />;
   }
   if (data.data.name.endsWith('.md') || data.data.name.endsWith('.mdx')) {
-    return <Preview sha={data.data.sha} value={decode(data.data.content || '')} />;
+    return <MdPreview sha={data.data.sha} value={decode(data.data.content || '')} />;
   }
+  if (isPicture(data.data.name))
+    return (
+      <ImgPreview sha={data.data.sha} url={data.data.download_url!} filename={data.data.name} />
+    );
   return (
     <Card>
       <PreviewActions sha={data.data.sha} />
