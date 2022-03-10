@@ -71,7 +71,9 @@ const Editor: React.FC<
                 content,
               });
               if (res.status === 201) {
-                vditor.insertValue(`![${name}](/api/gh/${res.data.content!.download_url})`);
+                vditor.insertValue(
+                  `![${name}](${window.location.origin}/api/gh/${res.data.content!.download_url})`,
+                );
               }
               console.log(res);
             };
