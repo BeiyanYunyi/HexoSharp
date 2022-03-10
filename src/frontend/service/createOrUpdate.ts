@@ -1,4 +1,3 @@
-import store from '../redux/store';
 import octokit from './octokit';
 
 const createOrUpdate = async ({
@@ -6,13 +5,16 @@ const createOrUpdate = async ({
   content,
   message,
   sha,
+  owner,
+  repo,
 }: {
   path: string;
   content: string;
   message: string;
   sha?: string;
+  owner: string;
+  repo: string;
 }) => {
-  const { owner, repo } = store.getState().settings.settings;
   const res = await octokit.client.repos.createOrUpdateFileContents({
     owner,
     repo,

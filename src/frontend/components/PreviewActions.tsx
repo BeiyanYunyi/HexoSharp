@@ -8,6 +8,7 @@ import { version } from '../../../package.json';
 import useAppSnackbar from '../hooks/useAppSnackbar';
 import useGhPath from '../hooks/useGhPath';
 import useParentPath from '../hooks/useParentPath';
+import { useAppSelector } from '../redux/store';
 import rm from '../service/rm';
 import ConfirmDialog, { IConfirmDialogRef } from './ConfirmDialog';
 
@@ -17,6 +18,7 @@ const PreviewActions: React.FC<{ editable?: boolean; sha: string }> = ({ editabl
   const navigate = useNavigate();
   const location = useLocation();
   const snackbar = useAppSnackbar();
+  const settings = useAppSelector((state) => state.settings.settings);
   const editUrl = location.pathname.replace('/ghView/', '/ghEdit/');
   const dialogRef = React.useRef<IConfirmDialogRef>(null);
   return (
@@ -63,6 +65,8 @@ const PreviewActions: React.FC<{ editable?: boolean; sha: string }> = ({ editabl
             path,
             sha,
             message: `🗑️ Deleted by Hexo# v${version} at ${new Date().toLocaleString()}`,
+            owner: settings.owner,
+            repo: settings.repo,
           });
           console.log(res);
           if (res.status === 200) {

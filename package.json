@@ -11,7 +11,8 @@
     "format": "prettier --write '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'",
     "lint": "eslint --max-warnings=0 src && prettier --check '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'",
     "test": "jest --config jestconfig.json --verbose",
-    "cleanupAssets": "node cleanup.mjs"
+    "cleanupAssets": "node cleanup.mjs",
+    "check": "tsc"
   },
   "author": "author",
   "license": "MIT OR Apache-2.0 OR AGPL-3.0-or-later",
@@ -55,6 +56,8 @@
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.4.4",
     "@mui/material": "^5.4.4",
+    "@mui/system": "^5.5.0",
+    "@mui/x-data-grid": "^5.6.0",
     "@octokit/rest": "^18.12.0",
     "@reduxjs/toolkit": "^1.8.0",
     "@tsndr/cloudflare-worker-jwt": "^1.1.6",

@@ -9,6 +9,8 @@ specifiers:
   '@emotion/styled': ^11.8.1
   '@mui/icons-material': ^5.4.4
   '@mui/material': ^5.4.4
+  '@mui/system': ^5.5.0
+  '@mui/x-data-grid': ^5.6.0
   '@octokit/rest': ^18.12.0
   '@reduxjs/toolkit': ^1.8.0
   '@tsndr/cloudflare-worker-jwt': ^1.1.6
@@ -59,6 +61,8 @@ dependencies:
   '@emotion/styled': 11.8.1_c697ad3c4ddb0545c7a1d619984abba5
   '@mui/icons-material': 5.4.4_dcbd3996b57a9fdc9dc26f211d7c87b5
   '@mui/material': 5.4.4_a557939b8cd577a0014b488227bec235
+  '@mui/system': 5.5.0_c6213411fad5ab06c1404c7945e6b2f5
+  '@mui/x-data-grid': 5.6.0_12f917bc4fcddfc0418a0099dbca61de
   '@octokit/rest': 18.12.0
   '@reduxjs/toolkit': 1.8.0_react-redux@7.2.6+react@17.0.2
   '@tsndr/cloudflare-worker-jwt': 1.1.6
@@ -1079,7 +1083,7 @@ packages:
       '@emotion/react': 11.8.1_7c3ecd89bd75b61b41f2029715ea2305
       '@emotion/styled': 11.8.1_c697ad3c4ddb0545c7a1d619984abba5
       '@mui/base': 5.0.0-alpha.70_b8fdba992ce7d797017dc07106486496
-      '@mui/system': 5.4.4_c6213411fad5ab06c1404c7945e6b2f5
+      '@mui/system': 5.5.0_c6213411fad5ab06c1404c7945e6b2f5
       '@mui/types': 7.1.2_@types+react@17.0.39
       '@mui/utils': 5.4.4_react@17.0.2
       '@types/react': 17.0.39
@@ -1132,8 +1136,8 @@ packages:
       react: 17.0.2
     dev: false
 
-  /@mui/system/5.4.4_c6213411fad5ab06c1404c7945e6b2f5:
-    resolution: {integrity: sha512-Zjbztq2o/VRuRRCWjG44juRrPKYLQMqtQpMHmMttGu5BnvK6PAPW3WOY0r1JCAwLhbd8Kug9nyhGQYKETjo+tQ==}
+  /@mui/system/5.5.0_c6213411fad5ab06c1404c7945e6b2f5:
+    resolution: {integrity: sha512-zFOfERv3Y4m5ehwTRR9cGaPuMvlD2qVXmFKC60P0Gte3aD6vYObyNriZv+mDVGlhDxZTZhxBrNPH3ns25xSFtQ==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       '@emotion/react': ^11.5.0
@@ -1185,6 +1189,23 @@ packages:
       prop-types: 15.8.1
       react: 17.0.2
       react-is: 17.0.2
+    dev: false
+
+  /@mui/x-data-grid/5.6.0_12f917bc4fcddfc0418a0099dbca61de:
+    resolution: {integrity: sha512-Ys6L0eHelc14waRrgRw7jdoDNc6fgJcb4ev9AHvjX9zLss3xCQ4Zdk4rn+4nLUZPQcr2zbZl5pHvLx1Nq0DPTg==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      '@mui/material': ^5.2.8
+      '@mui/system': ^5.2.8
+      react: ^17.0.2
+    dependencies:
+      '@mui/material': 5.4.4_a557939b8cd577a0014b488227bec235
+      '@mui/system': 5.5.0_c6213411fad5ab06c1404c7945e6b2f5
+      '@mui/utils': 5.4.4_react@17.0.2
+      clsx: 1.1.1
+      prop-types: 15.8.1
+      react: 17.0.2
+      reselect: 4.1.5
     dev: false
 
   /@nodelib/fs.scandir/2.1.5:

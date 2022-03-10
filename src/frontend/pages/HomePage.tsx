@@ -1,5 +1,6 @@
 import FolderIcon from '@mui/icons-material/Folder';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import ImageIcon from '@mui/icons-material/Image';
 import {
   Avatar,
   Card,
@@ -53,6 +54,12 @@ const HomePage: React.FC = () => {
   return (
     <Container sx={{ alignItems: 'center' }}>
       <Grid container justifyContent="center" spacing={1}>
+        <ListItem
+          iconBgColor={theme.palette.primary.main}
+          title="浏览图片"
+          icon={<ImageIcon />}
+          to="/imgList"
+        />
         <ListItem
           iconBgColor={theme.palette.primary.main}
           title="浏览 repo 文件"

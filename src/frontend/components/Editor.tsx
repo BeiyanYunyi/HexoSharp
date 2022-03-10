@@ -15,6 +15,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Vditor from 'vditor';
 import { version } from '../../../package.json';
 import useAppSnackbar from '../hooks/useAppSnackbar';
+import useImgPathInfo from '../hooks/useImgPathInfo';
+import { useAppSelector } from '../redux/store';
 import createOrUpdate from '../service/createOrUpdate';
 
 const Editor: React.FC<
@@ -22,6 +24,9 @@ const Editor: React.FC<
   | { initialValue: string; path: string; sha: string }
 > = ({ initialValue, path, sha }) => {
   const ref = React.useRef<HTMLDivElement>(null);
+  const reader = React.useMemo(() => new FileReader(), []);
+  const settings = useAppSelector((state) => state.settings.settings);
+  const imgPathInfo = useImgPathInfo();
   const [vd, setVd] = React.useState<Vditor>();
   const location = useLocation();
   const navigate = useNavigate();
@@ -37,6 +42,7 @@ const Editor: React.FC<
           vditor.setValue(initialValue || '');
         },
         cache: { id: 'hspVditor' },
+        counter: { enable: true },
         icon: 'material',
         height: isMobile ? window.innerHeight / 2 : undefined,
         typewriterMode: true,
@@ -50,9 +56,32 @@ const Editor: React.FC<
             path: 'https://testingcf.jsdelivr.net/npm/vditor/dist/css/content-theme',
           },
         },
+        upload: {
+          handler: (files) => {
+            const file = files[0];
+            reader.readAsDataURL(file);
+            reader.onload = async () => {
+              const resStr = reader.result!.toString();
+              const content = resStr.substring(resStr.indexOf(',') + 1);
+              const name = `${file.name}-${Date.now()}`;
+              const res = await createOrUpdate({
+                ...imgPathInfo,
+                path: `${imgPathInfo.path}/${name}`,
+                message: `➕ Uploaded by Hexo# v${version} at ${new Date().toLocaleString()}`,
+                content,
+              });
+              if (res.status === 201) {
+                vditor.insertValue(`![${name}](/api/gh/${res.data.content!.download_url})`);
+              }
+              console.log(res);
+            };
+            return null;
+          },
+          multiple: false,
+        },
       });
     }
-  }, [initialValue, isMobile, vd]);
+  }, [initialValue, isMobile, vd, reader, imgPathInfo]);
   return (
     <>
       <link rel="stylesheet" href="https://testingcf.jsdelivr.net/npm/vditor/dist/index.css" />
@@ -74,6 +103,8 @@ const Editor: React.FC<
                   content: encode(vd.getValue()),
                   message: `📝 Uploaded by Hexo# v${version} at ${new Date().toLocaleString()}`,
                   sha,
+                  owner: settings.owner,
+                  repo: settings.repo,
                 });
                 if (res.status === 200) snackbar.success('修改成功');
                 if (res.status === 201) snackbar.success('创建成功');

@@ -1,15 +1,16 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import SettingPage from './pages/SettingPage';
-import HomePage from './pages/HomePage';
-import Root from './pages/Root';
-import store from './redux/store';
-import LoginPage from './pages/LoginPage';
-import NeedAuth from './components/NeedAuth';
-import GhViewPage from './pages/GhViewPage';
-import GhEditPage from './pages/GhEditPage';
 import AppSnackbarProvider from './components/AppSnackbarProvider';
+import NeedAuth from './components/NeedAuth';
+import GhEditPage from './pages/GhEditPage';
+import GhViewPage from './pages/GhViewPage';
+import HomePage from './pages/HomePage';
+import ImgListPage from './pages/ImgListPage';
+import LoginPage from './pages/LoginPage';
+import Root from './pages/Root';
+import SettingPage from './pages/SettingPage';
+import store from './redux/store';
 
 const App = () => (
   <AppSnackbarProvider>
@@ -23,6 +24,14 @@ const App = () => (
               element={
                 <NeedAuth>
                   <SettingPage />
+                </NeedAuth>
+              }
+            />
+            <Route
+              path="imgList"
+              element={
+                <NeedAuth>
+                  <ImgListPage />
                 </NeedAuth>
               }
             />
