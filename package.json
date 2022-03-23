@@ -4,7 +4,7 @@
   "description": "Cloudflare worker TypeScript template",
   "main": "./dist/worker.js",
   "dir": "./dist",
-  "packageManager": "pnpm@6.11.0",
+  "packageManager": "pnpm@6.32.3",
   "scripts": {
     "build": "node build.mjs",
     "dev": "cross-env DEV=true miniflare --live-reload --debug",
