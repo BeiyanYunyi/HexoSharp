@@ -4,7 +4,7 @@ specifiers:
   '@babel/core': ^7.17.5
   '@cloudflare/kv-asset-handler': ^0.2.0
   '@cloudflare/workers-types': ^3.4.0
-  '@cloudflare/wrangler': ^1.19.8
+  '@cloudflare/wrangler': ^1.19.11
   '@emotion/react': ^11.8.1
   '@emotion/styled': ^11.8.1
   '@mui/icons-material': ^5.4.4
@@ -81,7 +81,7 @@ dependencies:
 devDependencies:
   '@babel/core': 7.17.5
   '@cloudflare/workers-types': 3.4.0
-  '@cloudflare/wrangler': 1.19.8
+  '@cloudflare/wrangler': 1.19.11
   '@types/bcryptjs': 2.4.2
   '@types/jest': 27.4.1
   '@types/jsonwebtoken': 8.5.8
@@ -472,8 +472,8 @@ packages:
     resolution: {integrity: sha512-i/3czUrt6YqbOWl44OtIqd0cSZvEVXp/1oD/DZylC4PHZL3q/BhbamdEVeVhc/HPk4iD/7MZ2HGaIMO4Z4b12A==}
     dev: true
 
-  /@cloudflare/wrangler/1.19.8:
-    resolution: {integrity: sha512-bckvdgBT3ZkvJQtGhdWEwa7GKi3zWYlxBPQoaOa+Utqw4bzg3BkbzUouI8+7WmcvkOoLxQ2emgTTNfudHBcCqA==}
+  /@cloudflare/wrangler/1.19.11:
+    resolution: {integrity: sha512-aUoSHodCx79b1mMxv2L68fEQmMj+6vFO5dwCozBPL8AE81XumeUau2RfqQEAInciESdiJbYnam7b1q2D59PQew==}
     hasBin: true
     requiresBuild: true
     dependencies:

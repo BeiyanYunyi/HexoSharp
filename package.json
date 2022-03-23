@@ -19,7 +19,7 @@
   "devDependencies": {
     "@babel/core": "^7.17.5",
     "@cloudflare/workers-types": "^3.4.0",
-    "@cloudflare/wrangler": "^1.19.8",
+    "@cloudflare/wrangler": "^1.19.11",
     "@types/bcryptjs": "^2.4.2",
     "@types/jest": "^27.4.1",
     "@types/jsonwebtoken": "^8.5.8",
