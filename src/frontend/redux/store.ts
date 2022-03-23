@@ -5,7 +5,11 @@ import loadingReducer from './loadingReducer';
 import settingsReducer from './settingsReducer';
 
 const store = configureStore({
-  reducer: { settings: settingsReducer, auth: authReducer, loading: loadingReducer },
+  reducer: {
+    settings: settingsReducer,
+    auth: authReducer,
+    loading: loadingReducer,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

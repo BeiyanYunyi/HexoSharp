@@ -14,10 +14,10 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Vditor from 'vditor';
 import { version } from '../../../package.json';
-import useAppSnackbar from '../hooks/useAppSnackbar';
 import useImgPathInfo from '../hooks/useImgPathInfo';
 import { useAppSelector } from '../redux/store';
 import createOrUpdate from '../service/createOrUpdate';
+import snackbar from '../utils/Snackbar';
 
 const Editor: React.FC<
   | { initialValue?: undefined; path: string; sha?: undefined }
@@ -30,7 +30,6 @@ const Editor: React.FC<
   const [vd, setVd] = React.useState<Vditor>();
   const location = useLocation();
   const navigate = useNavigate();
-  const snackbar = useAppSnackbar();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const viewUrl = location.pathname.replace('/ghEdit/', '/ghView/');

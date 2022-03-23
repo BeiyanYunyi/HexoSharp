@@ -11,6 +11,7 @@ import {
 } from '@mui/material';
 import React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
+import globalSnackbar from '../utils/Snackbar';
 import ISettings from '../../types/ISettings';
 import SiteIcon from '../components/SiteIcon';
 import useAppSnackbar from '../hooks/useAppSnackbar';
@@ -55,6 +56,10 @@ const Root = () => {
    * it will not block the render of other components. */
   const loading = useAppSelector((state) => state.loading.loading);
   const dispatch = useAppDispatch();
+  React.useEffect(() => {
+    globalSnackbar.changeSnackbar(snackbar);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   React.useEffect(() => {
     (async () => {
       if (loaded && authed) return null;

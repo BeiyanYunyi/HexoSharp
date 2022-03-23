@@ -1,17 +1,16 @@
 import { Card, CardActionArea, CardHeader } from '@mui/material';
 import React from 'react';
 import { version } from '../../../package.json';
-import useAppSnackbar from '../hooks/useAppSnackbar';
 import useGhPath from '../hooks/useGhPath';
 import { useAppSelector } from '../redux/store';
 import createOrUpdate from '../service/createOrUpdate';
+import snackbar from '../utils/Snackbar';
 import AppGridItem from './AppGridItem';
 import FileIcon from './FileIcon';
 
 const UploadImg: React.FC = () => {
   const settings = useAppSelector((state) => state.settings.settings);
   const path = useGhPath();
-  const snackbar = useAppSnackbar();
   const reader = new FileReader();
   const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files![0];

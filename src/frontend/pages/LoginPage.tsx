@@ -2,9 +2,9 @@ import { Button, Card, CardContent, Container, Stack, TextField, Typography } fr
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
-import useAppSnackbar from '../hooks/useAppSnackbar';
 import { changeAuth } from '../redux/authReducer';
 import axiosClient from '../service/axiosClient';
+import snackbar from '../utils/Snackbar';
 
 const LoginPage = () => {
   const [password, setPassword] = React.useState('');
@@ -12,7 +12,6 @@ const LoginPage = () => {
   const location = useLocation();
   const from = (location.state as { from?: { pathname?: string } })?.from?.pathname || '/';
   const navigate = useNavigate();
-  const snackbar = useAppSnackbar();
   return (
     <Container maxWidth="xs">
       <Card>

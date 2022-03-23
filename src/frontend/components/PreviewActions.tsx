@@ -5,11 +5,11 @@ import { CardActions, IconButton, Stack } from '@mui/material';
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { version } from '../../../package.json';
-import useAppSnackbar from '../hooks/useAppSnackbar';
 import useGhPath from '../hooks/useGhPath';
 import useParentPath from '../hooks/useParentPath';
 import { useAppSelector } from '../redux/store';
 import rm from '../service/rm';
+import snackbar from '../utils/Snackbar';
 import ConfirmDialog, { IConfirmDialogRef } from './ConfirmDialog';
 
 const PreviewActions: React.FC<{ editable?: boolean; sha: string }> = ({ editable, sha }) => {
@@ -17,7 +17,6 @@ const PreviewActions: React.FC<{ editable?: boolean; sha: string }> = ({ editabl
   const parentPath = useParentPath();
   const navigate = useNavigate();
   const location = useLocation();
-  const snackbar = useAppSnackbar();
   const settings = useAppSelector((state) => state.settings.settings);
   const editUrl = location.pathname.replace('/ghView/', '/ghEdit/');
   const dialogRef = React.useRef<IConfirmDialogRef>(null);
