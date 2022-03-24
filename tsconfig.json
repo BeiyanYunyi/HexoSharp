@@ -19,7 +19,7 @@
     ],
     "jsx": "react"
   },
-  "include": ["src", "test", "webpack.config.ts"],
+  "include": ["src", "test"],
   "exclude": ["node_modules", "dist"],
   "ts-node": {
     "transpileOnly": true,

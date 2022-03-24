@@ -15,7 +15,7 @@
     "check": "tsc"
   },
   "author": "author",
-  "license": "MIT OR Apache-2.0 OR AGPL-3.0-or-later",
+  "license": "AGPL-3.0-or-later",
   "devDependencies": {
     "@babel/core": "^7.17.5",
     "@cloudflare/workers-types": "^3.4.0",
