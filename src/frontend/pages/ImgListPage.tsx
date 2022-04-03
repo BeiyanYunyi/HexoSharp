@@ -1,4 +1,6 @@
-import { Container } from '@mui/material';
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+import { Container, Stack, Button } from '@mui/material';
 import { DataGrid, GridColDef, GridRowsProp } from '@mui/x-data-grid';
 import React from 'react';
 import IFile from '../../types/IFile';
@@ -12,6 +14,7 @@ const ImgListPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const imgPathInfo = useImgPathInfo();
   const [imgs, setImgs] = React.useState<IFile[]>([]);
+  const [img, setImg] = React.useState<IFile | null>(null);
   React.useEffect(() => {
     dispatch(changeLoading(true));
     lscat({ owner: imgPathInfo.owner, repo: imgPathInfo.repo, path: imgPathInfo.path })
@@ -30,23 +33,48 @@ const ImgListPage: React.FC = () => {
     { field: 'col1', headerName: '图片名', flex: 2 },
     { field: 'col2', headerName: '大小', flex: 1 },
   ];
-  const rows: GridRowsProp = imgs.map((img) => ({
-    id: img.sha + img.name,
-    col1: img.name,
-    col2: img.size,
-    url: img.download_url,
+  const rows: GridRowsProp = imgs.map((item) => ({
+    id: item.sha + item.name,
+    col1: item.name,
+    col2: item.size,
+    info: item,
   }));
   return (
     <Container>
-      <div style={{ height: '80vh', width: '100%' }}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          onRowClick={(e) => {
-            console.log(e);
-          }}
-        />
-      </div>
+      <Stack sx={{ height: '100vh' }} spacing={1}>
+        {img && (
+          <>
+            <Stack direction="row" justifyContent="center" sx={{ maxHeight: '50%' }}>
+              <img
+                src={`${window.location.origin}/api/gh/${img.download_url}`}
+                alt="imgPreviewer"
+                height="100%"
+                style={{ cursor: 'pointer' }}
+                onClick={() => {
+                  window.open(`${window.location.origin}/api/gh/${img.download_url}`);
+                }}
+              />
+            </Stack>
+            <Button
+              variant="outlined"
+              onClick={() => {
+                setImg(null);
+              }}
+            >
+              取消选择
+            </Button>
+          </>
+        )}
+        <div style={{ flexGrow: '1', width: '100%' }}>
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            onRowClick={(e) => {
+              setImg(e.row.info);
+            }}
+          />
+        </div>
+      </Stack>
     </Container>
   );
 };

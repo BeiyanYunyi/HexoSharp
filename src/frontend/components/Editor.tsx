@@ -46,7 +46,7 @@ const Editor: React.FC<
         height: isMobile ? window.innerHeight / 2 : undefined,
         typewriterMode: true,
         mode: 'ir',
-        cdn: 'https://unpkg.com/vditor',
+        cdn: 'https://testingcf.jsdelivr.net/npm/vditor',
         hint: { emojiPath: 'https://testingcf.jsdelivr.net/npm/vditor/dist/images/emoji' },
         preview: {
           markdown: { autoSpace: true, fixTermTypo: true, toc: true },
