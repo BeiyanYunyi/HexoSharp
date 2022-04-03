@@ -62,7 +62,7 @@ const Editor: React.FC<
             reader.onload = async () => {
               const resStr = reader.result!.toString();
               const content = resStr.substring(resStr.indexOf(',') + 1);
-              const name = `${file.name}-${Date.now()}`;
+              const name = `${Date.now()}-${file.name}`;
               const res = await createOrUpdate({
                 ...imgPathInfo,
                 path: `${imgPathInfo.path}/${name}`,
