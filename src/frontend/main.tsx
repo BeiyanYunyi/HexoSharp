@@ -1,10 +1,10 @@
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import React from 'react';
 import App from './App';
 
-render(
+const root = createRoot(document.querySelector('div#root')!);
+root.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.querySelector('div#root'),
 );
