@@ -1,10 +1,5 @@
 module.exports = {
-  extends: [
-    'airbnb',
-    'airbnb/hooks',
-    'airbnb-typescript',
-    'prettier', //'plugin:react/jsx-runtime'
-  ],
+  extends: ['airbnb', 'airbnb/hooks', 'airbnb-typescript', 'prettier', 'plugin:react/jsx-runtime'],
   plugins: ['prettier'],
   env: {
     // 你的环境变量（包含多个预定义的全局变量）

@@ -17,7 +17,7 @@
       "@types/service-worker-mock",
       "@types/node"
     ],
-    "jsx": "react"
+    "jsx": "react-jsx"
   },
   "include": ["src", "test"],
   "exclude": ["node_modules", "dist"],

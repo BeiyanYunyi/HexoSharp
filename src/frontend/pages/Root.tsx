@@ -22,6 +22,7 @@ import { useAppDispatch, useAppSelector } from '../redux/store';
 import axiosClient from '../service/axiosClient';
 import kv from '../service/kv';
 import octokit from '../service/octokit';
+import ReloadPrompt from '../components/ReloadPrompt';
 
 const Topbar = () => {
   const navigate = useNavigate();
@@ -106,6 +107,7 @@ const Root = () => {
         </Container>
       </Backdrop>
       <Outlet />
+      <ReloadPrompt />
     </>
   );
 };

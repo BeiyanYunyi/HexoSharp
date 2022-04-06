@@ -17,6 +17,7 @@ Hexo\#, 读作 `Hexo sharp` 或 `Hexo 升`。之所以叫这个名字是因为�
 
 - 可以所见即所得地编辑 markdown。
 - 可以随地部署，解决 GitHub 在中国大陆被限制访问的问题。
+- 加入了 Service Worker，整体只需加载一次。
 
 ## 📦 简易部署
 
@@ -57,7 +58,7 @@ Hexo\#, 读作 `Hexo sharp` 或 `Hexo 升`。之所以叫这个名字是因为�
 - [x] 上传图片
 - [x] 在编辑器里上传图片
 - [x] 在图片列表里预览和删除图片
-- [ ] 添加 Service Worker 支持
+- [x] 添加 Service Worker 支持
 - [ ] 发布说说
 
 ## 🖼️ 展望

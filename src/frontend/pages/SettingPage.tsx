@@ -1,6 +1,6 @@
 import SaveIcon from '@mui/icons-material/Save';
 import { Button, CircularProgress, Container, Stack, TextField } from '@mui/material';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ISettings from '../../types/ISettings';
 import { changeSetting, changeSettings } from '../redux/settingsReducer';
