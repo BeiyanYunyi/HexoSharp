@@ -1,15 +1,18 @@
+import { lazy, Suspense } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AppSnackbarProvider from './components/AppSnackbarProvider';
+import Loading from './components/Loading';
 import NeedAuth from './components/NeedAuth';
-import GhEditPage from './pages/GhEditPage';
-import GhViewPage from './pages/GhViewPage';
 import HomePage from './pages/HomePage';
-import ImgListPage from './pages/ImgListPage';
 import LoginPage from './pages/LoginPage';
 import Root from './pages/Root';
 import SettingPage from './pages/SettingPage';
 import store from './redux/store';
+
+const GhEditPage = lazy(() => import('./pages/GhEditPage'));
+const GhViewPage = lazy(() => import('./pages/GhViewPage'));
+const ImgListPage = lazy(() => import('./pages/ImgListPage'));
 
 const App = () => (
   <AppSnackbarProvider>
@@ -30,7 +33,9 @@ const App = () => (
               path="imgList"
               element={
                 <NeedAuth>
-                  <ImgListPage />
+                  <Suspense fallback={<Loading />}>
+                    <ImgListPage />
+                  </Suspense>
                 </NeedAuth>
               }
             />
@@ -38,7 +43,9 @@ const App = () => (
               path="ghView/*"
               element={
                 <NeedAuth>
-                  <GhViewPage />
+                  <Suspense fallback={<Loading />}>
+                    <GhViewPage />
+                  </Suspense>
                 </NeedAuth>
               }
             />
@@ -46,7 +53,9 @@ const App = () => (
               path="ghEdit/*"
               element={
                 <NeedAuth>
-                  <GhEditPage />
+                  <Suspense fallback={<Loading />}>
+                    <GhEditPage />
+                  </Suspense>
                 </NeedAuth>
               }
             />

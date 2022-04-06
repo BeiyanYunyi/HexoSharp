@@ -23,6 +23,7 @@ import axiosClient from '../service/axiosClient';
 import kv from '../service/kv';
 import octokit from '../service/octokit';
 import ReloadPrompt from '../components/ReloadPrompt';
+import Loading from '../components/Loading';
 
 const Topbar = () => {
   const navigate = useNavigate();
@@ -99,12 +100,7 @@ const Root = () => {
         open={loading}
         sx={{ zIndex: theme.zIndex.appBar - 1, backgroundColor: theme.palette.background.paper }}
       >
-        <Container>
-          <Stack spacing={1}>
-            <Skeleton variant="circular" width={40} height={40} />
-            <Skeleton variant="rectangular" height={118} />
-          </Stack>
-        </Container>
+        <Loading />
       </Backdrop>
       <Outlet />
       <ReloadPrompt />
