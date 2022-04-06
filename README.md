@@ -44,7 +44,7 @@ Hexo\#, 读作 `Hexo sharp` 或 `Hexo 升`。之所以叫这个名字是因为�
 3. 使用 prettier 和 eslint 确保码风一致。
 4. 使用 [vditor](https://github.com/Vanessa219/vditor) 作为 Markdown 编辑器。
 5. 使用 miniflare，开发时可在本地运行 worker 脚本，也可自行部署于 VPS。
-6. 使用 esbuild 打包。
+6. 使用 esbuild 打包 worker，使用 vite 打包前端。
 7. 使用 React 编写前端。
 8. 使用 AGPL 协议。
 
@@ -57,6 +57,7 @@ Hexo\#, 读作 `Hexo sharp` 或 `Hexo 升`。之所以叫这个名字是因为�
 - [x] 上传图片
 - [x] 在编辑器里上传图片
 - [x] 在图片列表里预览和删除图片
+- [ ] 添加 Service Worker 支持
 - [ ] 发布说说
 
 ## 🖼️ 展望

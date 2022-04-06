@@ -6,8 +6,11 @@
   "dir": "./dist",
   "packageManager": "pnpm@6.32.4",
   "scripts": {
-    "build": "node build.mjs",
-    "dev": "cross-env DEV=true miniflare --live-reload --debug",
+    "build": "pnpm build:frontend && pnpm build:worker",
+    "build:worker": "node build.mjs",
+    "build:frontend": "vite build --config src/frontend/vite.config.ts",
+    "dev": "cross-env DEV=true miniflare --debug",
+    "dev:frontend": "vite --config src/frontend/vite.config.ts",
     "format": "prettier --write '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'",
     "lint": "eslint --max-warnings=0 src && prettier --check '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'",
     "test": "jest --config jestconfig.json --verbose",
@@ -28,6 +31,7 @@
     "@types/service-worker-mock": "^2.0.1",
     "@typescript-eslint/eslint-plugin": "^5.17.0",
     "@typescript-eslint/parser": "^5.17.0",
+    "@vitejs/plugin-react": "^1.3.0",
     "cross-env": "^7.0.3",
     "esbuild": "^0.14.31",
     "esbuild-copy-static-files": "^0.1.0",
@@ -47,7 +51,8 @@
     "service-worker-mock": "^2.0.5",
     "ts-jest": "^27.1.4",
     "ts-node": "^10.7.0",
-    "typescript": "^4.6.3"
+    "typescript": "^4.6.3",
+    "vite": "^2.9.1"
   },
   "dependencies": {
     "@cloudflare/kv-asset-handler": "^0.2.0",
@@ -63,6 +68,7 @@
     "axios": "^0.26.1",
     "bcryptjs": "^2.4.3",
     "img-previewer": "^2.1.6",
+    "isomorphic-fetch": "^3.0.0",
     "itty-router": "^2.6.1",
     "js-base64": "^3.7.2",
     "notistack": "^2.0.3",

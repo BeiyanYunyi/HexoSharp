@@ -30,10 +30,9 @@ router.get('*', async (req, event: FetchEvent) => {
   try {
     const page = await getAssetFromKV(event, {
       mapRequestToAsset: (oriReq) => {
+        const reg = /\/assets\/.*/;
         const { url } = oriReq;
-        if (url.endsWith('.svg')) return oriReq;
-        if (url.endsWith('frontend.js')) return oriReq;
-        if (url.endsWith('frontend.css')) return oriReq;
+        if (reg.test(url)) return oriReq;
         return new Request(`${url.split('/').slice(0, 3).join('/')}/index.html`, oriReq);
       },
     });
