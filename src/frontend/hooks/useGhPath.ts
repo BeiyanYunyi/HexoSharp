@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom';
 
+/** 获取当前浏览器路径所表示的 GitHub 路径 */
 const useGhPath = () => {
   const location = useLocation();
   const pathAry = location.pathname.split('/');

@@ -24,6 +24,7 @@ import AppGridItem from './AppGridItem';
 import FileIcon from './FileIcon';
 import UploadImg from './UploadImg';
 
+/** 新建文件夹或文件的按钮 */
 const NewFolderOrFile: React.FC<{ folder?: boolean }> = ({ folder }) => {
   const path = useGhPath();
   const navigate = useNavigate();
@@ -108,6 +109,7 @@ const NewFolderOrFile: React.FC<{ folder?: boolean }> = ({ folder }) => {
   );
 };
 
+/** 单个文件的按钮 */
 const File: React.FC<{
   file: IFile;
 }> = ({ file }) => {
@@ -127,6 +129,7 @@ const File: React.FC<{
   );
 };
 
+/** 回到父目录的按钮 */
 const ReturnToParent: React.FC = () => {
   const navigate = useNavigate();
   const parentPath = useParentPath();
@@ -147,6 +150,7 @@ const ReturnToParent: React.FC = () => {
   );
 };
 
+/** 渲染一个文件列表 */
 const Files: React.FC<{ data: IDirState }> = ({ data }) => {
   const path = useGhPath();
   return (

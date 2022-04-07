@@ -13,6 +13,7 @@ import { useAppDispatch, useAppSelector } from '../redux/store';
 import lscat from '../service/lscat';
 import isPicture from '../utils/isPicture';
 
+/** 文件预览页面，现支持预览 Markdown、mdx 文件和图片 */
 const GhViewPage: React.FC = () => {
   const settings = useAppSelector((state) => state.settings.settings);
   const dispatch = useAppDispatch();

@@ -25,6 +25,7 @@ import octokit from '../service/octokit';
 import ReloadPrompt from '../components/ReloadPrompt';
 import Loading from '../components/Loading';
 
+/** 顶栏元素 */
 const Topbar = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -48,6 +49,7 @@ const Topbar = () => {
   );
 };
 
+/** 提供所有页面都应出现的元素，并进行一些初始化过程 */
 const Root = () => {
   const snackbar = useAppSnackbar();
   const navigate = useNavigate();

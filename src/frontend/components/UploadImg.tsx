@@ -8,6 +8,7 @@ import snackbar from '../utils/Snackbar';
 import AppGridItem from './AppGridItem';
 import FileIcon from './FileIcon';
 
+/** 上传图片按钮，显示在 [Files](Files.tsx) 里 */
 const UploadImg: React.FC = () => {
   const settings = useAppSelector((state) => state.settings.settings);
   const path = useGhPath();

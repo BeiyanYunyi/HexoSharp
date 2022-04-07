@@ -1,5 +1,6 @@
 import octokit from './octokit';
 
+/** 创建或更新文件 */
 const createOrUpdate = async ({
   path,
   content,

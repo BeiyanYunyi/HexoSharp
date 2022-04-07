@@ -4,10 +4,11 @@ import {
   Card,
   CardActions,
   CardContent,
+  Container,
   Stack,
-  useTheme,
   Typography,
   useMediaQuery,
+  useTheme,
 } from '@mui/material';
 import { encode } from 'js-base64';
 import React from 'react';
@@ -19,6 +20,7 @@ import { useAppSelector } from '../redux/store';
 import createOrUpdate from '../service/createOrUpdate';
 import snackbar from '../utils/Snackbar';
 
+/** 编辑器组件，提供图片上传操作 */
 const Editor: React.FC<
   | { initialValue?: undefined; path: string; sha?: undefined }
   | { initialValue: string; path: string; sha: string }
@@ -34,7 +36,7 @@ const Editor: React.FC<
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const viewUrl = location.pathname.replace('/ghEdit/', '/ghView/');
   React.useEffect(() => {
-    if (ref.current && !vd) {
+    if (ref.current) {
       const vditor = new Vditor(ref.current, {
         after: () => {
           setVd(vditor);
@@ -64,7 +66,8 @@ const Editor: React.FC<
               const content = resStr.substring(resStr.indexOf(',') + 1);
               const name = `${Date.now()}-${file.name}`;
               const res = await createOrUpdate({
-                ...imgPathInfo,
+                owner: imgPathInfo.owner,
+                repo: imgPathInfo.repo,
                 path: `${imgPathInfo.path}/${name}`,
                 message: `➕ Uploaded by Hexo# v${version} at ${new Date().toLocaleString()}`,
                 content,
@@ -82,15 +85,20 @@ const Editor: React.FC<
         },
       });
     }
-  }, [initialValue, isMobile, vd, reader, imgPathInfo]);
+  }, [initialValue, isMobile, reader, imgPathInfo.owner, imgPathInfo.path, imgPathInfo.repo]);
   return (
     <>
       <link rel="stylesheet" href="https://testingcf.jsdelivr.net/npm/vditor/dist/index.css" />
       <Card>
-        <CardContent sx={{ padding: 0, paddingTop: 4 }}>
-          <Typography component="div" ref={ref}>
-            编辑器加载中
-          </Typography>
+        <CardContent sx={{ padding: 0, paddingTop: 1 }}>
+          <Stack>
+            <Container sx={{ marginBottom: 1 }}>
+              <Button>获取当前日期</Button>
+            </Container>
+            <Typography component="div" ref={ref}>
+              编辑器加载中
+            </Typography>
+          </Stack>
         </CardContent>
         <CardActions>
           <Stack direction="row" spacing={1}>

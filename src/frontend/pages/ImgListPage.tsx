@@ -15,6 +15,7 @@ import lscat from '../service/lscat';
 import rm from '../service/rm';
 import snackbar from '../utils/Snackbar';
 
+/** 图片集中管理页面 */
 const ImgListPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const imgPathInfo = useImgPathInfo();

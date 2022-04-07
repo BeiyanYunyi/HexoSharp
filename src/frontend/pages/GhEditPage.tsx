@@ -9,6 +9,7 @@ import { changeLoading } from '../redux/loadingReducer';
 import { useAppDispatch, useAppSelector } from '../redux/store';
 import lscat from '../service/lscat';
 
+/** 文件编辑页面，现在只支持 Markdown 和 mdx 编辑 */
 const GhEditPage: React.FC = () => {
   const { owner, repo } = useAppSelector((state) => state.settings.settings);
   const [data, setData] = React.useState<IFileState | INotExist>();

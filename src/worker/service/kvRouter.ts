@@ -1,5 +1,6 @@
 import router from '../router';
 
+/** 将 KV 接口暴露给前端 */
 const kvRouter = () => {
   router.get('/api/kv/:key', async (req) => {
     const { key } = req.params as { key: string };

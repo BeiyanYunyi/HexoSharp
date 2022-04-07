@@ -1,6 +1,7 @@
 import jwt from '@tsndr/cloudflare-worker-jwt';
 import router from '../router';
 
+/** 提供用户验证服务 */
 const authRouter = () => {
   router.post('/api/auth/', async (req: Request) => {
     if (!req.parsedJson?.password) return new Response(null, { status: 400 });

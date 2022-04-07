@@ -10,8 +10,11 @@ import Root from './pages/Root';
 import SettingPage from './pages/SettingPage';
 import store from './redux/store';
 
+/** 见[原文件](pages/GhEditPage.tsx) */
 const GhEditPage = lazy(() => import('./pages/GhEditPage'));
+/** 见[原文件](pages/GhViewPage.tsx) */
 const GhViewPage = lazy(() => import('./pages/GhViewPage'));
+/** 见[原文件](pages/ImgListPage.tsx) */
 const ImgListPage = lazy(() => import('./pages/ImgListPage'));
 
 const App = () => (

@@ -1,4 +1,5 @@
 /* eslint-disable consistent-return */
+/** Json 处理中间件 */
 const json = async (req: Request) => {
   if (req.headers.get('Content-Type') === 'application/json') {
     try {

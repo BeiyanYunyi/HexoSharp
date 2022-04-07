@@ -1,5 +1,6 @@
 import octokit from './octokit';
 
+/** 删除文件 */
 const rm = async (args: {
   path: string;
   message: string;

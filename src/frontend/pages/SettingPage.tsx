@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from '../redux/store';
 import kv from '../service/kv';
 import defaultSetting from '../utils/defaultSetting';
 
+/** 设置页面 */
 const SettingPage = () => {
   const settings = useAppSelector((state) => state.settings.settings);
   const dispatch = useAppDispatch();

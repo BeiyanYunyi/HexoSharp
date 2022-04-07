@@ -1,5 +1,6 @@
 import { Stack, Skeleton, Container } from '@mui/material';
 
+/** 页面加载中，需要显示骨架屏 */
 const Loading = () => (
   <Container>
     <Stack spacing={1}>

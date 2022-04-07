@@ -12,6 +12,7 @@ import rm from '../service/rm';
 import snackbar from '../utils/Snackbar';
 import ConfirmDialog, { IConfirmDialogRef } from './ConfirmDialog';
 
+/** 预览文件时的选项，包括编辑、返回和删除三项 */
 const PreviewActions: React.FC<{ editable?: boolean; sha: string }> = ({ editable, sha }) => {
   const path = useGhPath();
   const parentPath = useParentPath();

@@ -1,6 +1,7 @@
 /* eslint-disable consistent-return */
 import jwt from '@tsndr/cloudflare-worker-jwt';
 
+/** 验证一个 jwt 是否有效，若已失效或不合法则返回 403 */
 const jwtVerify = async (req: Request) => {
   const authHeader = req.headers.get('Authorization');
   if (!authHeader)

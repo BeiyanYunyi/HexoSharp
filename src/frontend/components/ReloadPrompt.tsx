@@ -3,6 +3,7 @@ import UpdateIcon from '@mui/icons-material/Update';
 import { Alert, IconButton, Snackbar } from '@mui/material';
 import { useRegisterSW } from 'virtual:pwa-register/react';
 
+/** 引入 `Service Worker`，加载完成后显示一个弹窗 */
 const ReloadPrompt = () => {
   // replaced dynamically
 

@@ -22,6 +22,7 @@ const fix = (myHeadersFixing: Headers, event: FetchEvent) => {
   return myHeadersFixing;
 };
 
+/** 反代 GitHub 给前端，解决 GH 被墙的问题。这个 Router 需要加入更细化的验证以防被滥用 */
 const ghCorsRouter = () => {
   router.all('/api/gh/*', async (req, event: FetchEvent) => {
     const isOptions = event.request.method === 'OPTIONS';

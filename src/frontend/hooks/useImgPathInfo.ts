@@ -1,5 +1,6 @@
 import { useAppSelector } from '../redux/store';
 
+/** 获取图片存储相关信息 */
 const useImgPathInfo = () => {
   const settings = useAppSelector((state) => state.settings.settings);
   return {

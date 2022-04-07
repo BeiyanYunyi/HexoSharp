@@ -1,6 +1,7 @@
 import axiosErrorHandler from '../utils/axiosErrorHandler';
 import axiosClient from './axiosClient';
 
+/** Cloudflare KV 的 CRUD 接口 */
 class Kv {
   // eslint-disable-next-line class-methods-use-this
   client() {

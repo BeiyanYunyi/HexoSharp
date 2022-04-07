@@ -7,6 +7,7 @@ import ImageIcon from '@mui/icons-material/Image';
 import { Avatar, colors, useTheme } from '@mui/material';
 import React from 'react';
 
+/** 从文件名和文件类型返回对应图标 */
 const FileIcon: React.FC<{ name: string; type: string }> = ({ name, type }) => {
   const theme = useTheme();
   switch (type) {

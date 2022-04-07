@@ -20,6 +20,7 @@ class Snackbar {
   }
 }
 
+/** 把 notistack 保存在单一实例中，方便调用（其实就是想绕过 hook 规则） */
 const snackbar = new Snackbar();
 
 export default snackbar;

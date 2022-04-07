@@ -1,5 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
 
+/** 保存一个 Axios 实例，方便用户验证 */
 class AxiosClient {
   client = axios.create();
 

@@ -1,3 +1,4 @@
+/** 一个文件 */
 export default interface IFile {
   name: string;
   path: string;

@@ -6,6 +6,7 @@ import { changeAuth } from '../redux/authReducer';
 import axiosClient from '../service/axiosClient';
 import snackbar from '../utils/Snackbar';
 
+/** 登录页面，当前存在登录后需手动刷新的 BUG */
 const LoginPage = () => {
   const [password, setPassword] = React.useState('');
   const dispatch = useDispatch();

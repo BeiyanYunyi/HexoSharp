@@ -3,6 +3,7 @@ import React from 'react';
 import Vditor from 'vditor';
 import PreviewActions from './PreviewActions';
 
+/** Markdown 文件的预览页面 */
 const Preview: React.FC<{ value: string; sha: string }> = ({ value, sha }) => {
   const divRef = React.useRef<HTMLDivElement>(null);
   React.useEffect(() => {

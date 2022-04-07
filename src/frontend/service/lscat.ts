@@ -3,6 +3,7 @@ import IFileState from '../../types/IFileState';
 import INotExist from '../../types/INotExist';
 import octokit from './octokit';
 
+/** 列出文件夹下所有文件，或返回文件内容 */
 const lscat: (info: {
   owner: string;
   repo: string;

@@ -10,6 +10,7 @@ router.all('*', json);
 
 authRouter();
 ghCorsRouter();
+// 以下路径需要验证才可访问
 router.all('/api/*', jwtVerify);
 router.get(
   '/api/ping',
@@ -25,6 +26,7 @@ router.all(
     }),
 );
 
+// 用户请求前端时，返回前端
 router.get('*', async (req, event: FetchEvent) => {
   if (!event) return new Response(null, { status: 400 });
   try {

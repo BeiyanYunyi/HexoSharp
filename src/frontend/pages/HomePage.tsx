@@ -17,6 +17,7 @@ import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import AppGridItem from '../components/AppGridItem';
 
+/** 对每个首页元素进行抽象 */
 const ListItem: React.FC<{
   iconBgColor?: string;
   title: string;
@@ -49,6 +50,7 @@ const ListItem: React.FC<{
   </AppGridItem>
 );
 
+/** 首页 */
 const HomePage: React.FC = () => {
   const theme = useTheme();
   return (
