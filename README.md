@@ -17,13 +17,9 @@ Hexo\#, 读作 `Hexo sharp` 或 `Hexo 升`。之所以叫这个名字是因为�
 - 可以随地部署，解决 GitHub 在中国大陆被限制访问的问题。
 - 加入了 Service Worker，整体只需加载一次。
 
-使用截图、详细部署教程等详细内容参见文档。
+使用截图、详细部署教程等详细内容参见：
 
-## 📦 简易部署
-
-[![**Deploy to Cloudflare Workers**](https://deploy.workers.cloudflare.com/button?paid=true)](https://deploy.workers.cloudflare.com/?url=https://github.com/lixiang810/HexoSharp?paid=true)
-
-这之后，去 Cloudflare Worker 的管理界面，设置一个名为`JWT_SECRET`的环境变量，这个变量将被用于服务端和客户端之间的验证（用户登录）。
+## [📝 使用文档](https://docs.hsp.penclub.club/)
 
 ## 💡 起源
 
@@ -48,6 +44,12 @@ Hexo\#, 读作 `Hexo sharp` 或 `Hexo 升`。之所以叫这个名字是因为�
 6. 使用 esbuild 打包 worker，使用 vite 打包前端。
 7. 使用 React 编写前端。
 8. 使用 AGPL 协议。
+
+## 📦 简易部署
+
+[![**Deploy to Cloudflare Workers**](https://deploy.workers.cloudflare.com/button?paid=true)](https://deploy.workers.cloudflare.com/?url=https://github.com/lixiang810/HexoSharp?paid=true)
+
+这之后，去 Cloudflare Worker 的管理界面，设置一个名为 `JWT_SECRET` 的环境变量，这个变量将被用于服务端和客户端之间的验证（用户登录）。
 
 ## ✅ 在进行中的工作
 
