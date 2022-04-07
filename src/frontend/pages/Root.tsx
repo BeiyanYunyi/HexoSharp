@@ -69,7 +69,7 @@ const Root = () => {
       if (loaded && authed) return null;
       const loginRes = await axiosClient.login();
       if (!loginRes) {
-        snackbar.info('未登录或登录状态已过期');
+        globalSnackbar.info('未登录或登录状态已过期');
         navigate('/login', { replace: true });
         return dispatch(changeLoaded(true));
       }
@@ -81,7 +81,7 @@ const Root = () => {
       octokit.auth(parsedSettings.ghApiToken);
       return dispatch(changeSettings(parsedSettings));
     })();
-  }, [dispatch, navigate, authed, loaded, snackbar]);
+  }, [dispatch, navigate, authed, loaded]);
   if (!loaded) {
     return (
       <>

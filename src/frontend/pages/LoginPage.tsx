@@ -1,7 +1,7 @@
 import { Button, Card, CardContent, Container, Stack, TextField, Typography } from '@mui/material';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { changeAuth } from '../redux/authReducer';
 import axiosClient from '../service/axiosClient';
 import snackbar from '../utils/Snackbar';
@@ -10,8 +10,6 @@ import snackbar from '../utils/Snackbar';
 const LoginPage = () => {
   const [password, setPassword] = React.useState('');
   const dispatch = useDispatch();
-  const location = useLocation();
-  const from = (location.state as { from?: { pathname?: string } })?.from?.pathname || '/';
   const navigate = useNavigate();
   return (
     <Container maxWidth="xs">
@@ -38,7 +36,7 @@ const LoginPage = () => {
                 const loginRes = await axiosClient.login(password);
                 if (!loginRes) return snackbar.err('登录失败');
                 dispatch(changeAuth(true));
-                return navigate(from, { replace: true });
+                return navigate('/', { replace: true });
               }}
             >
               登录
