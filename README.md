@@ -1,7 +1,5 @@
 # Hexo\#
 
-![preview-desktop](docs/assets/Screenshot2.jpeg) ![preview-mobile](docs/assets/Screenshot%202022-04-07%20at%2008-29-25%20Hexo%20%23.png)
-
 <div align="center">
   <img src="https://github.com/lixiang810/HexoSharp/raw/main/src/frontend/static/favicon.svg" style="height: 256px; width: 256px" />
   <p>暂定图标，欢迎PR</p>
@@ -18,6 +16,8 @@ Hexo\#, 读作 `Hexo sharp` 或 `Hexo 升`。之所以叫这个名字是因为�
 - 可以所见即所得地编辑 markdown。
 - 可以随地部署，解决 GitHub 在中国大陆被限制访问的问题。
 - 加入了 Service Worker，整体只需加载一次。
+
+使用截图、详细部署教程等详细内容参见文档。
 
 ## 📦 简易部署
 
