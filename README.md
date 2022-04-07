@@ -1,6 +1,6 @@
 # Hexo\#
 
-![preview](https://github.com/lixiang810/HexoSharp/raw/main/docs/assets/Screenshot%202022-04-07%20at%2008-29-25%20Hexo%20%23.png)
+![preview-desktop](docs/assets/Screenshot2.jpeg) ![preview-mobile](docs/assets/Screenshot%202022-04-07%20at%2008-29-25%20Hexo%20%23.png)
 
 <div align="center">
   <img src="https://github.com/lixiang810/HexoSharp/raw/main/src/frontend/static/favicon.svg" style="height: 256px; width: 256px" />
