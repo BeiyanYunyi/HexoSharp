@@ -1,6 +1,6 @@
-# Hexo\# (WIP)
+# Hexo\#
 
-🚧 WIP - 功能和结构可能迅速变化，且兼容性不被保证 🚧
+![preview](https://github.com/lixiang810/HexoSharp/raw/main/docs/assets/Screenshot%202022-04-07%20at%2008-29-25%20Hexo%20%23.png)
 
 <div align="center">
   <img src="https://github.com/lixiang810/HexoSharp/raw/main/src/frontend/static/favicon.svg" style="height: 256px; width: 256px" />
@@ -59,6 +59,7 @@ Hexo\#, 读作 `Hexo sharp` 或 `Hexo 升`。之所以叫这个名字是因为�
 - [x] 在编辑器里上传图片
 - [x] 在图片列表里预览和删除图片
 - [x] 添加 Service Worker 支持
+- [ ] 文章列表
 - [ ] 发布说说
 
 ## 🖼️ 展望
