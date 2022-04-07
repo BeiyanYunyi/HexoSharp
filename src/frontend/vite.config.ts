@@ -27,6 +27,7 @@ export default defineConfig({
           },
         ],
       },
+      manifest: { name: 'Hexo#', short_name: 'Hexo#', lang: 'zh_CN', start_url: '' },
     }),
   ],
 });
