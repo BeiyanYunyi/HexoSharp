@@ -14,6 +14,7 @@ import { encode } from 'js-base64';
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Vditor from 'vditor';
+import 'vditor/dist/index.css';
 import { version } from '../../../package.json';
 import useImgPathInfo from '../hooks/useImgPathInfo';
 import { useAppSelector } from '../redux/store';
@@ -87,62 +88,59 @@ const Editor: React.FC<
     }
   }, [initialValue, isMobile, reader, imgPathInfo.owner, imgPathInfo.path, imgPathInfo.repo]);
   return (
-    <>
-      <link rel="stylesheet" href="https://testingcf.jsdelivr.net/npm/vditor/dist/index.css" />
-      <Card>
-        <CardContent sx={{ padding: 0, paddingTop: 1 }}>
-          <Stack>
-            <Container sx={{ marginBottom: 1 }}>
-              <Button>获取当前日期</Button>
-            </Container>
-            <Typography component="div" ref={ref}>
-              编辑器加载中
-            </Typography>
-          </Stack>
-        </CardContent>
-        <CardActions>
-          <Stack direction="row" spacing={1}>
-            <Button
-              variant="contained"
-              startIcon={<SaveIcon />}
-              onClick={async () => {
-                if (!vd) return null;
-                const res = await createOrUpdate({
-                  path,
-                  content: encode(vd.getValue()),
-                  message: `📝 Uploaded by Hexo# v${version} at ${new Date().toLocaleString()}`,
-                  sha,
-                  owner: settings.owner,
-                  repo: settings.repo,
-                });
-                if (res.status === 200) snackbar.success('修改成功');
-                if (res.status === 201) snackbar.success('创建成功');
-                console.log(res);
+    <Card>
+      <CardContent sx={{ padding: 0, paddingTop: 1 }}>
+        <Stack>
+          <Container sx={{ marginBottom: 1 }}>
+            <Button>获取当前日期</Button>
+          </Container>
+          <Typography component="div" ref={ref}>
+            编辑器加载中
+          </Typography>
+        </Stack>
+      </CardContent>
+      <CardActions>
+        <Stack direction="row" spacing={1}>
+          <Button
+            variant="contained"
+            startIcon={<SaveIcon />}
+            onClick={async () => {
+              if (!vd) return null;
+              const res = await createOrUpdate({
+                path,
+                content: encode(vd.getValue()),
+                message: `📝 Uploaded by Hexo# v${version} at ${new Date().toLocaleString()}`,
+                sha,
+                owner: settings.owner,
+                repo: settings.repo,
+              });
+              if (res.status === 200) snackbar.success('修改成功');
+              if (res.status === 201) snackbar.success('创建成功');
+              console.log(res);
+              navigate(viewUrl, { replace: true });
+              return null;
+            }}
+          >
+            保存
+          </Button>
+          <Button
+            variant="outlined"
+            color="error"
+            onClick={() => {
+              if (sha) {
                 navigate(viewUrl, { replace: true });
-                return null;
-              }}
-            >
-              保存
-            </Button>
-            <Button
-              variant="outlined"
-              color="error"
-              onClick={() => {
-                if (sha) {
-                  navigate(viewUrl, { replace: true });
-                } else {
-                  const target = viewUrl.split('/');
-                  target.pop();
-                  navigate(target.join('/'), { replace: true });
-                }
-              }}
-            >
-              返回
-            </Button>
-          </Stack>
-        </CardActions>
-      </Card>
-    </>
+              } else {
+                const target = viewUrl.split('/');
+                target.pop();
+                navigate(target.join('/'), { replace: true });
+              }
+            }}
+          >
+            返回
+          </Button>
+        </Stack>
+      </CardActions>
+    </Card>
   );
 };
 

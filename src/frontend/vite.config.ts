@@ -14,6 +14,19 @@ export default defineConfig({
       mode: 'production',
       base: '/',
       registerType: 'autoUpdate',
+      workbox: {
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/testingcf\.jsdelivr\.net\/.*/i,
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheName: 'vditor-assets',
+              expiration: { maxAgeSeconds: 60 * 60 * 24 * 365 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+        ],
+      },
     }),
   ],
 });
