@@ -5,17 +5,13 @@ on:
     branches:
       - main
   workflow_dispatch:
-  workflow_run:
-    workflows: ['Merge-upstream']
-    types:
-      - completed
 
 jobs:
   on-success:
     runs-on: ubuntu-latest
     name: Deploy
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Publish
         uses: lixiang810/wrangler-action@1.4.0-node16
         with:
