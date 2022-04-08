@@ -66,10 +66,6 @@ sidebar-position: 1
 
 ### 获取 `GH Token`
 
-:::note 可选
-你可以[跳过这一步](#配置-github)，但会导致 Hexo\# 无法自动更新。
-:::
-
 1. 前往[此处](https://github.com/settings/tokens)。
 2. 点击 `Generate new token`。
 3. 在 `Note` 一栏输入 `Token` 名，你可以自己起一个。
@@ -80,7 +76,7 @@ sidebar-position: 1
 8. 现在你剪贴板里的是 `GH Token`，记下备用。
 
 :::caution 警告
-`GH Token` 在你离开网页后不会再次显示，如果你在部署过程中弄丢了，就需要再生成一次。
+`GH Token` 在你离开网页后不会再次显示。部署完成之后的初始化过程也需要 `GH Token`，请不要在部署完成后就将它丢弃。如果你弄丢了，就需要再生成一次。
 :::
 
 ### 配置 GitHub
