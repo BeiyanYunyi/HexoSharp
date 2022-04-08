@@ -64,6 +64,25 @@ sidebar-position: 1
 5. 下方的列表会多出一行，鼠标移动到这行对应着 `ID` 的这一项上，点击按钮复制，如图所示：![如图所示](/img/tutorial/2022-04-08-191454.png)
 6. 现在你剪贴板里的是 `KV ID`，记下备用。
 
+### 获取 `GH Token`
+
+:::note 可选
+你可以[跳过这一步](#配置-github)，但会导致 Hexo\# 无法自动更新。
+:::
+
+1. 前往[此处](https://github.com/settings/tokens)。
+2. 点击 `Generate new token`。
+3. 在 `Note` 一栏输入 `Token` 名，你可以自己起一个。
+4. 在 `Expiration` 一栏中，选择 `No expiration`。
+5. 在 `Select scopes` 中，点击 `workflow`，这会把上面 `repo` 中的复选框一并选中。
+6. 向下滚动，找到绿色的 `Generate token` 按钮并点击。
+7. 点击复制按钮，如图所示：![如图所示](/img/tutorial/2022-04-08-194629.png)
+8. 现在你剪贴板里的是 `GH Token`，记下备用。
+
+:::caution 警告
+`GH Token` 在你离开网页后不会再次显示，如果你在部署过程中弄丢了，就需要再生成一次。
+:::
+
 ### 配置 GitHub
 
 1. 来到[本项目页面](https://github.com/lixiang810/HexoSharp)，点击 `Fork`。
@@ -72,11 +91,12 @@ sidebar-position: 1
 4. 点击 `New repository secret`，在 `Name` 一栏输入 `CF_API_TOKEN`， `Value` 一栏输入之前记下的 `API Token`，点击 `Add Secret`。
 5. 点击 `New repository secret`，在 `Name` 一栏输入 `CF_ACCOUNT_ID`， `Value` 一栏输入之前记下的 `Account ID`，点击 `Add Secret`。
 6. 点击 `New repository secret`，在 `Name` 一栏输入 `KV_ID`， `Value` 一栏输入之前记下的 `KV ID`，点击 `Add Secret`。
-7. 在这个页面点击 `Actions` 并随后点击绿色按钮 `I understand my workflows, go ahead and enable them`。
-8. 你将进入 `Actions` 界面，在左侧边栏中找到 `Deploy` 并点击。
-9. 在右侧列表中找到 `Run workflow` 并点击。
-10. 在弹出菜单中点击绿色按钮 `Run workflow`。
-11. 刷新页面，可以看到有一个名叫 `Deploy` 的 `Workflow` 正在运行。等待它运行完毕即可。有时它的状态不会自动刷新，你可以试试手动刷新页面。一般而言，这个 Action 将在 2 分钟以内运行完毕。
+7. 点击 `New repository secret`，在 `Name` 一栏输入 `GH_TOKEN`， `Value` 一栏输入之前记下的 `GH Token`，点击 `Add Secret`。
+8. 在这个页面点击 `Actions` 并随后点击绿色按钮 `I understand my workflows, go ahead and enable them`。
+9. 你将进入 `Actions` 界面，在左侧边栏中找到 `Deploy` 并点击。
+10. 在右侧列表中找到 `Run workflow` 并点击。
+11. 在弹出菜单中点击绿色按钮 `Run workflow`。
+12. 刷新页面，可以看到有一个名叫 `Deploy` 的 `Workflow` 正在运行。等待它运行完毕即可。有时它的状态不会自动刷新，你可以试试手动刷新页面。一般而言，这个 Action 将在 2 分钟以内运行完毕。
 
 ### 配置 Workers Secret
 
@@ -95,7 +115,7 @@ sidebar-position: 1
 至此，部署完成，花费：0 元。
 :::
 
-## 更新
+## 自动更新
 
 1. 在 Github Actions 中，找到 `Merge-upstream` 并点击。
 2. 重复[配置 GitHub](#配置-github) 时的 8 - 10 步以运行 `Merge-upstream` 这个 `Action`。

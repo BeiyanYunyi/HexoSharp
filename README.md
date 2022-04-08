@@ -5,11 +5,9 @@
   <p>暂定图标，欢迎PR</p>
 </div>
 
-Hexo\#, 读作 `Hexo sharp` 或 `Hexo 升`。之所以叫这个名字是因为已经有 [Hexo++](https://github.com/HexoPlusPlus/HexoPlusPlus) 了。
+Hexo\#, 读作 `Hexo sharp` 或 `Hexo 升`。
 
-> Hexo++ 是一个基于 Cloudflare Workers 和 Cloudflare KV 技术的 Hexo 后端程序，目的是解决 Hexo 无后端带来的种种麻烦，支持（包括）但不限于 Hexo（在内的）静态博客；利用 Cloudflare Workers ~~当~~（作为）中间件，有效避免直接上传到 GitHub 易失败（的）问题。
->
-> —— Hexo++ 介绍，原句有语病，被修改的部分以括号和删除线标注。
+Hexo\# 是一个可独立部署也可托管在 Cloudflare 上的轻后端的现代化静态博客管理器和 GitHub Repo 编辑器。Hexo\# 解决了静态博客无后端带来的一系列麻烦，以及 jsDelivr 掉备案后的 GitHub 图床问题。部署 Hexo\# 可以不花一分钱。
 
 虽然名字里带 Hexo ，但这个项目并不依赖于 Hexo，因为 Hexo\# 本质是一个 GitHub repo 编辑器，只要你的 repo 能生成静态页面，并且完成了相关的 CI，就可以使用 Hexo\#。诸如 jekyll、hexo、hugo、vuepress、docusaurus 这样的静态页面生成器都可以使用 Hexo\#，而相较 GitHub 自己的编辑器，Hexo\#：
 
@@ -17,7 +15,7 @@ Hexo\#, 读作 `Hexo sharp` 或 `Hexo 升`。之所以叫这个名字是因为�
 - 可以随地部署，解决 GitHub 在中国大陆被限制访问的问题。
 - 加入了 Service Worker，整体只需加载一次。
 
-使用截图、详细部署教程等详细内容参见：
+使用截图、详细部署教程等详细内容，可以 Star 本 Repo 后参见：
 
 ## [📝 使用文档](https://docs.hsp.penclub.club/)
 
@@ -44,12 +42,6 @@ Hexo\#, 读作 `Hexo sharp` 或 `Hexo 升`。之所以叫这个名字是因为�
 6. 使用 esbuild 打包 worker，使用 vite 打包前端。
 7. 使用 React 编写前端。
 8. 使用 AGPL 协议。
-
-## 📦 简易部署
-
-[![**Deploy to Cloudflare Workers**](https://deploy.workers.cloudflare.com/button?paid=true)](https://deploy.workers.cloudflare.com/?url=https://github.com/lixiang810/HexoSharp?paid=true)
-
-这之后，去 Cloudflare Worker 的管理界面，设置一个名为 `JWT_SECRET` 的环境变量，这个变量将被用于服务端和客户端之间的验证（用户登录）。
 
 ## ✅ 在进行中的工作
 
@@ -95,3 +87,12 @@ cd HexoSharp
 pnpm install
 wrangler publish
 ```
+
+## 鸣谢
+
+- [Hexo++](https://github.com/HexoPlusPlus/HexoPlusPlus) 提供了命名灵感和架构思路。
+
+## 相似项目
+
+- [Wexagonal](https://github.com/Wexagonal/Wexagonal) - [Hexo++](https://github.com/HexoPlusPlus/HexoPlusPlus) 作者的续作
+- [Qexo](https://github.com/am-abudu/Qexo) - 基于 Python 后端的在线 Hexo 编辑器
