@@ -12,6 +12,8 @@ jobs:
     name: Deploy
     steps:
       - uses: actions/checkout@v3
+      - name: Replace the KV namespace
+        run: sed -i 's/PRESERVED_FOR_ACTIONS/${{ secrets.KV_ID }}/g' wrangler.toml
       - name: Publish
         uses: lixiang810/wrangler-action@1.4.0-node16
         with:

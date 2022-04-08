@@ -5,6 +5,8 @@ route = ""
 workers_dev = true
 compatibility_date = "2022-04-04"
 
+kv_namespaces = [{ binding = "HSPKV", id = "PRESERVED_FOR_ACTIONS" }]
+
 [build]
 command = "pnpm build"
 
