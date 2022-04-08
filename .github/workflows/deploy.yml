@@ -6,9 +6,13 @@ on:
       - main
   repository_dispatch:
   workflow_dispatch:
+  workflow_run:
+    workflows: ['Merge-upstream']
+      types:
+        - completed
 
 jobs:
-  deploy:
+  on-success:
     runs-on: ubuntu-latest
     name: Deploy
     steps:
