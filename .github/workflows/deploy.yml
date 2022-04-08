@@ -4,11 +4,11 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
   workflow_run:
     workflows: ['Merge-upstream']
     types:
       - completed
-  workflow_dispatch:
 
 jobs:
   on-success:
