@@ -4,6 +4,8 @@ sidebar-position: 1
 
 # Cloudflare Workers
 
+这是篇零门槛的教程，专注于操作而不关心原理，这让它显得有些长，有可能会吓退不少人。不过不必担心，实际上的操作量并不大。
+
 ## 先决条件
 
 - 有 Cloudflare 账号
@@ -111,7 +113,9 @@ sidebar-position: 1
 至此，部署完成，花费：0 元。
 :::
 
-## 自动更新
+## 开始使用
 
-1. 在 Github Actions 中，找到 `Merge-upstream` 并点击。
-2. 重复[配置 GitHub](#配置-github) 时的 8 - 10 步以运行 `Merge-upstream` 这个 `Action`。
+1. 来到 [Cloudflare](https://dash.cloudflare.com)。
+2. 在左侧边栏中找到并点击 `Workers`，在右侧找到 `hexo-sharp` 并点击。
+3. 在“路由”一栏中，可以找到一个以 `.workers.dev` 结尾的域名，这就是你刚完成部署的 Hexo\# 了。以后你需要以这个域名打开 Hexo\#，当然你也可以为它配置你自己的域名。
+4. 请访问[初次使用](/docs/setup)章节以完成 Hexo\# 的初始化配置。
