@@ -21,7 +21,11 @@ Hexo\# 是一个可独立部署也可托管在 Cloudflare 上的轻后端的现�
 
 ## 💡 起源
 
-没写，一会儿再说
+随着时代发展，免费静态空间越来越多，静态博客也如雨后春笋。在 GitHub 提供 Action 这个功能后，静态博客的门槛进一步降低：写一篇文章，Commit 一下，GitHub 就会自动构建好网页，然后更新上去。
+
+不过，托管在 GitHub 上的静态博客依然面临着一些问题。Markdown 有一定的学习成本，一边写一边预览也不符合大多数人的使用习惯。在 raw.githubusercontent.com 被墙后，图片的预览成了问题，而在 GitHub 的访问也不稳定以后，有时连编辑博文都需要翻墙。
+
+为此，人们需要一个博客管理器。我之前也见到了一些类似的项目，但它们代码质量不太好，我二次开发时心智负担过重。于是我开始写 Hexo\#，它将解决上述所有问题。
 
 ## 📈 特性
 
@@ -33,6 +37,7 @@ Hexo\# 是一个可独立部署也可托管在 Cloudflare 上的轻后端的现�
 - Prettier 和 ESLint 确保码风一致
 - React + TSX 编写前端代码
 - ESBuild 打包 Worker，Vite 打包前端，构建如闪电
+- 丰富的 JsDoc 注释，代码即文档
 
 #### 平台现代化
 
@@ -47,7 +52,12 @@ Hexo\# 是一个可独立部署也可托管在 Cloudflare 上的轻后端的现�
 
 ### 编辑 Markdown，所见即所得
 
-- 使用 [Vditor](https://github.com/Vanessa219/vditor) 作为 Markdown 编辑器。
+- 使用 [Vditor](https://github.com/Vanessa219/vditor) 作为 Markdown 编辑器
+
+### 滚动更新，方便又快捷
+
+- 没有版本号，main 分支的每个 Commit 都是稳定的
+- 一键更新，免除操作烦恼
 
 ### 自由软件，而且也免费
 
