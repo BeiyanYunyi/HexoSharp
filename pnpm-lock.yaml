@@ -16,6 +16,7 @@ importers:
       '@mui/x-data-grid': ^5.7.0
       '@octokit/rest': ^18.12.0
       '@reduxjs/toolkit': ^1.8.1
+      '@rollup/plugin-replace': ^4.0.0
       '@tsndr/cloudflare-worker-jwt': ^1.1.6
       '@types/jest': ^27.4.1
       '@types/jsonwebtoken': ^8.5.8
@@ -85,6 +86,7 @@ importers:
       '@babel/core': 7.17.8
       '@cloudflare/workers-types': 3.4.0
       '@cloudflare/wrangler': 1.19.11
+      '@rollup/plugin-replace': 4.0.0
       '@types/jest': 27.4.1
       '@types/jsonwebtoken': 8.5.8
       '@types/node': 17.0.23
@@ -3210,6 +3212,26 @@ packages:
       '@rollup/pluginutils': 3.1.0_rollup@2.70.1
       magic-string: 0.25.9
       rollup: 2.70.1
+    dev: true
+
+  /@rollup/plugin-replace/4.0.0:
+    resolution: {integrity: sha512-+rumQFiaNac9y64OHtkHGmdjm7us9bo1PlbgQfdihQtuNxzjpaB064HbRnewUOggLQxVCCyINfStkgmBeQpv1g==}
+    peerDependencies:
+      rollup: ^1.20.0 || ^2.0.0
+    dependencies:
+      '@rollup/pluginutils': 3.1.0
+      magic-string: 0.25.9
+    dev: true
+
+  /@rollup/pluginutils/3.1.0:
+    resolution: {integrity: sha512-GksZ6pr6TpIjHm8h9lSQ8pi8BE9VeubNT0OMJ3B5uZJ8pz73NPiqOtCog/x2/QzM1ENChPKxMDhiQuRHsqc+lg==}
+    engines: {node: '>= 8.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0
+    dependencies:
+      '@types/estree': 0.0.39
+      estree-walker: 1.0.1
+      picomatch: 2.3.1
     dev: true
 
   /@rollup/pluginutils/3.1.0_rollup@2.70.1:

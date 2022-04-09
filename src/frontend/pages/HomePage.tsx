@@ -1,18 +1,18 @@
 import FolderIcon from '@mui/icons-material/Folder';
-import GitHubIcon from '@mui/icons-material/GitHub';
 import ImageIcon from '@mui/icons-material/Image';
+import InfoIcon from '@mui/icons-material/Info';
+import SettingsIcon from '@mui/icons-material/Settings';
 import {
   Avatar,
   Card,
   CardActionArea,
   CardHeader,
+  colors,
   Container,
   Grid,
-  useTheme,
   Link,
-  colors,
+  useTheme,
 } from '@mui/material';
-import SettingsIcon from '@mui/icons-material/Settings';
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import AppGridItem from '../components/AppGridItem';
@@ -63,7 +63,7 @@ const HomePage: React.FC = () => {
           to="/imgList"
         />
         <ListItem
-          iconBgColor={theme.palette.primary.main}
+          iconBgColor={theme.palette.warning.main}
           title="浏览 repo 文件"
           icon={<FolderIcon />}
           to="/ghView"
@@ -75,10 +75,10 @@ const HomePage: React.FC = () => {
           to="/settings"
         />
         <ListItem
-          iconBgColor="#333"
-          title="来 GitHub Star 我"
-          icon={<GitHubIcon />}
-          href="https://github.com/lixiang810/HexoSharp"
+          iconBgColor={theme.palette.primary.main}
+          title="关于"
+          icon={<InfoIcon />}
+          to="/about"
         />
       </Grid>
     </Container>

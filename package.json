@@ -23,6 +23,7 @@
     "@babel/core": "^7.17.8",
     "@cloudflare/workers-types": "^3.4.0",
     "@cloudflare/wrangler": "^1.19.11",
+    "@rollup/plugin-replace": "^4.0.0",
     "@types/jest": "^27.4.1",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/node": "^17.0.23",

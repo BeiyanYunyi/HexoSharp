@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AppSnackbarProvider from './components/AppSnackbarProvider';
 import Loading from './components/Loading';
 import NeedAuth from './components/NeedAuth';
+import AboutPage from './pages/AboutPage';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import Root from './pages/Root';
@@ -39,6 +40,14 @@ const App = () => (
                   <Suspense fallback={<Loading />}>
                     <ImgListPage />
                   </Suspense>
+                </NeedAuth>
+              }
+            />
+            <Route
+              path="about"
+              element={
+                <NeedAuth>
+                  <AboutPage />
                 </NeedAuth>
               }
             />
