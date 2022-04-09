@@ -6,7 +6,7 @@ const useImgPathInfo = () => {
   return {
     owner: settings.imgRepoOwner || settings.owner,
     repo: settings.imgRepo || settings.repo,
-    path: settings.imgPath,
+    path: settings.imgPath || '/imgs',
   };
 };
 
