@@ -35,6 +35,8 @@ Hexo\# 的密码若被泄露，他人将可以获取你的 GitHub Token，从而
 举个例子，我的博客系统托管在 [https://github.com/lixiang810/comb](https://github.com/lixiang810/comb)，那么 `owner` 处就填 `lixiang810`，`repo` 处就填 `comb`。
 :::
 
+编辑完配置之后，点击保存即可开始使用 Hexo\#。
+
 ## 尽情使用吧
 
 大功告成。从现在开始，你可以把所有复杂的细节交给 Hexo\# 和它使用的 GitHub API，而专注于享受现代前端技术的结晶——这个现代化静态博客管理系统，以及所见即所得的 Markdown 编辑体验。
