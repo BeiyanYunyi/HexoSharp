@@ -24,7 +24,7 @@ export default defineConfig({
       workbox: {
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/testingcf\.jsdelivr\.net\/.*/i,
+            urlPattern: /^https:\/\/cdn\.jsdelivr\.net\/.*/i,
             handler: 'StaleWhileRevalidate',
             options: {
               cacheName: 'vditor-assets',

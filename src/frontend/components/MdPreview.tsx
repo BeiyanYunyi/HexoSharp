@@ -13,11 +13,6 @@ const Preview: React.FC<{ value: string; sha: string }> = ({ value, sha }) => {
         icon: 'material',
         mode: 'light',
         markdown: { autoSpace: true, fixTermTypo: true, toc: true },
-        cdn: 'https://testingcf.jsdelivr.net/npm/vditor',
-        theme: {
-          current: 'light',
-          path: 'https://testingcf.jsdelivr.net/npm/vditor/dist/css/content-theme',
-        },
       });
     }
   }, [value]);
