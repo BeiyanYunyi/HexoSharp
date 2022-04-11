@@ -17,7 +17,7 @@ importers:
       '@octokit/rest': ^18.12.0
       '@reduxjs/toolkit': ^1.8.1
       '@rollup/plugin-replace': ^4.0.0
-      '@tsndr/cloudflare-worker-jwt': ^1.1.6
+      '@tsndr/cloudflare-worker-jwt': ^1.1.7
       '@types/jest': ^27.4.1
       '@types/jsonwebtoken': ^8.5.8
       '@types/node': ^17.0.23
@@ -45,7 +45,7 @@ importers:
       jest: ^27.5.1
       js-base64: ^3.7.2
       miniflare: ^2.4.0
-      notistack: ^2.0.3
+      notistack: ^2.0.4
       prettier: ^2.6.2
       react: ^18.0.0
       react-dom: ^18.0.0
@@ -69,13 +69,13 @@ importers:
       '@mui/x-data-grid': 5.8.0_31875ae0a311e4b675c7349ec46f1332
       '@octokit/rest': 18.12.0
       '@reduxjs/toolkit': 1.8.1_react-redux@7.2.8+react@18.0.0
-      '@tsndr/cloudflare-worker-jwt': 1.1.6
+      '@tsndr/cloudflare-worker-jwt': 1.1.7
       axios: 0.26.1
       bcryptjs: 2.4.3
       isomorphic-fetch: 3.0.0
       itty-router: 2.6.1
       js-base64: 3.7.2
-      notistack: 2.0.3_adc92ff9a0404aa51d08ce1506bcc3cf
+      notistack: 2.0.4_adc92ff9a0404aa51d08ce1506bcc3cf
       react: 18.0.0
       react-dom: 18.0.0_react@18.0.0
       react-redux: 7.2.8_react-dom@18.0.0+react@18.0.0
@@ -4546,8 +4546,8 @@ packages:
     resolution: {integrity: sha512-eZxlbI8GZscaGS7kkc/trHTT5xgrjH3/1n2JDwusC9iahPKWMRvRjJSAN5mCXviuTGQ/lHnhvv8Q1YTpnfz9gA==}
     dev: true
 
-  /@tsndr/cloudflare-worker-jwt/1.1.6:
-    resolution: {integrity: sha512-b4GUDkuml+X/GJECIWmM5OR38jPKzx04RUXqW2cVNlM902v9nI3lwMwXjPRbh/VVBOf4nLJ3QoHqqEvh+w/Syg==}
+  /@tsndr/cloudflare-worker-jwt/1.1.7:
+    resolution: {integrity: sha512-kxGiFq5trjR3CF13m+w6xxj25c1NuBdEuhf4AuEXmtwrCLJBBA87RRPCxeThhSTn519xP8JZ/GtaBIeH0jFRmQ==}
     dev: false
 
   /@types/babel__core/7.1.18:
@@ -10093,14 +10093,14 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  /notistack/2.0.3_adc92ff9a0404aa51d08ce1506bcc3cf:
-    resolution: {integrity: sha512-krmVFtTO9kEY1Pa4NrbyexrjiRcV6TqBM2xLx8nuDea1g96Z/OZfkvVLmYKkTvoSJ3jyQntWK16z86ssW5kt4A==}
+  /notistack/2.0.4_adc92ff9a0404aa51d08ce1506bcc3cf:
+    resolution: {integrity: sha512-kOJmKvTG91ElMzi4aHu82BDe1liQ0zMrBp+TnWJptgowDsTbeTKbZmsRqJNIj145BmlOtZsEE9xjcrN46zVo3w==}
     peerDependencies:
       '@emotion/react': ^11.4.1
       '@emotion/styled': ^11.3.0
       '@mui/material': ^5.0.0
-      react: ^16.8.0 || ^17.0.0
-      react-dom: ^16.8.0 || ^17.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     peerDependenciesMeta:
       '@emotion/react':
         optional: true

@@ -4,7 +4,7 @@
   "description": "Modern serverless manager for static blogs",
   "main": "./dist/worker.js",
   "dir": "./dist",
-  "packageManager": "pnpm@6.32.4",
+  "packageManager": "pnpm@7.0.0-rc.3",
   "scripts": {
     "build": "pnpm build:frontend && pnpm build:worker",
     "build:worker": "node build.mjs",
