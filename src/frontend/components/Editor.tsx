@@ -4,7 +4,6 @@ import {
   Card,
   CardActions,
   CardContent,
-  Container,
   Stack,
   Typography,
   useMediaQuery,
@@ -20,6 +19,7 @@ import useImgPathInfo from '../hooks/useImgPathInfo';
 import { useAppSelector } from '../redux/store';
 import createOrUpdate from '../service/createOrUpdate';
 import snackbar from '../utils/Snackbar';
+import GetDate from './GetDate';
 
 /** 编辑器组件，提供图片上传操作 */
 const Editor: React.FC<
@@ -85,9 +85,7 @@ const Editor: React.FC<
     <Card>
       <CardContent sx={{ padding: 0, paddingTop: 1 }}>
         <Stack>
-          <Container sx={{ marginBottom: 1 }}>
-            <Button>获取当前日期</Button>
-          </Container>
+          <GetDate />
           <Typography component="div" ref={ref}>
             编辑器加载中
           </Typography>
