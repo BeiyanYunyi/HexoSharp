@@ -1,7 +1,10 @@
 import ISettings from '../../types/ISettings';
 
+/** 在后端获取用户配置项 */
 const getConfig = async () => {
-  const config = JSON.parse((await HSPKV.get('settings'))!) as ISettings;
+  const configStr = await HSPKV.get('settings');
+  if (!configStr) return null;
+  const config = JSON.parse(configStr) as ISettings;
   return config;
 };
 
