@@ -2,6 +2,10 @@ import { encode, decode } from 'base65536';
 
 const salt = 'HexoSharp114514';
 
+/**
+ * 可以认为是一个哈希函数，从密码生成加密用的密钥
+ * @param password 密码
+ */
 const getKey = async (password: string) => {
   const textEncoder = new TextEncoder();
   const passwordBuffer = textEncoder.encode(password);
@@ -29,6 +33,10 @@ const getKey = async (password: string) => {
   };
 };
 
+/** 加密一段信息
+ * @param text - 要被加密的信息
+ * @param password - 密码
+ */
 const encrypt = async (text: string, password: string) => {
   const keyObject = await getKey(password);
   const textEncoder = new TextEncoder();
@@ -41,6 +49,10 @@ const encrypt = async (text: string, password: string) => {
   return encode(new Uint8Array(encryptedText));
 };
 
+/** 解密一段信息
+ * @param cipher - 要被解密的密文
+ * @param password - 密码
+ */
 const decrypt = async (cipher: string, password: string) => {
   const keyObject = await getKey(password);
   const decCipher = decode(cipher);
@@ -53,6 +65,9 @@ const decrypt = async (cipher: string, password: string) => {
   return textDecoder.decode(decryptedText);
 };
 
-const hspCrypt = { encrypt, decrypt };
+const hspCrypt = {
+  encrypt,
+  decrypt,
+};
 
 export default hspCrypt;
