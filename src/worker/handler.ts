@@ -27,7 +27,7 @@ router.all(
 );
 
 // 用户请求前端时，返回前端
-router.get('*', async (req, event: FetchEvent) => {
+router.get('*', async (req, event: FetchEvent & { waitUntil: (promise: Promise<any>) => void }) => {
   if (!event) return new Response(null, { status: 400 });
   try {
     const page = await getAssetFromKV(event, {
