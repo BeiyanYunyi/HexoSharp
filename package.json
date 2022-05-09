@@ -70,6 +70,7 @@
     "@reduxjs/toolkit": "^1.8.1",
     "@tsndr/cloudflare-worker-jwt": "^1.1.6",
     "axios": "^0.27.2",
+    "base65536": "^4.0.2",
     "bcryptjs": "^2.4.3",
     "date-fns": "^2.28.0",
     "isomorphic-fetch": "^3.0.0",

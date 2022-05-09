@@ -29,6 +29,7 @@ importers:
       '@typescript-eslint/parser': ^5.22.0
       '@vitejs/plugin-react': ^1.3.2
       axios: ^0.27.2
+      base65536: ^4.0.2
       bcryptjs: ^2.4.3
       cross-env: ^7.0.3
       date-fns: ^2.28.0
@@ -76,6 +77,7 @@ importers:
       '@reduxjs/toolkit': 1.8.1_j24pcqpkbsj43woxscsovlj4au
       '@tsndr/cloudflare-worker-jwt': 1.1.7
       axios: 0.27.2
+      base65536: 4.0.2
       bcryptjs: 2.4.3
       date-fns: 2.28.0
       isomorphic-fetch: 3.0.0
@@ -1781,7 +1783,7 @@ packages:
       react-dom: '*'
     dependencies:
       '@docusaurus/types': 2.0.0-beta.18
-      '@types/react': 18.0.8
+      '@types/react': 18.0.9
       '@types/react-router-config': 5.0.6
       '@types/react-router-dom': 5.3.3
       react: 17.0.2
@@ -2069,7 +2071,7 @@ packages:
     peerDependencies:
       react: '*'
     dependencies:
-      '@types/react': 18.0.8
+      '@types/react': 18.0.9
       prop-types: 15.8.1
       react: 17.0.2
     dev: false
@@ -3777,21 +3779,21 @@ packages:
     resolution: {integrity: sha512-db1mx37a1EJDf1XeX8jJN7R3PZABmJQXR8r28yUjVMFSjkmnQo6X6pOEEmNl+Tp2gYQOGPdYbFIipBtdElZ3Yg==}
     dependencies:
       '@types/history': 4.7.11
-      '@types/react': 18.0.8
+      '@types/react': 18.0.9
       '@types/react-router': 5.1.18
 
   /@types/react-router-dom/5.3.3:
     resolution: {integrity: sha512-kpqnYK4wcdm5UaWI3fLcELopqLrHgLqNsdpHauzlQktfkHL3npOSwtj1Uz9oKBAzs7lFtVkV8j83voAz2D8fhw==}
     dependencies:
       '@types/history': 4.7.11
-      '@types/react': 18.0.8
+      '@types/react': 18.0.9
       '@types/react-router': 5.1.18
 
   /@types/react-router/5.1.18:
     resolution: {integrity: sha512-YYknwy0D0iOwKQgz9v8nOzt2J6l4gouBmDnWqUUznltOTaon+r8US8ky8HvN0tXvc38U9m6z/t2RsVsnd1zM0g==}
     dependencies:
       '@types/history': 4.7.11
-      '@types/react': 18.0.8
+      '@types/react': 18.0.9
 
   /@types/react-transition-group/4.4.4:
     resolution: {integrity: sha512-7gAPz7anVK5xzbeQW9wFBDg7G++aPLAFY0QaSMOou9rJZpbuI58WAuJrgu+qR92l61grlnCUe7AFX8KGahAgug==}
@@ -3806,13 +3808,6 @@ packages:
       '@types/scheduler': 0.16.2
       csstype: 3.0.11
     dev: true
-
-  /@types/react/18.0.8:
-    resolution: {integrity: sha512-+j2hk9BzCOrrOSJASi5XiOyBbERk9jG5O73Ya4M0env5Ixi6vUNli4qy994AINcEF+1IEHISYFfIT4zwr++LKw==}
-    dependencies:
-      '@types/prop-types': 15.7.5
-      '@types/scheduler': 0.16.2
-      csstype: 3.0.11
 
   /@types/react/18.0.9:
     resolution: {integrity: sha512-9bjbg1hJHUm4De19L1cHiW0Jvx3geel6Qczhjd0qY5VKVE2X5+x77YxAepuCwVh4vrgZJdgEJw48zrhRIeF4Nw==}
@@ -4438,7 +4433,7 @@ packages:
   /axios/0.25.0:
     resolution: {integrity: sha512-cD8FOb0tRH3uuEe6+evtAbgJtfxr7ly3fQjYcMcuPlgkwVS9xboaVIpcDV+cYQe+yGykgwZCs1pzjntcGa6l5g==}
     dependencies:
-      follow-redirects: 1.14.9
+      follow-redirects: 1.15.0
     transitivePeerDependencies:
       - debug
     dev: false
@@ -4620,6 +4615,10 @@ packages:
 
   /base16/1.0.0:
     resolution: {integrity: sha1-4pf2DX7BAUp6lxo568ipjAtoHnA=}
+    dev: false
+
+  /base65536/4.0.2:
+    resolution: {integrity: sha512-HVPixyIYgI5aO3zx+6Py0RvWzbAAZeH7lHvc4GIG560FfNi0ywd2flXneoRnZZPwVBYvZ5VvCn3ZszqNYvf5lw==}
     dev: false
 
   /batch/0.6.1:
@@ -6760,16 +6759,6 @@ packages:
       - encoding
     dev: false
 
-  /follow-redirects/1.14.9:
-    resolution: {integrity: sha512-MQDfihBQYMcyy5dhRDJUHcw7lb2Pv/TuE6xP1vyraLukNDHKbDxDNaOE3NbCAdKQApno+GPRyo1YAp89yCjK4w==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
-    dev: false
-
   /follow-redirects/1.15.0:
     resolution: {integrity: sha512-aExlJShTV4qOUOL7yF1U5tvLCB0xQuudbf6toyYA0E/acBNw71mvjFTnLaRp50aQaYocMR0a/RMMBIHeZnGyjQ==}
     engines: {node: '>=4.0'}
@@ -7342,7 +7331,7 @@ packages:
     engines: {node: '>=8.0.0'}
     dependencies:
       eventemitter3: 4.0.7
-      follow-redirects: 1.14.9
+      follow-redirects: 1.15.0
       requires-port: 1.0.0
     transitivePeerDependencies:
       - debug
