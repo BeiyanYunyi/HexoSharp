@@ -22,18 +22,7 @@ Hexo\# 的密码若被泄露，他人将可以获取你的 GitHub Token，从而
 
 登录完成后，你将进入 Hexo\# 的主页。在这里点击`设置`即可访问设置页面。在将来，你可能会被配置项的数目吓到。不过不用担心，现在 Hexo\# 只有六项配置，而其中只有三项是必填的。
 
-所有配置项的说明如下，标\*为必填：
-
-- `ghApiToken`\* - 前文所述的 `GH Token`，Hexo\# 需要它以编辑你的 Repo。
-- `owner`\* - 你存放静态博客系统的 `repo` 的所有者。如果填别人，则你需要有对那个 `repo` 的权限。
-- `repo`\* - 你存放静态博客系统的 `repo` 名。
-- `imgRepo` - 你用来存放图片的 `repo` 名，若不填写，Hexo\# 会默认存放在 `repo` 下
-- `imgPath` - 你用来存放图片的路径，若不填写，Hexo\# 会默认存放在上述 repo 的 `/img` 目录下。
-- `imgRepoOwner` - 你用来存放图片的 `repo` 的所有者。如果填别人，则你需要有对那个 `repo` 的权限。
-
-:::tip `owner` 与 `repo`
-举个例子，我的博客系统托管在 [https://github.com/lixiang810/comb](https://github.com/lixiang810/comb)，那么 `owner` 处就填 `lixiang810`，`repo` 处就填 `comb`。
-:::
+[配置项的说明请参见此处](/docs/config)
 
 编辑完配置之后，点击保存即可开始使用 Hexo\#。
 

@@ -66,16 +66,7 @@ Hexo\# 是一个可独立部署也可托管在 Cloudflare 上的轻后端的现�
 
 ## ✅ 在进行中的工作
 
-- [x] 查看 Repo 内容
-- [x] 修改 Repo 内容
-- [x] 创建 Repo 内容
-- [x] 删除 Repo 内容
-- [x] 上传图片
-- [x] 在编辑器里上传图片
-- [x] 在图片列表里预览和删除图片
-- [x] 添加 Service Worker 支持
-- [ ] 文章列表
-- [ ] 发布说说
+见 [Projects](https://github.com/users/lixiang810/projects/2)
 
 ## 🖼️ 展望
 
