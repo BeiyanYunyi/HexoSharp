@@ -8,6 +8,9 @@ const defaultSetting: ISettings = {
   imgRepo: '',
   imgPath: '',
   imgRepoOwner: '',
+  databaseRepo: '',
+  databaseRepoOwner: '',
+  issueTag: '',
 };
 
 export default defaultSetting;

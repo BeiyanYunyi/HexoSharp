@@ -6,4 +6,7 @@ export default interface ISettings {
   imgRepo: string;
   imgPath: string;
   imgRepoOwner: string;
+  databaseRepo: string;
+  databaseRepoOwner: string;
+  issueTag: string;
 }

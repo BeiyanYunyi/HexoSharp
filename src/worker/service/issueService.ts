@@ -7,8 +7,8 @@ import getOctokit from '../utils/getOctokit';
 const get = async (issueNumber: number) => {
   const { octokit, config } = await getOctokit();
   const res = await octokit.issues.get({
-    owner: config.owner,
-    repo: config.repo,
+    owner: config.databaseRepoOwner,
+    repo: config.databaseRepo,
     issue_number: issueNumber,
   });
   return res;
@@ -18,16 +18,15 @@ const get = async (issueNumber: number) => {
  * 创建一个 issue
  * @param content 内容
  * @param title 标题
- * @param label 标签
  */
-const create = async (content: string, title: string, label: string) => {
+const create = async (content: string, title: string) => {
   const { octokit, config } = await getOctokit();
   const res = await octokit.issues.create({
-    owner: config.owner,
-    repo: config.repo,
+    owner: config.databaseRepoOwner,
+    repo: config.databaseRepo,
     title,
     body: content,
-    labels: [label],
+    labels: [config.issueTag],
   });
   return res;
 };

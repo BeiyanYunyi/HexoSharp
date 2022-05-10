@@ -9,6 +9,9 @@
 - `ghApiToken`\* - 前文所述的 `GH Token`，Hexo\# 需要它以编辑你的 Repo。
 - `owner`\* - 你存放静态博客系统的 repo 的所有者。如果填别人，则你需要有对那个 repo 的权限。
 - `repo`\* - 你存放静态博客系统的 repo 名。
-- `imgRepo` - 你用来存放图片的 repo 名，若不填写则默认为 `repo`。
-- `imgPath` - 你用来存放图片的路径，若不填写则默认为 `/img`。
-- `imgRepoOwner` - `imgRepo` 的所有者。如果填别人，则你需要有对那个 repo 的权限。
+- `imgRepo` - 你用来存放图片的 repo 名，默认使用 `repo`。
+- `imgPath` - 你用来存放图片的路径，默认为 `/img`。
+- `imgRepoOwner` - `imgRepo` 的所有者。如果填别人，则你需要有对那个 repo 的权限。默认使用 `owner`。
+- `databaseRepo` - 给 Hexo\# 以 issue 形式存放数据的 repo 名，默认使用 `repo`。
+- `databaseRepoOwner` - `databaseRepo` 的所有者。如果填别人，则你需要有对那个 repo 的权限。默认使用 `owner`。
+- `issueTag` - Hexo\# 用于标记其 issue，默认为 `HexoSharp`。
