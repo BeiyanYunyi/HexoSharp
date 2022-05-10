@@ -3,12 +3,13 @@ import * as base65536 from 'base65536';
 const salt = 'HexoSharp114514';
 
 /**
- * 可以认为是一个哈希函数，从密码生成加密用的密钥
- * @param password 密码
+ * 可以认为是一个哈希函数，从密码生成加密用的密钥。
+ * 接受一个参数作为密码，默认使用 JWT_SECRET 作为密码。
+ * @param password 自定义密码，暂未使用。
  */
-const getKey = async (password: string) => {
+const getKey = async (password?: string) => {
   const textEncoder = new TextEncoder();
-  const passwordBuffer = textEncoder.encode(password);
+  const passwordBuffer = textEncoder.encode(password || JWT_SECRET);
   const importedKey = await crypto.subtle.importKey('raw', passwordBuffer, 'PBKDF2', false, [
     'deriveBits',
   ]);
@@ -35,10 +36,9 @@ const getKey = async (password: string) => {
 
 /** 加密一段信息
  * @param text - 要被加密的信息
- * @param password - 密码
  */
-const encrypt = async (text: string, password: string) => {
-  const keyObject = await getKey(password);
+const encrypt = async (text: string) => {
+  const keyObject = await getKey();
   const textEncoder = new TextEncoder();
   const textBuffer = textEncoder.encode(text);
   const encryptedText: ArrayBuffer = await crypto.subtle.encrypt(
@@ -51,10 +51,9 @@ const encrypt = async (text: string, password: string) => {
 
 /** 解密一段信息
  * @param cipher - 要被解密的密文
- * @param password - 密码
  */
-const decrypt = async (cipher: string, password: string) => {
-  const keyObject = await getKey(password);
+const decrypt = async (cipher: string) => {
+  const keyObject = await getKey();
   const decCipher = base65536.decode(cipher);
   const textDecoder = new TextDecoder();
   const decryptedText = await crypto.subtle.decrypt(
