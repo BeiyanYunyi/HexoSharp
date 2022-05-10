@@ -1,4 +1,4 @@
-import { encode, decode } from 'base65536';
+import * as base65536 from 'base65536';
 
 const salt = 'HexoSharp114514';
 
@@ -46,7 +46,7 @@ const encrypt = async (text: string, password: string) => {
     keyObject.key,
     textBuffer,
   );
-  return encode(new Uint8Array(encryptedText));
+  return base65536.encode(new Uint8Array(encryptedText));
 };
 
 /** 解密一段信息
@@ -55,7 +55,7 @@ const encrypt = async (text: string, password: string) => {
  */
 const decrypt = async (cipher: string, password: string) => {
   const keyObject = await getKey(password);
-  const decCipher = decode(cipher);
+  const decCipher = base65536.decode(cipher);
   const textDecoder = new TextDecoder();
   const decryptedText = await crypto.subtle.decrypt(
     { name: 'AES-CBC', iv: keyObject.iv, length: 256 },
