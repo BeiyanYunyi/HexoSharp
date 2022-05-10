@@ -4,7 +4,7 @@ import { SnackbarKey, SnackbarProvider } from 'notistack';
 import React from 'react';
 
 /** 为 notistack 提供包装 */
-const AppSnackbarProvider: React.FC = ({ children }) => {
+const AppSnackbarProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const notistackRef = React.createRef<SnackbarProvider>();
   const onClickDismiss = (key: SnackbarKey) => () => {
     notistackRef.current?.closeSnackbar(key);
