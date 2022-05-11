@@ -1,24 +1,42 @@
 import * as base65536 from 'base65536';
 
-const salt = 'HexoSharp114514';
+/**
+ * 一个哈希函数，使用 SHA-256 算法从给定字符串生成一个哈希值。
+ */
+const getDerivation = async (param: {
+  /** 给定字符串 */
+  stringToHash: string;
+  /** 迭代次数，默认为 1048576 次 */
+  iterations?: number;
+  /** 哈希值长度，默认为 256 */
+  length?: number;
+  /** 盐字符串 */
+  salt: string;
+}) => {
+  const textEncoder = new TextEncoder();
+  const stringToHashBuffer = textEncoder.encode(param.stringToHash);
+  const importedKey = await crypto.subtle.importKey('raw', stringToHashBuffer, 'PBKDF2', false, [
+    'deriveBits',
+  ]);
+  const saltAry = textEncoder.encode(param.salt);
+  const derivation = await crypto.subtle.deriveBits(
+    { name: 'PBKDF2', hash: 'SHA-256', salt: saltAry, iterations: param.iterations || 1048576 },
+    importedKey,
+    param.length || 256,
+  );
+  return derivation;
+};
 
 /**
- * 可以认为是一个哈希函数，从密码生成加密用的密钥。
+ * 从密码生成加密用的密钥。
  * 接受一个参数作为密码，默认使用 JWT_SECRET 作为密码。
  * @param password 自定义密码，暂未使用。
  */
 const getKey = async (password?: string) => {
-  const textEncoder = new TextEncoder();
-  const passwordBuffer = textEncoder.encode(password || JWT_SECRET);
-  const importedKey = await crypto.subtle.importKey('raw', passwordBuffer, 'PBKDF2', false, [
-    'deriveBits',
-  ]);
-  const saltAry = textEncoder.encode(salt);
-  const derivation = await crypto.subtle.deriveBits(
-    { name: 'PBKDF2', hash: 'SHA-256', salt: saltAry, iterations: 1048576 },
-    importedKey,
-    256,
-  );
+  const derivation = await getDerivation({
+    stringToHash: password || JWT_SECRET,
+    salt: 'HexoSharp114514',
+  });
   const importedEncryptionKey = await crypto.subtle.importKey(
     'raw',
     derivation,
@@ -68,6 +86,7 @@ const decrypt = async (cipher: string) => {
 const hspCrypt = {
   encrypt,
   decrypt,
+  getDerivation,
 };
 
 export default hspCrypt;
