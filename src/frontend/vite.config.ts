@@ -20,7 +20,7 @@ export default defineConfig({
     VitePWA({
       mode: 'production',
       base: '/',
-      registerType: 'autoUpdate',
+      registerType: 'prompt',
       workbox: {
         runtimeCaching: [
           {

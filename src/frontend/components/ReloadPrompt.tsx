@@ -23,6 +23,8 @@ const ReloadPrompt = () => {
     setNeedRefresh(false);
   };
 
+  if (needRefresh) updateServiceWorker(true);
+
   return (
     <Snackbar
       autoHideDuration={3000}
