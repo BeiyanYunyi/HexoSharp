@@ -21,9 +21,9 @@ class AxiosClient {
     return Promise.resolve(true);
   }
 
-  async login(password?: string) {
-    if (password) {
-      const res = await axios.post('/api/auth', { password }, { validateStatus: () => true });
+  async login(param?: { password: string; token: string }) {
+    if (param) {
+      const res = await axios.post('/api/auth', param, { validateStatus: () => true });
       if (res.status >= 300) {
         return false;
       }

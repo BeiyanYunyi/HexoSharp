@@ -1,3 +1,4 @@
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 import { Button, Card, CardContent, Container, Stack, TextField, Typography } from '@mui/material';
 import React from 'react';
 import { useDispatch } from 'react-redux';
@@ -9,6 +10,7 @@ import snackbar from '../utils/Snackbar';
 /** 登录页面，当前存在登录后需手动刷新的 BUG */
 const LoginPage = () => {
   const [password, setPassword] = React.useState('');
+  const [token, setToken] = React.useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
   return (
@@ -30,10 +32,14 @@ const LoginPage = () => {
               }}
               value={password}
             />
+            <HCaptcha
+              sitekey="9480b5ca-9adc-4e78-b0f2-1f20fbdacd0b"
+              onVerify={(tok) => setToken(tok)}
+            />
             <Button
               variant="contained"
               onClick={async () => {
-                const loginRes = await axiosClient.login(password);
+                const loginRes = await axiosClient.login({ password, token });
                 if (!loginRes) return snackbar.err('登录失败');
                 dispatch(changeAuth(true));
                 return navigate('/', { replace: true });
