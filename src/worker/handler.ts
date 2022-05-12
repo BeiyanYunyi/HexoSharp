@@ -2,20 +2,23 @@ import { getAssetFromKV } from '@cloudflare/kv-asset-handler';
 import json from './middlewares/json';
 import jwtVerify from './middlewares/jwtVerify';
 import router from './router';
-import authRouter from './service/authRouter';
-import ghCorsRouter from './service/ghCorsRouter';
-import kvRouter from './service/kvRouter';
+import authRouter from './router/authRouter';
+import ghCorsRouter from './router/ghCorsRouter';
+import kvRouter from './router/kvRouter';
+import templateRouter from './router/templateRouter';
 
 router.all('*', json);
 
 authRouter();
 ghCorsRouter();
+templateRouter();
 // 以下路径需要验证才可访问
 router.all('/api/*', jwtVerify);
 router.get(
   '/api/ping',
   () => new Response(null, { status: 200, headers: { 'Content-Type': 'text/plain' } }),
 );
+
 kvRouter();
 
 router.all(
