@@ -32,10 +32,13 @@ const LoginPage = () => {
               }}
               value={password}
             />
-            <HCaptcha
-              sitekey="9480b5ca-9adc-4e78-b0f2-1f20fbdacd0b"
-              onVerify={(tok) => setToken(tok)}
-            />
+            <Stack direction="row" justifyContent="center">
+              <HCaptcha
+                sitekey="9480b5ca-9adc-4e78-b0f2-1f20fbdacd0b"
+                onVerify={(tok) => setToken(tok)}
+                reCaptchaCompat={false}
+              />
+            </Stack>
             <Button
               variant="contained"
               onClick={async () => {
