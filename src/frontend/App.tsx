@@ -4,11 +4,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AppSnackbarProvider from './components/AppSnackbarProvider';
 import Loading from './components/Loading';
 import NeedAuth from './components/NeedAuth';
-import AboutPage from './pages/AboutPage';
 import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
 import Root from './pages/Root';
-import SettingPage from './pages/SettingPage';
 import store from './redux/store';
 
 /** 见[原文件](pages/GhEditPage.tsx) */
@@ -17,6 +14,12 @@ const GhEditPage = lazy(() => import('./pages/GhEditPage'));
 const GhViewPage = lazy(() => import('./pages/GhViewPage'));
 /** 见[原文件](pages/ImgListPage.tsx) */
 const ImgListPage = lazy(() => import('./pages/ImgListPage'));
+/** 见[原文件](pages/LoginPage.tsx) */
+const LoginPage = lazy(() => import('./pages/LoginPage'));
+/** 见[原文件](pages/AboutPage.tsx) */
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+/** 见[原文件](pages/SettingPage.tsx) */
+const SettingPage = lazy(() => import('./pages/SettingPage'));
 
 const App = () => (
   <AppSnackbarProvider>
@@ -24,12 +27,21 @@ const App = () => (
       <Provider store={store}>
         <Routes>
           <Route path="/" element={<Root />}>
-            <Route path="login" element={<LoginPage />} />
+            <Route
+              path="login"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <LoginPage />
+                </Suspense>
+              }
+            />
             <Route
               path="settings"
               element={
                 <NeedAuth>
-                  <SettingPage />
+                  <Suspense fallback={<Loading />}>
+                    <SettingPage />
+                  </Suspense>
                 </NeedAuth>
               }
             />
@@ -47,7 +59,9 @@ const App = () => (
               path="about"
               element={
                 <NeedAuth>
-                  <AboutPage />
+                  <Suspense fallback={<Loading />}>
+                    <AboutPage />
+                  </Suspense>
                 </NeedAuth>
               }
             />
