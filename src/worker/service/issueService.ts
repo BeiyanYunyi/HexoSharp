@@ -12,7 +12,8 @@ const get = async (issueNumber: number) => {
     repo: config.databaseRepo,
     issue_number: issueNumber,
   });
-  return res.data;
+  if (res.status !== 200 || !res.data.body) return null;
+  return { ...res.data, body: await hspCrypt.decrypt(res.data.body) };
 };
 
 /** 根据标题获取一个 issue
@@ -81,6 +82,6 @@ const upsert = async (title: string, content: string) => {
   return put(issue.number, content);
 };
 
-const issueService = { get, findByTitle, upsert };
+const issueService = { get, findByTitle, put, upsert };
 
 export default issueService;
