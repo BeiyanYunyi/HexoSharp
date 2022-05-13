@@ -11,7 +11,6 @@ router.all('*', json);
 
 authRouter();
 ghCorsRouter();
-templateRouter();
 // 以下路径需要验证才可访问
 router.all('/api/*', jwtVerify);
 router.get(
@@ -19,6 +18,7 @@ router.get(
   () => new Response(null, { status: 200, headers: { 'Content-Type': 'text/plain' } }),
 );
 
+templateRouter();
 kvRouter();
 
 router.all(
