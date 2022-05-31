@@ -44,7 +44,7 @@ const LoginPage = () => {
               onClick={async () => {
                 const loginRes = await axiosClient.login({ password, token });
                 if (!loginRes) return snackbar.err('登录失败');
-                dispatch(changeAuth(true));
+                dispatch(changeAuth({ authed: true, backendVersion: loginRes }));
                 return navigate('/', { replace: true });
               }}
             >

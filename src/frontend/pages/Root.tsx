@@ -54,7 +54,7 @@ const Root = () => {
   const snackbar = useAppSnackbar();
   const navigate = useNavigate();
   const loaded = useAppSelector((state) => state.settings.loaded);
-  const authed = useAppSelector((state) => state.auth.authed);
+  const authState = useAppSelector((state) => state.auth);
   const theme = useTheme();
   /** Differs to `loaded` in `settingsReducer`,
    * it will not block the render of other components. */
@@ -66,14 +66,14 @@ const Root = () => {
   }, []);
   React.useEffect(() => {
     (async () => {
-      if (loaded && authed) return null;
+      if (loaded && authState.authed) return null;
       const loginRes = await axiosClient.login();
       if (!loginRes) {
         globalSnackbar.info('未登录或登录状态已过期');
         navigate('/login', { replace: true });
         return dispatch(changeLoaded(true));
       }
-      dispatch(changeAuth(true));
+      dispatch(changeAuth({ authed: true, backendVersion: loginRes }));
       const settings = await kv.get('settings');
       dispatch(changeLoaded(true));
       if (settings === null) return navigate('/settings');
@@ -81,8 +81,8 @@ const Root = () => {
       octokit.auth(parsedSettings.ghApiToken);
       return dispatch(changeSettings(parsedSettings));
     })();
-  }, [dispatch, navigate, authed, loaded]);
-  if (!loaded) {
+  }, [dispatch, navigate, authState.authed, loaded]);
+  if (!loaded || (authState.authed && authState.backendVersion !== authState.frontendVersion)) {
     return (
       <>
         <Topbar />

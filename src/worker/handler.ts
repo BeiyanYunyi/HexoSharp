@@ -15,7 +15,11 @@ ghCorsRouter();
 router.all('/api/*', jwtVerify);
 router.get(
   '/api/ping',
-  () => new Response(null, { status: 200, headers: { 'Content-Type': 'text/plain' } }),
+  () =>
+    new Response(JSON.stringify({ version: '__COMMIT_ID__' }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    }),
 );
 
 templateRouter();
