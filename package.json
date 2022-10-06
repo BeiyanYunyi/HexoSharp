@@ -4,7 +4,7 @@
   "description": "Modern serverless manager for static blogs",
   "main": "./dist/worker.js",
   "dir": "./dist",
-  "packageManager": "pnpm@7.1.7",
+  "packageManager": "pnpm@7.13.2",
   "scripts": {
     "build": "pnpm build:frontend && pnpm build:worker",
     "build:worker": "node build.mjs",
@@ -22,7 +22,7 @@
   "devDependencies": {
     "@babel/core": "^7.18.2",
     "@cloudflare/workers-types": "^3.11.0",
-    "@cloudflare/wrangler": "^1.19.11",
+    "@cloudflare/wrangler": "^1.20.0",
     "@rollup/plugin-replace": "^4.0.0",
     "@types/jest": "^27.5.1",
     "@types/jsonwebtoken": "^8.5.8",

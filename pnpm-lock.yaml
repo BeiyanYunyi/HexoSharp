@@ -7,7 +7,7 @@ importers:
       '@babel/core': ^7.18.2
       '@cloudflare/kv-asset-handler': ^0.2.0
       '@cloudflare/workers-types': ^3.11.0
-      '@cloudflare/wrangler': ^1.19.11
+      '@cloudflare/wrangler': ^1.20.0
       '@codemirror/language': ^0.20.2
       '@codemirror/legacy-modes': ^0.20.0
       '@emotion/react': ^11.9.0
@@ -104,7 +104,7 @@ importers:
     devDependencies:
       '@babel/core': 7.18.2
       '@cloudflare/workers-types': 3.11.0
-      '@cloudflare/wrangler': 1.19.12
+      '@cloudflare/wrangler': 1.20.0
       '@rollup/plugin-replace': 4.0.0_rollup@2.75.3
       '@types/jest': 27.5.1
       '@types/jsonwebtoken': 8.5.8
@@ -139,7 +139,7 @@ importers:
       ts-node: 10.8.0_w6gfxie3xfwntbz3mwbbvycbdq
       typescript: 4.7.2
       vite: 2.9.9
-      vite-plugin-pwa: 0.12.0_vite@2.9.9
+      vite-plugin-pwa: 0.12.0_uaikvb5e57ed3pmkg4tq4e2lw4
 
   docs:
     specifiers:
@@ -2671,8 +2671,8 @@ packages:
     resolution: {integrity: sha512-XmKgZZHrCdPsoVQkdd365R7GvwTwDVJsMyEG3Dq/Tgxz6vgrps2c8PXBqEutguwvl0zDAF0AL0e2Z8WG9Dffjw==}
     dev: true
 
-  /@cloudflare/wrangler/1.19.12:
-    resolution: {integrity: sha512-ALuQDzJetYGqzNuIa3KY8S8X9rvZjIh5uEY3nK31jV/EmBamiiSJn4XIdPuSn65FaEmmZem78OJIWFyu80OIuA==}
+  /@cloudflare/wrangler/1.20.0:
+    resolution: {integrity: sha512-WUZ81SopKz4f1ooSu7OB3lIUTliI28ubMou2Qd4LLGxMs6Rq+UDyqpXlT/D9nS2yy+LOblkMmfELwQbXwCS35A==}
     hasBin: true
     requiresBuild: true
     dependencies:
@@ -8185,7 +8185,7 @@ packages:
     dev: false
 
   /fs.realpath/1.0.0:
-    resolution: {integrity: sha1-FQStJSMVjKpA20onh8sBQRmU6k8=}
+    resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
 
   /fsevents/2.3.2:
     resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
@@ -8760,13 +8760,13 @@ packages:
     dev: false
 
   /inflight/1.0.6:
-    resolution: {integrity: sha1-Sb1jMdfQLQwJvJEKEHW6gWW1bfk=}
+    resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
     dependencies:
       once: 1.4.0
       wrappy: 1.0.2
 
   /inherits/2.0.3:
-    resolution: {integrity: sha1-Yzwsg+PaQqUC9SRmAiSA9CCCYd4=}
+    resolution: {integrity: sha512-x00IRNXNy63jwGkJmzPigoySHbaqpNuzKbBOmzK+g2OdZpQ9w+sxCN+VSB3ja7IAge2OP2qpfxTjeNcyjmW1uw==}
     dev: false
 
   /inherits/2.0.4:
@@ -10384,7 +10384,7 @@ packages:
     dev: false
 
   /once/1.4.0:
-    resolution: {integrity: sha1-WDsap3WWHUsROsF9nFC6753Xa9E=}
+    resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==}
     dependencies:
       wrappy: 1.0.2
 
@@ -10578,7 +10578,7 @@ packages:
     engines: {node: '>=8'}
 
   /path-is-absolute/1.0.1:
-    resolution: {integrity: sha1-F0uSaHNVNP+8es5r9TpanhtcX18=}
+    resolution: {integrity: sha512-AVbw3UJ2e9bq64vSaS9Am0fje1Pa8pbGqTTsmXfaIiMpnr5DlDhfJOuLj9Sf95ZPVDAUerDfEk88MPmPe7UCQg==}
     engines: {node: '>=0.10.0'}
 
   /path-is-inside/1.0.2:
@@ -11245,6 +11245,12 @@ packages:
   /react-dev-utils/12.0.1_gp3atwgq76mgimstdygasg64n4:
     resolution: {integrity: sha512-84Ivxmr17KjUupyqzFode6xKhjwuEJDROWKJy/BthkL7Wn6NJ8h4WE6k/exAv6ImS+0oZLRRW5j/aINMHyeGeQ==}
     engines: {node: '>=14'}
+    peerDependencies:
+      typescript: '>=2.7'
+      webpack: '>=4'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
     dependencies:
       '@babel/code-frame': 7.16.7
       address: 1.2.0
@@ -11270,12 +11276,12 @@ packages:
       shell-quote: 1.7.3
       strip-ansi: 6.0.1
       text-table: 0.2.0
+      typescript: 4.6.4
+      webpack: 5.72.1
     transitivePeerDependencies:
       - eslint
       - supports-color
-      - typescript
       - vue-template-compiler
-      - webpack
     dev: false
 
   /react-dom/17.0.2_react@17.0.2:
@@ -12830,6 +12836,7 @@ packages:
   /unified/8.4.2:
     resolution: {integrity: sha512-JCrmN13jI4+h9UAyKEoGcDZV+i1E7BLFuG7OsaDvTXI5P0qhHX+vZO/kOhz9jn8HGENDKbwSeB0nVOg4gVStGA==}
     dependencies:
+      '@types/unist': 2.0.6
       bail: 1.0.5
       extend: 3.0.2
       is-plain-obj: 2.1.0
@@ -12840,6 +12847,7 @@ packages:
   /unified/9.2.0:
     resolution: {integrity: sha512-vx2Z0vY+a3YoTj8+pttM3tiJHCwY5UFbYdiWrwBEbHmK8pvsPj2rtAX2BFfgXen8T39CJWblWRDT4L5WGXtDdg==}
     dependencies:
+      '@types/unist': 2.0.6
       bail: 1.0.5
       extend: 3.0.2
       is-buffer: 2.0.5
@@ -13099,10 +13107,11 @@ packages:
       vfile-message: 2.0.4
     dev: false
 
-  /vite-plugin-pwa/0.12.0_vite@2.9.9:
+  /vite-plugin-pwa/0.12.0_uaikvb5e57ed3pmkg4tq4e2lw4:
     resolution: {integrity: sha512-KYD+cnS5ExLF3T28NkfzBLZ53ehHlp+qMhHGFNh0zlVGpFHrJkL2v9wd4AMi7ZkBTffgeNatIFiv8rhCsMSxBQ==}
     peerDependencies:
       vite: ^2.0.0
+      workbox-window: ^6.4.0
     dependencies:
       debug: 4.3.4
       fast-glob: 3.2.11
@@ -13584,7 +13593,7 @@ packages:
     dev: false
 
   /wrappy/1.0.2:
-    resolution: {integrity: sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=}
+    resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
 
   /write-file-atomic/3.0.3:
     resolution: {integrity: sha512-AvHcyZ5JnSfq3ioSyjrBkH9yW4m7Ayk8/9My/DD9onKeu/94fwrMocemO2QAJFAlnnDN+ZDS+ZjAR5ua1/PV/Q==}
